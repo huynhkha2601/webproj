@@ -4,12 +4,17 @@ import { engine } from 'express-handlebars';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
+
+
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 console.log(__dirname);
 const app = express();
 const port = 3000;
 
-app.engine('hbs', engine({defaultLayout:'bs4.hbs'}));
+
+
+app.engine('hbs', engine({defaultLayout:'home.hbs'}));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
@@ -20,7 +25,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/admin', function(req, res) {
-    layout: 'admin.hbs';
+    res.render('admin',{layout: 'admin.hbs'});
 });
 
 
