@@ -83,6 +83,7 @@ create table user
     fullname    varchar(50)   COLLATE utf8_general_ci null,
     dob         date         null,
     address     varchar(50)   COLLATE utf8_general_ci null,
+    gender      bit          null,
     telephone   char(10)     null,
     email       varchar(50)   COLLATE utf8_general_ci null,
     username    varchar(30)   COLLATE utf8_general_ci null,

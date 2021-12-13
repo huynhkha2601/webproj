@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import { engine } from 'express-handlebars';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import accountsModel from "./models/accounts.model.js";
 
 
 import productsModel from "./models/products.model.js";
@@ -50,10 +51,33 @@ app.get('/admin/products', function(req, res){
 });
 
 
+app.get('/admin/accounts', function(req, res){
+    const accountList = accountsModel.findAll();
+    res.render('vwAccounts/index', {
+        accounts: accountList
+    });
+})
+
+app.get('/admin/accounts/add', function(req, res){
+    res.render('vwAccounts/add');
+});
+
+app.post('/admin/accounts/add', function(req, res){
+    console.log(req.body);
+    accountsModel.addItem(req.body);
+    res.render('vwAccounts/add');
+});
+
+
 app.get('/admin', function(req, res) {
     res.render('admin',{layout: 'admin.hbs'});
 });
 
+app.get('/register', function(req, res){
+    res.render('register', {
+        layout: 'accounts.hbs'
+    });
+})
 
 app.listen(port, function ()  {
     console.log(`Example app listening at http://localhost:${port}`)
