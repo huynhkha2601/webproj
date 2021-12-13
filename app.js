@@ -5,6 +5,9 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 
+import productsModel from "./models/products.model.js";
+
+
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -13,16 +16,39 @@ const app = express();
 const port = 3000;
 
 
-
 app.engine('hbs', engine({defaultLayout:'home.hbs'}));
 app.set('view engine', 'hbs');
 app.set('views', './views');
+app.use(express.urlencoded({
+    extended:true
+}));
 
 app.use(morgan('dev'));
 
+app.use('/public', express.static('public'));
 app.get('/', function (req, res) {
     res.render('home');
 })
+
+
+
+app.get('/admin/products/add', function(req,res){
+    res.render('vwProducts/add');
+});
+
+app.post('/admin/products/add', function(req,res){
+    console.log(req.body);
+    productsModel.addItem(req.body);
+    res.render('vwProducts/add');
+});
+
+app.get('/admin/products', function(req, res){
+    const list = productsModel.findAll();
+    res.render('vwProducts/index',{
+        products: list
+    });
+});
+
 
 app.get('/admin', function(req, res) {
     res.render('admin',{layout: 'admin.hbs'});

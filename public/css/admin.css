@@ -1,2 +1,10 @@
-.navbar {
-    background-color: #d41608;}
+
+
+.navbar{
+    background-color: #ff190c;
+    font-weight: bold;
+}
+
+.navbar .container-fluid {
+    color: white;
+}
