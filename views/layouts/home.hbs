@@ -23,15 +23,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Category
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Điện tử</a>
-                    <a class="dropdown-item" href="#">Thời trang</a>
-                </div>
-            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 mr-1">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -41,19 +32,29 @@
         <button class="btn btn-outline-primary my-2 my-sm-0 ml-1" type="submit">Đăng ký</button>
     </div>
 </nav>
-<div class="content">
- <h2 class="product-header d-flex justify-content-center">
-  Các sản phẩm gần kết thúc
-  </h2>
-{{{body}}}
- <h2 class="product-header d-flex justify-content-center">
-  Các sản phẩm có nhiều lượt ra giá nhất
-  </h2>
-{{{body}}}
- <h2 class="product-header d-flex justify-content-center">
-  Các sản phẩm có giá cao nhất
-  </h2>
-{{{body}}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <h4 class="card-header">
+                    Category
+                </h4>
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                Điện Tử
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Điện Thoại Di Động</a>
+                                <a class="dropdown-item" href="#">Máy Tính Xách Tay</a>
+                            </div>
+                        </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            {{{body}}}
+        </div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"  crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
