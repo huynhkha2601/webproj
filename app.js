@@ -3,13 +3,9 @@ import morgan from 'morgan';
 import { engine } from 'express-handlebars';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import accountsModel from "./models/accounts.model.js";
 
-
-import productsModel from "./models/products.model.js";
-
-
-
+import accountsRoute from "./routes/accounts.route.js";
+import productsRoute from "./routes/products.route.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 console.log(__dirname);
@@ -33,42 +29,6 @@ app.get('/', function (req, res) {
 
 
 
-app.get('/admin/products/add', function(req,res){
-    res.render('vwProducts/add');
-});
-
-app.post('/admin/products/add', function(req,res){
-    console.log(req.body);
-    productsModel.addItem(req.body);
-    res.render('vwProducts/add');
-});
-
-app.get('/admin/products', function(req, res){
-    const list = productsModel.findAll();
-    res.render('vwProducts/index',{
-        products: list
-    });
-});
-
-
-app.get('/admin/accounts', function(req, res){
-    const accountList = accountsModel.findAll();
-    res.render('vwAccounts/index', {
-        accounts: accountList
-    });
-})
-
-app.get('/admin/accounts/add', function(req, res){
-    res.render('vwAccounts/add');
-});
-
-app.post('/admin/accounts/add', function(req, res){
-    console.log(req.body);
-    accountsModel.addItem(req.body);
-    res.render('vwAccounts/add');
-});
-
-
 app.get('/admin', function(req, res) {
     res.render('admin',{layout: 'admin.hbs'});
 });
@@ -78,6 +38,10 @@ app.get('/register', function(req, res){
         layout: 'accounts.hbs'
     });
 })
+
+app.use('/admin/products', productsRoute);
+app.use('/admin/accounts', accountsRoute);
+
 
 app.listen(port, function ()  {
     console.log(`Example app listening at http://localhost:${port}`)
