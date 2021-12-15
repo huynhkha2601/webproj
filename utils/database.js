@@ -1,12 +1,17 @@
-import mysql from "mysql2";
-import {Query} from "mysql-easy-query";
+import knexObj from "knex";
 
-var conn = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "qldg"
+const knex = knexObj({
+    client: 'mysql2',
+    connection: {
+        host : '127.0.0.1',
+        port : 3306,
+        user : 'root',
+        password : '',
+        database : 'qldg'
+    }, pool: {
+        min:0,
+        max:30
+    }
 });
 
-
-export default conn;
+export default knex;

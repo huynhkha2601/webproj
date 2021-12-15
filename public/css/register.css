@@ -1,3 +1,11 @@
 .gradient-custom {
-    background: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(14, 47, 154))
+    background: linear-gradient(to bottom right, rgb(91, 94, 0), rgba(4, 84, 70, 0.5))
+}
+
+.gradient-button {
+    background: linear-gradient(to bottom right, rgb(4, 16, 91), rgb(78, 80, 78));
+}
+
+.gradient-container {
+    background: linear-gradient(to bottom right, rgba(12, 238, 217, 0.5), rgb(255, 255, 255));
 }

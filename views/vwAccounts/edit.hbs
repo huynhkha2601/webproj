@@ -1,13 +1,18 @@
 <form method="post">
     <div class="card">
         <h4 class="card-header">
-            Adding Manager Account:
+            Edit Account
         </h4>
         <div class="card-body">
             <div class="mb-3">
-                <label for="fullname" class="form-label">Manager Name:</label>
-                <input type="text" class="form-control" id="fullname" name="fullname" autofocus>
+                <label for="" class="form-label">Account ID:</label>
+                <input type="text" class="form-control" id="" name="" value="{{this.account.userid}}" readonly>
             </div>
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Manager Name:</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" value="{{this.account.fullname}}" autofocus>
+            </div>
+
             <div class="mb-3">
                 <label for="gender">Gender:</label>
                 <select class="form-select" id="gender" name="gender">
@@ -17,32 +22,32 @@
             </div>
             <div class="mb-3">
                 <label for="dob" class="form-label">Date of birth:</label>
-                <input type="date" class="form-control" id="dob" name="dob">
+                <input type="date" class="form-control" id="dob" name="dob" value="{{this.account.dob}}">
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Address:</label>
-                <input type="text" class="form-control" id="address" name="address">
+                <input type="text" class="form-control" id="address" name="address" value="{{this.account.address}}">
             </div>
             <div class="mb-3">
                 <label for="telephone" class="form-label">Telephone:</label>
-                <input type="text" class="form-control" id="telephone" name="telephone">
+                <input type="text" class="form-control" id="telephone" name="telephone" value="{{this.account.telephone}}">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" value="{{this.account.email}}">
             </div>
             <div class="mb-3">
                 <label for="username" class="form-label">Username:</label>
-                <input type="text" class="form-control" id="username" name="username">
+                <input type="text" class="form-control" id="username" name="username" value="{{this.account.username}}">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password"  value="{{this.account.password}}">
             </div>
             <a class="btn btn-outline-success" href="/admin/accounts" role="button">
                 <i class="fa fa-backward" aria-hidden="true"></i>
                 Back to Account List</a>
-            <button type="submit" class="btn btn-primary">Save
+            <button type="submit" class="btn btn-primary">Save Changes
                 <i class="fa fa-check"></i>
             </button>
         </div>

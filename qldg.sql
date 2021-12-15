@@ -52,8 +52,8 @@ create table product(
     img           blob          null,
     anotherimg    blob          null,
     datepublished datetime      default current_timestamp,
-    dateend       datetime      null,
-    cid           bigint        null
+    dateend       datetime      null
+
 );
 
 drop table if exists rating;

@@ -1,29 +1,12 @@
-// import db from '../utils/db.js';
-const list =[
-    {productname: 'A', price: 2000},
-    {productname: 'B', price: 2000},
-    {productname: 'C', price: 2000},{productname: 'D', price: 2000},
-    {productname: 'E', price: 2000},
-    {productname: 'F', price: 2000},{productname: 'G', price: 2000},
-    {productname: 'H', price: 2000},
-    {productname: 'I', price: 2000},
-    {productname: 'K', price: 2000},
-    {productname: 'L', price: 2000}
-];
-
+import db from '../utils/database.js';
 
 export default {
-    addItem(entity){
-list.push(entity);
-    }
-,
     findAll(){
-        // return db('product')
-        return list;
+        return db('product')
     },
     async  findByID(id){
         const list = await db('product').where('productid',id);
-        if(list.length()===0)
+        if(list.length===0)
             return null;
         return list[0];
     },
