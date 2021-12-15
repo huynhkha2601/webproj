@@ -1,55 +1,74 @@
 <form method="post">
     <div class="card">
-    <h4 class="card-header">
-        Thêm mới sản phẩm
-    </h4>
-    <div class="card-body">
+        <h4 class="card-header">
+            Edit Products:
+        </h4>
+        <div class="card-body">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Product Name:</label>
-                <input type="text" class="form-control" id="productname" name="productname">
+                <label for="productid" class="form-label">Product ID:</label>
+                <input type="text" class="form-control" id="productid" name="productid" value="{{this.product.productid}}" readonly>
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Price:</label>
-                <input type="number" class="form-control" id="price" name="price" step="0.01">
-                </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tiêu đề:</label>
-                <input type="text" class="form-control" id="title" name="title">
-                </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Mô tả:</label>
-                <input type="text" class="form-control" id="description" name="description">
-                   </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Loại sản phẩm:</label>
-                <input type="text" class="form-control" id="type" name="type" >
-                     </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Giá mua ngay:</label>
-                <input type="text" class="form-control" id="purchaseprice" name="purchaseprice">
-                       </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Hình ảnh:</label>
-                <input type="text" class="form-control" id="img" name="img">
-                     </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Các hình ảnh khác:</label>
-                <input type="text" class="form-control" id="anotherimg" name="anotherimg">
-                   </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Ngày kết thúc</label>
-                <input type="text" class="form-control" id="dateend" name="dateend">
+                <label for="productname" class="form-label">Product Name:</label>
+                <input type="text" class="form-control" id="productname" name="productname" value="{{this.product.productname}}">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Người đăng:</label>
-                <input type="text" class="form-control" id="sellerid" name="sellerid">
+                <label for="sellerid" class="form-label">Seller ID:</label>
+                <input type="text" class="form-control" id="sellerid" name="sellerid" value="{{this.product.sellerid}}">
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{this.product.title}}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <input type="text" class="form-control" id="description" name="description" value="{{this.product.description}}">
+            </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">Category:</label>
+                <input type="text" class="form-control" id="type" name="type" value="{{this.product.type}}" >
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <input type="number" class="form-control" id="price" name="price" step="0.01" value="{{this.product.price}}">
+            </div>
+            <div class="mb-3">
+                <label for="step" class="form-label">Price Step:</label>
+                <input type="number" class="form-control" id="step" name="step" step="0.01" value="{{this.product.step}}">
+            </div>
+            <div class="mb-3">
+                <label for="purchaseprice" class="form-label">Purchase Price:</label>
+                <input type="text" class="form-control" id="purchaseprice" name="purchaseprice" value="{{this.product.purchaseprice}}">
+            </div>
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating:</label>
+                <input type="text" class="form-control" id="rating" name="rating" value="{{this.product.rating}}">
+            </div>
+            <div class="mb-3">
+                <label for="img" class="form-label">Images:</label>
+                <input type="text" class="form-control" id="img" name="img" value="{{this.product.img}}">
+            </div>
+            <div class="mb-3">
+                <label for="anotherimg" class="form-label">Related another images:</label>
+                <input type="text" class="form-control" id="anotherimg" name="anotherimg" value="{{this.product.anotherimg}}">
+            </div>
+            <div class="mb-3">
+                <label for="datepublished" class="form-label">Date Published:</label>
+                <input type="text" class="form-control" id="" name="" value="{{this.product.datepublished}}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="dateend" class="form-label">Date End:</label>
+                <input type="text" class="form-control" id="dateend" name="dateend" value="{{this.product.dateend}}">
             </div>
             <a class="btn btn-outline-success" href="/admin/products" role="button">
                 <i class="fa fa-backward" aria-hidden="true"></i>
                 Back to Product List</a>
-            <button type="submit" class="btn btn-primary">Thêm
+            <button type="submit" class="btn btn-danger" formaction="/admin/products/del">Delete
+            <i class="fa fa-trash-o"></i>
+            </button>
+            <button type="submit" class="btn btn-primary" formaction="/admin/products/patch">Save Changes
                 <i class="fa fa-check"></i>
             </button>
+        </div>
     </div>
-</div>
 </form>

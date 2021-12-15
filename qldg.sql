@@ -9,6 +9,13 @@ create table category(
     cname varchar(50) COLLATE utf8_general_ci null
 );
 
+drop table if exists type;
+create table type(
+    tid bigint primary key  AUTO_INCREMENT,
+    typename varchar(50) COLLATE utf8_general_ci null,
+    cid bigint null
+);
+
 drop table if exists favorites;
 create table favorites
 (

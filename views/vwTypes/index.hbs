@@ -16,7 +16,7 @@
             <th scope="col">Role</th>
             <th scope="col">Active</th>
             <th scope="col">Date Founded</th>
-            <th></th>
+            <th scope="col">&nbsp</th>
         </tr>
         </thead>
         <tbody>
@@ -29,15 +29,15 @@
                 <td>{{active}}</td>
                 <td>{{datefounded}}</td>
                 <td class="text-right">
-                    <a name="" id="" class="btn btn-sm btn-primary" href="#" role="button">
+                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/accounts/edit?userid={{userid}}" role="button">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </a>
-                    <a name="" id="" class="btn btn-sm btn-danger" href="#" role="button">
-                        <i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
         {{/each}}
         </tbody>
     </table>
+    <div class="card-footer text-muted">
+    2 days ago
+    </div>
 </div>

@@ -1,0 +1,43 @@
+<div class="card">
+    <h4 class="card-header d-flex justify-content-between">
+        User Accounts
+        <div>
+            <a class="btn btn-outline-primary" href="/admin/user-accounts/add" role="button">Add Manager
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </h4>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Password</th>
+            <th scope="col">Role</th>
+            <th scope="col">Active</th>
+            <th scope="col">Date Founded</th>
+            <th scope="col">&nbsp</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this.accounts}}
+            <tr>
+                <th scope="row">{{userid}}</th>
+                <td>{{username}}</td>
+                <td>{{password}}</td>
+                <td>{{role}}</td>
+                <td>{{active}}</td>
+                <td>{{datefounded}}</td>
+                <td class="text-right">
+                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/user-accounts/edit?userid={{userid}}" role="button">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div class="card-footer text-muted">
+    2 days ago
+    </div>
+</div>

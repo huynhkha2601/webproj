@@ -1,54 +1,59 @@
 <form method="post">
     <div class="card">
     <h4 class="card-header">
-        Thêm mới sản phẩm
+        Add Product
     </h4>
     <div class="card-body">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Product Name:</label>
+                <label for="productname" class="form-label">Product Name:</label>
                 <input type="text" class="form-control" id="productname" name="productname">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Price:</label>
+                <label for="price" class="form-label">Price:</label>
                 <input type="number" class="form-control" id="price" name="price" step="0.01">
                 </div>
+        <div class="mb-3">
+            <label for="purchaseprice" class="form-label">Price Step:</label>
+            <input type="text" class="form-control" id="purchaseprice" name="purchaseprice">
+        </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tiêu đề:</label>
+                <label for="title" class="form-label">Title:</label>
                 <input type="text" class="form-control" id="title" name="title">
                 </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Mô tả:</label>
+                <label for="description" class="form-label">Description:</label>
                 <input type="text" class="form-control" id="description" name="description">
                    </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Loại sản phẩm:</label>
+                <label for="type" class="form-label">Type:</label>
                 <input type="text" class="form-control" id="type" name="type" >
                      </div>
+
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Giá mua ngay:</label>
+                <label for="purchaseprice" class="form-label">Purchase Price:</label>
                 <input type="text" class="form-control" id="purchaseprice" name="purchaseprice">
                        </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Hình ảnh:</label>
+                <label for="img" class="form-label">Image:</label>
                 <input type="text" class="form-control" id="img" name="img">
                      </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Các hình ảnh khác:</label>
+                <label for="anotherimg" class="form-label">Another Images:</label>
                 <input type="text" class="form-control" id="anotherimg" name="anotherimg">
                    </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Ngày kết thúc</label>
+                <label for="dateend" class="form-label">Date End:</label>
                 <input type="text" class="form-control" id="dateend" name="dateend">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Người đăng:</label>
+                <label for="sellerid" class="form-label">Seller ID:</label>
                 <input type="text" class="form-control" id="sellerid" name="sellerid">
             </div>
             <a class="btn btn-outline-success" href="/admin/products" role="button">
                 <i class="fa fa-backward" aria-hidden="true"></i>
                 Back to Product List</a>
-            <button type="submit" class="btn btn-primary">Thêm
-                <i class="fa fa-check"></i>
+            <button type="submit" class="btn btn-primary">Add new product
+                <i class="fa fa-plus"></i>
             </button>
     </div>
 </div>

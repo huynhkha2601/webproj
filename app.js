@@ -4,8 +4,10 @@ import { engine } from 'express-handlebars';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import accountsRoute from "./routes/accounts.route.js";
+import managerAccountsRoute from "./routes/manager-accounts.route.js";
+import userAccountsRoute from "./routes/user-accounts.route.js";
 import productsRoute from "./routes/products.route.js";
+
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 console.log(__dirname);
@@ -40,8 +42,8 @@ app.get('/register', function(req, res){
 })
 
 app.use('/admin/products', productsRoute);
-app.use('/admin/accounts', accountsRoute);
-
+app.use('/admin/manager-accounts', managerAccountsRoute);
+app.use('/admin/user-accounts', userAccountsRoute);
 
 app.listen(port, function ()  {
     console.log(`Example app listening at http://localhost:${port}`)

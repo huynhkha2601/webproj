@@ -6,7 +6,7 @@
         <div class="card-body">
             <div class="mb-3">
                 <label for="" class="form-label">Account ID:</label>
-                <input type="text" class="form-control" id="" name="" value="{{this.account.userid}}" readonly>
+                <input type="text" class="form-control" id="userid" name="userid" value="{{this.account.userid}}" readonly>
             </div>
             <div class="mb-3">
                 <label for="fullname" class="form-label">Manager Name:</label>
@@ -44,10 +44,25 @@
                 <label for="password" class="form-label">Password:</label>
                 <input type="password" class="form-control" id="password" name="password"  value="{{this.account.password}}">
             </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Role:</label>
+                <input type="number" class="form-control" id="role" name="role"  value="{{this.account.role}}">
+            </div>
+            <div class="mb-3">
+                <label for="active" class="form-label">Active:</label>
+                <input type="number" class="form-control" id="active" name="active" value="{{this.account.active}}">
+            </div>
+            <div class="mb-3">
+                <label for="datefounded" class="form-label">Date Founded:</label>
+                <input type="text" class="form-control" id="datefounded" value="{{this.account.datefounded}}" readonly>
+            </div>
             <a class="btn btn-outline-success" href="/admin/accounts" role="button">
                 <i class="fa fa-backward" aria-hidden="true"></i>
                 Back to Account List</a>
-            <button type="submit" class="btn btn-primary">Save Changes
+            <button type="submit" class="btn btn-danger" formaction="/admin/accounts/del">Delete
+                <i class="fa fa-trash-o"></i>
+            </button>
+            <button type="submit" class="btn btn-primary" formaction="/admin/accounts/patch">Save Changes
                 <i class="fa fa-check"></i>
             </button>
         </div>
