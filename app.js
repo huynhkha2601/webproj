@@ -79,6 +79,12 @@ app.get('/register', function(req, res){
     });
 })
 
+app.get('/login', function(req, res){
+    res.render('login', {
+        layout: 'accounts.hbs'
+    });
+})
+
 app.listen(port, function ()  {
     console.log(`Example app listening at http://localhost:${port}`)
 })
