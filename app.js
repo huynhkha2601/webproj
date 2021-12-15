@@ -42,6 +42,13 @@ app.get('/register', function(req, res){
     });
 })
 
+app.get('/login', function(req, res){
+    res.render('login', {
+        layout: 'accounts.hbs'
+    });
+})
+
+
 app.use('/admin/products', productsRoute);
 app.use('/admin/manager-accounts', managerAccountsRoute);
 app.use('/admin/user-accounts', userAccountsRoute);
