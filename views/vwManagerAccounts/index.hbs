@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        {{#each this.sellers}}
+        {{#each this.accounts}}
             <tr>
                 <th scope="row">{{userid}}</th>
                 <td>{{username}}</td>
@@ -29,23 +29,8 @@
                 <td>{{active}}</td>
                 <td>{{datefounded}}</td>
                 <td class="text-right">
-                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/manager-accounts/edit?userid={{userid}}" role="button">
+                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/user-accounts/edit?userid={{userid}}" role="button">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </a>
-                </td>
-            </tr>
-        {{/each}}
-        {{#each this.bidders}}
-            <tr>
-                <th scope="row">{{userid}}</th>
-                <td>{{username}}</td>
-                <td>{{password}}</td>
-                <td>{{role}}</td>
-                <td>{{active}}</td>
-                <td>{{datefounded}}</td>
-                <td class="text-right">
-                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/manager-accounts/edit?userid={{userid}}" role="button">
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>

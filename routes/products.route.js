@@ -43,9 +43,7 @@ router.post('/del',async function(req, res){
 router.post('/patch', async function(req, res){
     console.log(req.body);
     const ret = await productsModel.patch(req.body);
-    res.render('vwProducts/add',{
-        layout: 'admin.hbs',
-    });
+    res.redirect('/admin/products');
 });
 
 export default router;

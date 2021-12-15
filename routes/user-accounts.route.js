@@ -45,9 +45,7 @@ router.post('/del',async function(req, res){
 });
 router.post('/patch', async function(req, res){
     const ret = await accountsModel.patch(req.body);
-    res.render('vwUserAccounts/edit',{
-        layout: 'admin.hbs',
-    });
+    res.redirect('/admin/user-accounts');
 });
 
 export default router;

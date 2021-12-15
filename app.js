@@ -7,7 +7,8 @@ import { fileURLToPath } from 'url';
 import managerAccountsRoute from "./routes/manager-accounts.route.js";
 import userAccountsRoute from "./routes/user-accounts.route.js";
 import productsRoute from "./routes/products.route.js";
-
+import categoriesRoute from "./routes/categories.route.js";
+import typesRoute from"./routes/types.route.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 console.log(__dirname);
@@ -44,6 +45,8 @@ app.get('/register', function(req, res){
 app.use('/admin/products', productsRoute);
 app.use('/admin/manager-accounts', managerAccountsRoute);
 app.use('/admin/user-accounts', userAccountsRoute);
+app.use('/admin/categories', categoriesRoute);
+app.use('/admin/types', typesRoute);
 
 app.listen(port, function ()  {
     console.log(`Example app listening at http://localhost:${port}`)

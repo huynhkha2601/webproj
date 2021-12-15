@@ -2,7 +2,7 @@
     <h4 class="card-header d-flex justify-content-between">
         User Accounts
         <div>
-            <a class="btn btn-outline-primary" href="/admin/user-accounts/add" role="button">Add Manager
+            <a class="btn btn-outline-primary" href="/admin/user-accounts/add" role="button">Add Bidder
                 <i class="fa fa-plus"></i>
             </a>
         </div>
@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        {{#each this.accounts}}
+        {{#each this.sellers}}
             <tr>
                 <th scope="row">{{userid}}</th>
                 <td>{{username}}</td>
@@ -30,11 +30,27 @@
                 <td>{{datefounded}}</td>
                 <td class="text-right">
                     <a name="" id="" class="btn btn-sm btn-primary" href="/admin/user-accounts/edit?userid={{userid}}" role="button">
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
         {{/each}}
+        {{#each this.bidders}}
+            <tr>
+                <th scope="row">{{userid}}</th>
+                <td>{{username}}</td>
+                <td>{{password}}</td>
+                <td>{{role}}</td>
+                <td>{{active}}</td>
+                <td>{{datefounded}}</td>
+                <td class="text-right">
+                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/user-accounts/edit?userid={{userid}}" role="button">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+
         </tbody>
     </table>
     <div class="card-footer text-muted">

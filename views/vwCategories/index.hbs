@@ -1,8 +1,8 @@
 <div class="card">
     <h4 class="card-header d-flex justify-content-between">
-        Accounts
+        Categories
         <div>
-            <a class="btn btn-outline-primary" href="/admin/manager-accounts/add" role="button">Add Manager
+            <a class="btn btn-outline-primary" href="/admin/categories/add" role="button">Add Categories
                 <i class="fa fa-plus"></i>
             </a>
         </div>
@@ -10,26 +10,18 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">User ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Password</th>
-            <th scope="col">Role</th>
-            <th scope="col">Active</th>
-            <th scope="col">Date Founded</th>
+            <th scope="col">Category ID</th>
+            <th scope="col">Category Name</th>
             <th scope="col">&nbsp</th>
         </tr>
         </thead>
         <tbody>
-        {{#each this.accounts}}
+        {{#each this.categories}}
             <tr>
-                <th scope="row">{{userid}}</th>
-                <td>{{username}}</td>
-                <td>{{password}}</td>
-                <td>{{role}}</td>
-                <td>{{active}}</td>
-                <td>{{datefounded}}</td>
+                <th scope="row">{{cid}}</th>
+                <td>{{cname}}</td>
                 <td class="text-right">
-                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/accounts/edit?userid={{userid}}" role="button">
+                    <a name="" id="" class="btn btn-sm btn-primary" href="/admin/categories/edit?cid={{cid}}" role="button">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                 </td>

@@ -28,7 +28,7 @@ router.get('/edit', async function(req, res){
     const userid = req.query.userid || 0;
     const account = await accountsModel.findByID(userid);
     if (account === null)
-        return res.redirect('/admin/accounts');
+        return res.redirect('/admin/manager-accounts');
     res.render('vwManagerAccounts/edit',{
         account,
         layout: 'admin.hbs'
@@ -44,9 +44,7 @@ router.post('/del',async function(req, res){
 });
 router.post('/patch', async function(req, res){
     const ret = await accountsModel.patch(req.body);
-    res.render('vwManagerAccounts/edit',{
-        layout: 'admin.hbs',
-    });
+    res.redirect('/admin/manager-accounts');
 });
 
 export default router;
