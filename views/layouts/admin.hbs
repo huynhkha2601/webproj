@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./public/css/admin.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 <i class="fa fa-bars" aria-hidden="true"></i>
@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <div class="input-group me-3">
-                    <input type="text" class="form-control ms-7" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control ms-7" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <span class="input-group-text btn-outline-success" id="basic-addon2">
                         <i class="fa fa-search border-white" aria-hidden="true"></i>
                     </span>
@@ -35,12 +35,14 @@
 
                 <ul class="navbar-nav mb-2 mb-lg-0 me-3">
                     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <i class="fa fa-user" aria-hidden="true">Hi,{{{id}}}</i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li><a class="fa fa-sign-out dropdown-item" href="#">Log out</a></li>
+                        </div>
                     </ul>
                 </ul>
             </div>
