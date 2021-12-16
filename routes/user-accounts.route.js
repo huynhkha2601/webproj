@@ -26,6 +26,7 @@ router.post('/add',async function(req, res){
         layout: 'admin.hbs',
     });
 });
+
 router.get('/edit', async function(req, res){
     const userid = req.query.userid || 0;
     const account = await accountsModel.findByID(userid);
@@ -43,6 +44,7 @@ router.post('/del',async function(req, res){
         layout: 'admin.hbs',
     });
 });
+
 router.post('/patch', async function(req, res){
     const ret = await accountsModel.patch(req.body);
     res.redirect('/admin/user-accounts');

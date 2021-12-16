@@ -9,7 +9,8 @@ router.get('/add', function(req,res){
 });
 
 router.post('/add', async function(req,res){
-    await productsModel.add(req.body);
+    console.log(req.body);
+    const ret = await productsModel.add(req.body);
     res.render('vwProducts/add', {
         layout: 'admin.hbs'
     });

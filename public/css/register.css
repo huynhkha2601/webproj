@@ -9,3 +9,8 @@
 .gradient-container {
     background: linear-gradient(to bottom right, rgba(12, 238, 217, 0.5), rgb(255, 255, 255));
 }
+
+body{
+    margin: 0;
+    padding: 0;
+}

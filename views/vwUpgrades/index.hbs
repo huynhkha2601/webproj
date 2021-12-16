@@ -1,0 +1,42 @@
+<div class="card">
+    <h4 class="card-header d-flex justify-content-between">
+        Upgrade
+    </h4>
+    <table class="table table-hove">
+        <thead>
+        <tr>
+            <th scope="col">Uprate ID</th>
+            <th scope="col">Bidder ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Content</th>
+            <th scope="col">&nbsp</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each this.upgrades}}
+            <tr>
+                <th scope="row">{{uid}}</th>
+                <td>{{bidderid}}</td>
+                <td>{{date}}</td>
+                <td>{{content}}</td>
+                <td class="text-right">
+
+                    <a name="" id="" class="btn btn-sm btn-success mx-3"
+                       href="/admin/upgrades/accept?uid={{uid}}" role="button">
+                        Accept<i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <form action="/admin/upgrades/refuse" method="post">
+                    <a name="" id="" class="btn btn-sm btn-danger"
+                       href="/admin/upgrades/refuse?uid={{uid}}"  role="button">
+                        Refuse<i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
+</div>

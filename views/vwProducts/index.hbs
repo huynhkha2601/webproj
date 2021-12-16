@@ -9,18 +9,18 @@
     </h4>
     <table class="table table-hove">
         <thead>
-        <tr>
-            <th scope="col">Product ID</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">&nbsp</th>
-        </tr>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">&nbsp</th>
+            </tr>
         </thead>
         <tbody>
         {{#each this.products}}
             <tr>
                 <th scope="row">{{productid}}</th>
                 <td>{{productname}}</td>
-                <td class="text-right">
+                <td class="float-right">
                     <a name="" id="" class="btn btn-sm btn-primary" href="/admin/products/edit?productid={{productid}}" role="button">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>

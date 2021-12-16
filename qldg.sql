@@ -74,8 +74,8 @@ create table rating
     rate     int          null
 );
 
-drop table if exists uprate;
-create table uprate
+drop table if exists upgrade;
+create table upgrade
 (
     uid      bigint   not null primary key  AUTO_INCREMENT,
     bidderid bigint   null,

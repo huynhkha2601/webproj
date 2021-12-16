@@ -1,66 +1,24 @@
 import express from 'express';
 import morgan from 'morgan';
-import { engine } from 'express-handlebars';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import managerAccountsRoute from "./routes/manager-accounts.route.js";
-import userAccountsRoute from "./routes/user-accounts.route.js";
-import productsRoute from "./routes/products.route.js";
-import categoriesRoute from "./routes/categories.route.js";
-import typesRoute from"./routes/types.route.js";
+import routeMdw from "./middlewares/routes.mdw.js";
+import viewMdw from "./middlewares/view.mdw.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-console.log(__dirname);
 const app = express();
-const port = 3000;
 
-
-app.engine('hbs', engine({defaultLayout:'home.hbs'}));
-app.set('view engine', 'hbs');
-app.set('views', './views');
+app.use('/public', express.static('public'));
+app.use(morgan('dev'));
 app.use(express.urlencoded({
     extended:true
 }));
 
-app.use(morgan('dev'));
+viewMdw(app);
+routeMdw(app);
 
-app.use('/public', express.static('public'));
-app.get('/', function (req, res) {
-    res.render('home');
-})
-
-
-
-app.get('/admin', function(req, res) {
-    res.render('admin',{layout: 'admin.hbs'});
-});
-
-app.get('/register', function(req, res){
-    res.render('registeraccount', {
-        layout: 'accounts.hbs'
-    });
-})
-
-app.get('/register/profile', function(req, res){
-    res.render('register', {
-        layout: 'accounts.hbs'
-    });
-})
-
-app.get('/login', function(req, res){
-    res.render('login', {
-        layout: 'accounts.hbs'
-    });
-})
-
-
-app.use('/admin/products', productsRoute);
-app.use('/admin/manager-accounts', managerAccountsRoute);
-app.use('/admin/user-accounts', userAccountsRoute);
-app.use('/admin/categories', categoriesRoute);
-app.use('/admin/types', typesRoute);
-
+const port = 3000;
 app.listen(port, function ()  {
     console.log(`Example app listening at http://localhost:${port}`)
 })

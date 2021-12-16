@@ -42,6 +42,7 @@ router.post('/del',async function(req, res){
         layout: 'admin.hbs',
     });
 });
+
 router.post('/patch', async function(req, res){
     const ret = await productsModel.patch(req.body);
     res.redirect('/admin/products');
