@@ -37,6 +37,12 @@ app.get('/admin', function(req, res) {
 });
 
 app.get('/register', function(req, res){
+    res.render('registeraccount', {
+        layout: 'accounts.hbs'
+    });
+})
+
+app.get('/register/profile', function(req, res){
     res.render('register', {
         layout: 'accounts.hbs'
     });
