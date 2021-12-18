@@ -14,3 +14,7 @@ body{
     margin: 0;
     padding: 0;
 }
+.images {
+    background-image: url('../background/bg-01.jpg');
+    background-size: auto;
+}

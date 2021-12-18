@@ -19,7 +19,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav d-flex">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -32,20 +32,46 @@
                     <a class="dropdown-item" href="#">Thời trang</a>
                 </div>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-auto">
                 <a class="nav-link disabled">Disabled</a>
             </li>
+            <li class="nav-item" >
+                <form class="form-inline my-2 my-lg-0 mr-1">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+                    <a href="/accounts/login">Đăng nhập </a></button>
+                <button class="btn btn-outline-primary my-2 my-sm-0 ml-1" type="submit">
+                    <a href="/accounts/register">Đăng ký</a></button>
+            </li>
+            <li class="nav-item dropdown ml-3">
+                <div class="dropdown">
+                    <button class="btn btn-secondary bg-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/accounts/profile">
+                            <i class="fa fa-info" aria-hidden="true"></i>
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="#">Another action</a>
+<!--                        <a class="dropdown-item" href="#">Another action</a>-->
+                        <a class="dropdown-item" href="javascrips:;">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            Sign out
+                        </a>
+                    </div>
+                </div>
+            </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 mr-1">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a href="/login">Đăng nhập </a></button>
-        <button class="btn btn-outline-primary my-2 my-sm-0 ml-1" type="submit"><a href="/register">Đăng ký</a></button>
     </div>
 </nav>
 </div>
 <div class="container-fluid">
+<div class="container-fluid mt-3">
     <div class="row">
         <div class="col-sm-12">
             {{{body}}}
@@ -62,6 +88,7 @@
         </ul>
     </div>
 </footer>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"

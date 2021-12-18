@@ -19,7 +19,7 @@ export default function(app) {
         });
     });
 
-    app.use('/', accountsRoute);
+    app.use('/accounts', accountsRoute);
     app.use('/admin/products', productsRoute);
     app.use('/admin/manager-accounts', managerAccountsRoute);
     app.use('/admin/user-accounts', userAccountsRoute);
