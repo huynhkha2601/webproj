@@ -34,7 +34,7 @@
                 </div>
 
                 <ul class="navbar-nav mb-2 mb-lg-0 me-3">
-                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn btn-primary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user" aria-hidden="true">Hi,{{{id}}}</i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
@@ -42,7 +42,6 @@
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <div class="dropdown-divider"></div>
                         <li><a class="fa fa-sign-out dropdown-item" href="#">Log out</a></li>
-                        </div>
                     </ul>
                 </ul>
             </div>
@@ -51,41 +50,23 @@
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Management</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div>
-                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-            </div>
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+            <div class="list-group list-group-flush">
+                <a href="/admin/manager-accounts" class="list-group-item list-group-item-action list-group-item-primary">Manager Accounts</a>
+                <a href="/admin/user-accounts" class="list-group-item list-group-item-action list-group-item-primary">User Accounts</a>
+                <a href="/admin/products" class="list-group-item list-group-item-action list-group-item-primary">Products</a>
+                <a href="/admin/categories" class="list-group-item list-group-item-action list-group-item-primary">Category</a>
+                <a href="/admin/types" class="list-group-item list-group-item-action list-group-item-primary">Type</a>
+                <a href="/admin/uprates" class="list-group-item list-group-item-action list-group-item-primary">Uprate</a>
             </div>
         </div>
     </div>
     <div class="container-fluid mt-3 mb-3">
         <div class="row">
             <div class="col-sm-3">
-                <div class="card">
-                    <h4 class="card-header">
-                        Management:
-                    </h4>
-                    <div class="list-group list-group-flush">
-                        <a href="/admin/manager-accounts" class="list-group-item list-group-item-action list-group-item-primary">Manager Accounts</a>
-                        <a href="/admin/user-accounts" class="list-group-item list-group-item-action list-group-item-primary">User Accounts</a>
-                        <a href="/admin/products" class="list-group-item list-group-item-action list-group-item-primary">Products</a>
-                        <a href="/admin/categories" class="list-group-item list-group-item-action list-group-item-primary">Category</a>
-                        <a href="/admin/types" class="list-group-item list-group-item-action list-group-item-primary">Type</a>
-                        <a href="/admin/uprates" class="list-group-item list-group-item-action list-group-item-primary">Uprate</a>
-                    </div>
-                </div>
                 <div class="card mt-3">
                     <h4 class="card-header">
                         Header
