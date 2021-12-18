@@ -10,7 +10,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
+    <div class="container-fluid"
         <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
            aria-controls="offcanvasExample">
             <i class="fa fa-bars" aria-hidden="true"></i>
@@ -48,7 +48,16 @@
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <div class="dropdown-divider"></div>
                     <li><a class="fa fa-sign-out dropdown-item" href="#">Log out</a></li>
-
+                <ul class="navbar-nav mb-2 mb-lg-0 me-3">
+                    <a class="btn btn-primary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user" aria-hidden="true">Hi,{{{id}}}</i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <div class="dropdown-divider"></div>
+                        <li><a class="fa fa-sign-out dropdown-item" href="#">Log out</a></li>
+                    </ul>
                 </ul>
             </ul>
         </div>
@@ -95,6 +104,33 @@
                     <a href="/admin/types"
                        class="list-group-item list-group-item-action list-group-item-primary">Type</a>
                     <a href="/admin/upgrades" class="list-group-item list-group-item-action list-group-item-primary">Uprate</a>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Management</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="list-group list-group-flush">
+                <a href="/admin/manager-accounts" class="list-group-item list-group-item-action list-group-item-primary">Manager Accounts</a>
+                <a href="/admin/user-accounts" class="list-group-item list-group-item-action list-group-item-primary">User Accounts</a>
+                <a href="/admin/products" class="list-group-item list-group-item-action list-group-item-primary">Products</a>
+                <a href="/admin/categories" class="list-group-item list-group-item-action list-group-item-primary">Category</a>
+                <a href="/admin/types" class="list-group-item list-group-item-action list-group-item-primary">Type</a>
+                <a href="/admin/uprates" class="list-group-item list-group-item-action list-group-item-primary">Uprate</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-3 mb-3">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card mt-3">
+                    <h4 class="card-header">
+                        Header
+                    </h4>
+                    <div class="card-body">
+                        <h4 class="card-title">Title</h4>
+                        <p class="card-text">Text</p>
+                    </div>
                 </div>
             </div>
             <div class="card mt-3">
