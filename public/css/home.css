@@ -1,3 +1,14 @@
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 0 20px rgb(29, 26, 26);
+    z-index: 1;
+    margin: auto;
+}
 .product-header{
     padding-top:50px;
 }
@@ -23,7 +34,7 @@ div a:hover {
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 100%;
+    width: 80%;
 }
 
 .card:hover {
@@ -32,4 +43,21 @@ div a:hover {
 
 .container {
     padding: 2px 16px;
+}
+#myBtnBackTop {
+    width: 50px;
+    height:50px;
+    background:tomato;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: fixed;
+    bottom:40px;
+    right:20px;
+}
+
+#myBtnBackTop:hover {
+    background-color: darkseagreen;/* Add a dark-grey background on hover */
 }
