@@ -20,10 +20,12 @@ router.get('/add', function(req, res){
 router.post('/add',async function(req, res){
     req.body.role = 1;
     const ret = await accountsModel.add(req.body);
+
     res.render('vwManagerAccounts/add',{
         layout: 'admin.hbs',
     });
 });
+
 router.get('/edit', async function(req, res){
     const userid = req.query.userid || 0;
     const account = await accountsModel.findByID(userid);
