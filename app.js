@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 import routeMdw from "./middlewares/routes.mdw.js";
 import viewMdw from "./middlewares/view.mdw.js";
-
+import sessionMdv from "./middlewares/sessions.mdw.js";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
@@ -15,6 +15,7 @@ app.use(express.urlencoded({
     extended:true
 }));
 
+sessionMdv(app);
 viewMdw(app);
 routeMdw(app);
 

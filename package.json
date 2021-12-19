@@ -28,7 +28,10 @@
   },
   "devDependencies": {
     "bcrypt": "^5.0.1",
+    "date-format": "^3.0.0",
     "express-handlebars-sections": "^1.0.1",
+    "express-session": "^1.17.2",
+    "multer": "^1.4.4",
     "mysql-easy-query": "^2.0.0",
     "mysql2": "^2.3.3"
   }

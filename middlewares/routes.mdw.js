@@ -14,9 +14,12 @@ export default function(app) {
     });
 
     app.get('/admin', function (req, res) {
+        console.log(req.session.role);
+
         res.render('admin', {
             layout: 'admin.hbs'
         });
+
     });
 
     app.use('/accounts', accountsRoute);

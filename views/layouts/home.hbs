@@ -10,87 +10,94 @@
     <link rel="stylesheet" href="./public/css/home.css">
 </head>
 <body>
-<div class="home">
-    <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow ">
-            <a class="navbar-brand" href="#"> <i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav d-flex">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-expanded="false">
-                            Category
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Điện tử</a>
-                            <a class="dropdown-item" href="#">Thời trang</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <form class="form-inline my-2 my-lg-0 mr-1">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                            <a href="/accounts/login">Đăng nhập </a></button>
-                        <button class="btn btn-outline-primary my-2 my-sm-0 ml-1" type="submit">
-                            <a href="/accounts/register">Đăng ký</a></button>
-                    </li>
-                    <li class="nav-item dropdown ml-3">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary bg-primary dropdown-toggle" type="button"
-                                    id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/accounts/profile">
-                                    <i class="fa fa-info" aria-hidden="true"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <!--                        <a class="dropdown-item" href="#">Another action</a>-->
-                                <a class="dropdown-item" href="javascrips:;">
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    Sign out
-                                </a>
+    <div class="home">
+        <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow ">
+                <a class="navbar-brand" href="#"> <i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-expanded="false">
+                                Category
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Điện tử</a>
+                                <a class="dropdown-item" href="#">Thời trang</a>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="container-fluid">
-        <div class="container-fluid mt-3">
-            <div class="row">
-                <div class="col-sm-12">
-                    {{{body}}}
+                        </li>
+                        <li class="nav-item">
+                            <form class="form-inline my-2 my-lg-0 mr-1">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    Search</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                <a href="/accounts/login">Đăng nhập </a></button>
+                            <button class="btn btn-outline-primary my-2 my-sm-0 ml-1" type="submit">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                <a href="/accounts/register">Đăng ký</a></button>
+                        </li>
+                        <li class="nav-item dropdown ml-3">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary bg-primary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/accounts/profile">
+                                        <i class="fa fa-info m-auto" aria-hidden="true"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item m-auto" href="/admin/products/add">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        Add new Products</a>
+                                    <!--                        <a class="dropdown-item" href="#">Another action</a>-->
+                                    <a class="dropdown-item m-auto" href="javascrips:;">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        Sign out
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <footer id="footer">
-                    <div class="information">
-                        <ul class="member-information">
-                            <i class="About-us"><b>Nhóm phát triển web: </b></i>
-                            <li class=""><b>19127029-Nguyễn Tiến Hùng</b></li>
-                            <li class=""><b>19127166-Huỳnh Tuấn Kha </b></li>
-                            <li class=""><b>19127565-Nguyễn Quốc Thông</b></li>
-                        </ul>
+            </nav>
+        </div>
+        <div class="container-fluid">
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        {{{body}}}
                     </div>
-                    <div id="myBtnBackTop">
-                        <i class="fa fa-chevron-up"></i>
-                    </div>
-                </footer>
+                </div>
             </div>
         </div>
     </div>
+    <footer id="footer">
+        <div class="information">
+            <ul class="member-information">
+                <i class="About-us"><b>Nhóm phát triển web: </b></i>
+                <li class=""><b>19127029-Nguyễn Tiến Hùng</b></li>
+                <li class=""><b>19127166-Huỳnh Tuấn Kha </b></li>
+                <li class=""><b>19127565-Nguyễn Quốc Thông</b></li>
+            </ul>
+        </div>
+        <div id="myBtnBackTop">
+            <i class="fa fa-chevron-up"></i>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
             integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"

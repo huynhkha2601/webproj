@@ -1,5 +1,5 @@
 import {engine} from "express-handlebars";
-import ehbsSections from "express-handlebars-sections";
+import sections from "express-handlebars-sections";
 
 
 export default function(app) {
@@ -7,7 +7,7 @@ export default function(app) {
     app.engine('hbs', engine({
         defaultLayout: 'home.hbs',
         helpers:{
-            section: ehbsSections()
+            section: sections()
         }
     }));
 

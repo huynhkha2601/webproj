@@ -55,26 +55,3 @@
 // });
 //
 
-//  async function sendForm() {
-//     const rawResponse = await fetch("/accounts/register", {
-//         method: "POST",
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             username: $('#username').val(),
-//             password: $('#password').val(),
-//             email: $('#email').val()
-//         })
-//     });
-//     let data = await rawResponse.json();
-//     let url = '/accounts/register/profile?id=' + data.id;
-//
-//     console.log(url);
-//     const response = await fetch(url, {
-//         method: "GET", // *GET, POST, PUT, DELETE, etc.
-//     });
-//
-// }
-// $("#frmRegister").addEventListener("submit", sendForm);

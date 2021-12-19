@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import accountsModel from "../models/accounts.model.js";
+import format from "date-format";
 
 
 const router = express.Router();
@@ -13,20 +14,28 @@ router.get('/login', function(req, res){
 
 router.post('/login',async function(req, res){
     const user = await accountsModel.findByUsername(req.body.username);
+
     if(user === null){
-        res.redirect('/');
+        res.redirect('/login');
         return;
     }
 
-    let obj = req.body;
-    let salt = bcrypt.genSaltSync(10);
-    obj.password = bcrypt.hashSync(obj.password, salt);
-    if(bcrypt.compareSync(obj.password, user.password)){
+    req.session.role = user.role;
+    let isTrue = bcrypt.compareSync(req.body.password,user.password);
+    if(isTrue){
+        let role = user.role;
+        if(role == 0){
+            res.redirect('/admin');
+            return;
+        }
         res.redirect('/');
+        return;
     };
 
+
     res.render('vwAccounts/login', {
-        layout: 'accounts.hbs'
+        layout: 'accounts.hbs',
+        err_message: "Username or password is wrong!"
     });
 })
 
@@ -38,12 +47,13 @@ router.get('/register', function(req, res){
 
 router.post('/register', async function(req, res){
     let user= req.body;
-    console.log(user);
+
     user.role = 3;
-    user.password = await bcrypt.hash(user.password, 10);
+    let salt = bcrypt.genSaltSync(10);
+    user.password = bcrypt.hashSync(user.password, salt);
+
     const ret = await accountsModel.add(user);
-    const url = '/accounts/register/profile?id=' + ret[0];
-    res.redirect(url);
+    res.redirect('/accounts/register/profile?id=' + ret[0]);
 
 })
 
@@ -60,9 +70,10 @@ router.get('/is-Available', async function(req, res){
 
 router.post('/register/profile',async function(req, res){
     const profile = req.body;
+    console.log(profile);
     const id = req.query.id;
     profile.userid = id;
-    const ret = await accountsModel.patch(req.body);
+    const ret = await accountsModel.patch(profile);
     console.log(ret)
     res.redirect('/?id=' + id);
 })
@@ -73,13 +84,5 @@ router.get('/register/profile', function(req, res){
         layout: 'accounts.hbs'
     });
 })
-
-router.post('/register/profile/patch',async function(req, res){
-    console.log(req.query.id);
-    // const ret = await accountsModel.patch(req.body);
-    console.log(req.body);
-    res.redirect('/');
-})
-
 
 export default router;

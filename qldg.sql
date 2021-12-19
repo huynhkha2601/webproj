@@ -94,7 +94,7 @@ create table user
     telephone   char(10)     null,
     email       varchar(50)   COLLATE utf8_general_ci null,
     username    varchar(30)   COLLATE utf8_general_ci null,
-    password    varchar(50)   COLLATE utf8_general_ci null,
+    password    varchar(100)   COLLATE utf8_general_ci null,
     role        varchar(10)   COLLATE utf8_general_ci,
     active      int          default 1,
     datefounded datetime     default CURRENT_TIMESTAMP
