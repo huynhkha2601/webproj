@@ -56,8 +56,6 @@ create table product(
     step          float         null,
     purchaseprice float         null,
     rating        float         null,
-    img           blob          null,
-    anotherimg    blob          null,
     datepublished datetime      default current_timestamp,
     dateend       datetime      null
 
