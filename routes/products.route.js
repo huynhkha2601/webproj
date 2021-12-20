@@ -1,13 +1,16 @@
 import productsModel from "../models/products.model.js";
+import typesModel from "../models/types.model.js";
 import express from "express";
 import multer from "multer";
 import fs from 'fs';
 
 const router = express.Router();
 
-router.get('/add', function (req, res) {
+router.get('/add', async function (req, res) {
+    const types = await typesModel.findAll();
     res.render('vwProducts/add', {
-        layout: 'admin.hbs'
+        layout: 'admin.hbs',
+        types
     });
 });
 
@@ -71,6 +74,9 @@ router.get('/', async function (req, res) {
 router.get('/edit', async function (req, res) {
     const productid = req.query.productid || 0;
     const product = await productsModel.findByID(productid);
+
+
+
     if (product === null)
         return res.redirect('/admin/products');
     res.render('vwProducts/edit', {

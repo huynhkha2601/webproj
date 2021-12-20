@@ -1,28 +1,30 @@
 {{#section 'header'}}
-    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css"
+          crossorigin="anonymous">
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({selector:'#description'});</script>
+    <script>tinymce.init({selector: '#description'});</script>
 {{/section}}
 
 <form method="post" id="frmAddProduct" enctype="multipart/form-data">
     <div class="card">
-    <h4 class="card-header">
-        Add Product
-    </h4>
-    <div class="card-body">
+        <h4 class="card-header">
+            Add Product
+        </h4>
+        <div class="card-body">
             <div class="mb-3">
                 <label for="sellerid" class="form-label">Seller ID:</label>
-                <input type="text"  class="form-control" id="sellerid" name="sellerid">
+                <input type="text" class="form-control" id="sellerid" name="sellerid" disabled value="{{req.session.user.userid}}">
             </div>
             <div class="mb-3">
                 <label for="productname" class="form-label">Product Name:</label>
-                <input type="text" class="form-control" id="productname" name="productname">
+                <input type="text" class="form-control" id="productname" name="productname" autofocus>
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price:</label>
                 <input type="number" class="form-control" id="price" name="price" step="0.01">
-                </div>
+            </div>
             <div class="mb-3">
                 <label for="step" class="form-label">Price Step:</label>
                 <input type="text" class="form-control" id="step" name="step">
@@ -33,26 +35,33 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
-                <textarea class="form-control" style="height: 300px" id="description" name="description" placeholder="Product Description">
+                <textarea class="form-control" style="height: 300px" id="description" name="description"
+                          placeholder="Product Description">
                     </textarea>
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Type:</label>
-                <input type="text" class="form-control" id="type" name="type" >
+                <select class="form-control" id="type" name="type">
+                    {{#each this.types}}
+                        <option value="{{tid}}"> {{typename}}</option>
+                    {{/each}}
+                </select>
             </div>
             <div class="mb-3">
                 <label for="purchaseprice" class="form-label">Purchase Price:</label>
                 <input type="text" class="form-control" id="purchaseprice" name="purchaseprice">
-                       </div>
+            </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Image:</label>
-                <input type="file" accept="image/*" class="file form-control" id="img" name="img" data-browse-on-zone-click="true" data-show-upload="false">
-                     </div>
+                <input type="file" accept="image/*" class="file form-control" id="img" name="img"
+                       data-browse-on-zone-click="true" data-show-upload="false">
+            </div>
             <div class="mb-3">
                 <label for="anotherimg" class="form-label">Another Images:</label>
                 <input type="file" accept="image/*" class="file form-control" id="anotherimg" name="anotherimg" multiple
-                       data-show-upload="false" data-browse-on-zone-click="true" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
-                   </div>
+                       data-show-upload="true" data-browse-on-zone-click="true" data-show-caption="true"
+                       data-msg-placeholder="Select {files} for upload...">
+            </div>
             <div class="mb-3">
                 <label for="dateend" class="form-label">Date End:</label>
                 <input type="datetime-local" class="form-control" id="dateend" name="dateend">
@@ -64,12 +73,13 @@
             <button type="submit" class="btn btn-primary">Add new product
                 <i class="fa fa-plus"></i>
             </button>
+        </div>
     </div>
-</div>
 </form>
 
 {{#section 'footer'}}
-    <script src="/public/js/product.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/plugins/piexif.min.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/fileinput.min.js"></script>
+    <script src="/public/js/product.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/plugins/piexif.min.js"
+            type="text/javascript"></script>
 {{/section}}

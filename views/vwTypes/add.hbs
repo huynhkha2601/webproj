@@ -10,7 +10,11 @@
             </div>
             <div class="mb-3">
                 <label for="cid" class="form-label">Category:</label>
-                <input type="text" class="form-control" id="cid" name="cid">
+                <select class="form-control" id="cid" name="cid">
+                    {{#each this.categories}}
+                        <option value="{{cid}}"> {{cname}}</option>
+                    {{/each}}
+                </select>
             </div>
             <a class="btn btn-outline-success" href="/admin/types" role="button">
                 <i class="fa fa-backward" aria-hidden="true"></i>

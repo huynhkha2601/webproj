@@ -5,17 +5,25 @@ import userAccountsRoute from "../routes/user-accounts.route.js";
 import categoriesRoute from "../routes/categories.route.js";
 import typesRoute from "../routes/types.route.js";
 import upgradesRoute from "../routes/upgrades.route.js";
-
+import productsModel from "../models/products.model.js";
+import format, {ISO8601_FORMAT} from "date-format";
 
 export default function(app) {
 
-    app.get('/', function (req, res) {
-        res.render('home');
+    app.get('/', async function (req, res) {
+        const recentProducts = await productsModel.findRecentProducts(); // ok
+        const valuestProducts = await productsModel.findValuestProducts(); // ok
+        const mostBidProducts = await productsModel.findMostBidProducts();
+        console.log(mostBidProducts[0]);
+
+        res.render('home', {
+            recentProducts,
+            valuestProducts
+        });
     });
 
     app.get('/admin', function (req, res) {
         console.log(req.session.role);
-
         res.render('admin', {
             layout: 'admin.hbs'
         });

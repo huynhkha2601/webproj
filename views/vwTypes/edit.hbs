@@ -13,8 +13,11 @@
                 <input type="text" class="form-control" id="typename" name="typename" value="{{this.type.typename}}" autofocus>
             </div>
             <div class="mb-3">
-                <label for="cid" class="form-label">Category:</label>
-                <input type="text" class="form-control" id="cid" name="cid" value="{{this.type.cid}}">
+                <select class="form-control" id="cid" name="cid" value="{{this.type.cid}}">
+                    {{#each this.categories}}
+                        <option value="{{cid}}"> {{cname}}</option>
+                    {{/each}}
+                </select>
             </div>
             <a class="btn btn-outline-success" href="/admin/types" role="button">
                 <i class="fa fa-backward" aria-hidden="true"></i>
