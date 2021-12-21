@@ -16,6 +16,7 @@ router.get('/add', async function (req, res) {
 
 router.post('/add', async function (req, res) {
     const ret = await productsModel.add(req.body);
+
     await fs.access('./public/images/' + ret, (error) => {
         if (error) {
             fs.mkdir('./public/images/' + ret, { recursive: true }, (error) => {
@@ -51,8 +52,9 @@ router.post('/add', async function (req, res) {
             upload.fields([{name:'img', maxCount: 1},{name:'anotherimg',maxCount: 5} ])(req, res, function(err){
                 if(err)
                     console.log(err);
+                console.log(req.files);
             });
-
+            console.log(req.body)
         } else {
             console.log("Given Directory already exists !!");
         }

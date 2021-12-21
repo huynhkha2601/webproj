@@ -18,7 +18,8 @@ export default function(app) {
 
         res.render('home', {
             recentProducts,
-            valuestProducts
+            valuestProducts,
+            mostBidProducts
         });
     });
 
