@@ -4,7 +4,7 @@
     font-weight: bold;
 }
 .offcanvas-collapse{
-    background-image:linear-gradient(180deg,#fff, rgb(108, 172, 228));;
+    background-color: #343a40;
 }
 
 .navbar .container-fluid {
