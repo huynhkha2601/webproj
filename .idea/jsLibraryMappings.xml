@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{@popperjs/core, @types/jquery, bootstrap, bootstrap-icons, fileinput, font-awesome, jquery-3.6.0, piexif, tinymce}" />
+    <file url="PROJECT" libraries="{@popperjs/core, @types/jquery, LANG, bootstrap, bootstrap-icons, fileinput, font-awesome, jquery-3.6.0, piexif, popper.js, tinymce}" />
+    <includedPredefinedLibrary name="HTTP Response Handler" />
   </component>
 </project>

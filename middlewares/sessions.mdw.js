@@ -11,6 +11,6 @@ export default function(app) {
         cookie: {
             // secure: true
         }
-    }))
+    }));
 
 }

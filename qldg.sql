@@ -48,9 +48,9 @@ drop table if exists product;
 create table product(
     productid     bigint        not null primary key AUTO_INCREMENT ,
     sellerid      bigint        null,
-    productname   varchar(50)   COLLATE utf8_general_ci null,
+    productname   varchar(100)   COLLATE utf8_general_ci null,
     title         varchar(50)   COLLATE utf8_general_ci null,
-    description   varchar(200)  COLLATE utf8_general_ci null,
+    description   varchar(500)  COLLATE utf8_general_ci null,
     type          bigint        null,
     price         float         null,
     step          float         null,
@@ -67,7 +67,7 @@ create table rating
     ratingid bigint       not null primary key AUTO_INCREMENT ,
     userid   bigint       null,
     assessor bigint       null,
-    feedback varchar(50)   COLLATE utf8_general_ci null,
+    feedback varchar(200)   COLLATE utf8_general_ci null,
     date     datetime default current_timestamp,
     rate     int          null
 );
@@ -78,22 +78,22 @@ create table upgrade
     uid      bigint   not null primary key  AUTO_INCREMENT,
     bidderid bigint   null,
     date     datetime default current_timestamp,
-    content  varchar(100) COLLATE utf8_general_ci null
+    content  varchar(200) COLLATE utf8_general_ci null
 );
 
 drop table if exists user;
 create table user
 (
     userid      bigint       not null primary key AUTO_INCREMENT,
-    fullname    varchar(50)   COLLATE utf8_general_ci null,
+    fullname    varchar(100)   COLLATE utf8_general_ci null,
     dob         date         null,
-    address     varchar(50)   COLLATE utf8_general_ci null,
+    address     varchar(200)   COLLATE utf8_general_ci null,
     gender      bit          null,
     telephone   char(10)     null,
     email       varchar(50)   COLLATE utf8_general_ci null,
     username    varchar(30)   COLLATE utf8_general_ci null,
     password    varchar(100)   COLLATE utf8_general_ci null,
-    role        varchar(10)   COLLATE utf8_general_ci,
+    role        varchar(1)   COLLATE utf8_general_ci,
     active      int          default 1,
     datefounded datetime     default CURRENT_TIMESTAMP
 );

@@ -20,8 +20,10 @@
   "homepage": "https://github.com/huynhkha2601/webproj#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bootstrap-fileinput": "^5.2.7",
     "express": "^4.17.1",
     "express-handlebars": "^6.0.2",
+    "handlebars": "^4.7.7",
     "knex": "^0.95.14",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1"

@@ -5,22 +5,36 @@ import userAccountsRoute from "../routes/user-accounts.route.js";
 import categoriesRoute from "../routes/categories.route.js";
 import typesRoute from "../routes/types.route.js";
 import upgradesRoute from "../routes/upgrades.route.js";
+
 import productsModel from "../models/products.model.js";
-import format, {ISO8601_FORMAT} from "date-format";
+import {dirname} from "path";
+import {fileURLToPath} from "url";
 
 export default function(app) {
 
     app.get('/', async function (req, res) {
-        const recentProducts = await productsModel.findRecentProducts(); // ok
-        const valuestProducts = await productsModel.findValuestProducts(); // ok
-        const mostBidProducts = await productsModel.findMostBidProducts();
-        console.log(mostBidProducts[0]);
+
+        const firstRecent = await productsModel.findRecentProducts(0); // ok
+        const secondRecent = await productsModel.findRecentProducts(5); // ok
+        const thirdRecent = await productsModel.findRecentProducts(10); // ok
+        const fourthRecent = await productsModel.findRecentProducts(15); // ok
+
+        const firstValuest = await productsModel.findValuestProducts(0); // ok
+        const secondValuest = await productsModel.findValuestProducts(5); // ok
+        const thirdValuest = await productsModel.findValuestProducts(10); // ok
+        const fourthValuest = await productsModel.findValuestProducts(15); // ok
+
+        const firstBids = await productsModel.findMostBidProducts(0);
+        const secondBids = await productsModel.findMostBidProducts(5);
+        const thirdBids = await productsModel.findMostBidProducts(10);
+        const fourthBids = await productsModel.findMostBidProducts(15);
 
         res.render('home', {
-            recentProducts,
-            valuestProducts,
-            mostBidProducts
+            firstRecent,secondRecent,thirdRecent,fourthRecent,
+            firstValuest,secondValuest,thirdValuest,fourthValuest,
+            firstBids,secondBids,thirdBids,fourthBids
         });
+
     });
 
     app.get('/admin', function (req, res) {
@@ -38,4 +52,9 @@ export default function(app) {
     app.use('/admin/categories', categoriesRoute);
     app.use('/admin/types', typesRoute);
     app.use('/admin/upgrades', upgradesRoute);
+}
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+export function getDirname(){
+    return __dirname;
 }

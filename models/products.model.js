@@ -5,24 +5,23 @@ export default {
     findAll(){
         return db('product');
     },
-    findRecentProducts(){
+    findRecentProducts(offset){
         return db('product').where('dateend', '>=', new Date().toISOString())
-            .orderBy('dateend','asc').limit(30);
+            .orderBy('dateend','asc').limit(5).offset(offset);
     },
-    findValuestProducts(){
+    findValuestProducts(offset){
         return db('product').where('dateend', '>=', new Date().toISOString())
-            .orderBy('price','desc').limit(30);
+            .orderBy('price','desc').limit(5).offset(offset);
     },
-    findMostBidProducts() {
+    findMostBidProducts(offset) {
         let sql = 'select * from `product` inner join' +
             ' (select `productid`, count(*) as sl from history' +
             ' group by `productid`) as t on t.productid = product.productid' +
-            ' limit 30';
+            ' limit 5 offset ' + offset;
         return db.raw(sql);
 
         // return db('product').join(db('history').select('productid','count(*) as sl').groupBy('productid')
         //     , {productid:'product.productid'});
-
     },
     async findByID(id){
         const list = await db('product').where('productid',id);

@@ -13,5 +13,7 @@
     <orderEntry type="library" name="fileinput" level="application" />
     <orderEntry type="library" name="piexif" level="application" />
     <orderEntry type="library" name="bootstrap-icons" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="LANG" level="application" />
   </component>
 </module>
