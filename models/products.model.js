@@ -29,6 +29,14 @@ export default {
             return null;
         return list[0];
     },
+    findByType(tid){
+        return db('product').where('type', tid);
+    },
+    findByCat(cid){
+        return db('product').whereIn('type', db('category').join('type', {'category.cid': 'type.cid'})
+            .select('tid').where('category.cid', cid));
+    }
+    ,
     add(entity){
         return db('product').insert(entity);
     },

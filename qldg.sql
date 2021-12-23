@@ -31,7 +31,6 @@ create table history(
     max_price float null,
     record datetime default current_timestamp,
     idbidder bigint null,
-    idseller bigint null,
     productid bigint null
 );
 
@@ -40,7 +39,6 @@ create table listbuy(
     lbid      bigint not null primary key AUTO_INCREMENT,
     bidderid  bigint not null,
     productid bigint not null,
-    sellerid  bigint not null,
     price     float  null
 );
 

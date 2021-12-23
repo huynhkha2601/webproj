@@ -1,0 +1,50 @@
+<div class="card">
+    <h4 class="card-header d-flex justify-content-between">
+        Products by Category:
+        <div>
+            <a class="btn btn-outline-primary" href="/admin/products/add" role="button">Thêm sản phẩm
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </h4>
+    <div class="card-body">
+        <div class="row">
+            {{#each products}}
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img class="card-img-top car" style="height: 20em; width: 100%" src="/public/images/{{productid}}/title/main.jpg"
+                             alt="Card image cap">
+                        <div class="card-body h-25">
+                            <h5 class="card-title">{{productname}}</h5>
+                            <p class="card-title">{{title}}</p>
+                            <p class="card-title text-danger">{{formatMoney price}}</p>
+                        </div>
+                        <div class="card-footer text-right pr-2">
+                            <a href="#" class="btn btn-outline-primary">
+                                <i class="fa fa-gavel" aria-hidden="true"></i>
+                                Auction</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="card-footer text-muted">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+{{{_sections.footer}}}
+
+

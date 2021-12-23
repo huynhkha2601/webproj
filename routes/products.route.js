@@ -3,7 +3,7 @@ import typesModel from "../models/types.model.js";
 import express from "express";
 import multer from "multer";
 import fs from 'fs';
-import {getDirname} from "../middlewares/routes.mdw.js";
+// import {getDirname} from "../middlewares/routes.mdw.js";
 
 
 const router = express.Router();

@@ -11,6 +11,9 @@ export default function(app) {
             section: sections(),
             formatMoney(val){
                 return  val.toLocaleString('vi', {style : 'currency', currency : 'VND'});
+            },
+            formatDateTime(d){
+                return d.toLocaleString('vi');
             }
         }
     }));

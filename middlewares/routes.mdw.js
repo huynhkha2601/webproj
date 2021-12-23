@@ -5,6 +5,7 @@ import userAccountsRoute from "../routes/user-accounts.route.js";
 import categoriesRoute from "../routes/categories.route.js";
 import typesRoute from "../routes/types.route.js";
 import upgradesRoute from "../routes/upgrades.route.js";
+import productsUserRoute from "../routes/products-user.route.js"
 
 import productsModel from "../models/products.model.js";
 import {dirname} from "path";
@@ -52,9 +53,11 @@ export default function(app) {
     app.use('/admin/categories', categoriesRoute);
     app.use('/admin/types', typesRoute);
     app.use('/admin/upgrades', upgradesRoute);
-}
+    app.use('/products',productsUserRoute);
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-export function getDirname(){
-    return __dirname;
 }
+//
+// const __dirname = dirname(fileURLToPath(import.meta.url));
+// export function getDirname(){
+//     return __dirname;
+// }
