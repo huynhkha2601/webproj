@@ -14,11 +14,11 @@
                 {{#each firstRecent}}
                     <div class="col-md-4 mb-3">
                         <div class="product_card card h-100" style="background-color: unset;">
-                            <a style="text-decoration: none" href="">
+                            <a style="text-decoration: none" href="/products/detail?productid={{productid}}">
                                 <img src="../public/images/{{productid}}/title/main.jpg" alt="" class="card-img rounded-0">
                             </a>
                             <div class="card-body">
-                                <a style="text-decoration: none" href="" target="_blank">
+                                <a style="text-decoration: none" href="/products/detail?productid={{productid}}" target="_blank">
                                     <h4 class="card-text mb-3" style="color:black;">{{productname}}</h4>
                                 </a>
                                 <h4 class="card-text text-danger">{{formatMoney price}}</h4>
@@ -33,11 +33,11 @@
                 {{#each secondRecent}}
                     <div class="col-md-4 mb-3">
                         <div class="product_card card h-100" style="background-color: unset;">
-                            <a style="text-decoration: none" href="./product_detail.html" target="_blank">
+                            <a style="text-decoration: none" href="/products/detail?productid={{productid}}" target="_blank">
                                 <img src="..." alt="" class="card-img rounded-0">
                             </a>
                             <div class="card-body">
-                                <a style="text-decoration: none" href="./product_detail.html" target="_blank">
+                                <a style="text-decoration: none" href="/products/detail?productid={{productid}}" target="_blank">
                                     <h4 class="card-text" style="color:black;">Iphone X</h4>
                                 </a>
                                 <h4 class="card-text text-danger">1,500,000 VND</h4>
@@ -52,11 +52,11 @@
                 {{#each thirdRecent}}
                     <div class="col-md-4 mb-3">
                         <div class="product_card card h-100" style="background-color: unset;">
-                            <a style="text-decoration: none" href="./product_detail.html" target="_blank">
+                            <a style="text-decoration: none" href="/products/detail?productid={{productid}}" target="_blank">
                                 <img src="..." alt="" class="card-img rounded-0">
                             </a>
                             <div class="card-body">
-                                <a style="text-decoration: none" href="./product_detail.html" target="_blank">
+                                <a style="text-decoration: none" href="/products/detail?productid={{productid}}" target="_blank">
                                     <h4 class="card-text" style="color:black;">Iphone X</h4>
                                 </a>
                                 <h4 class="card-text text-danger">1,500,000 VND</h4>
@@ -71,11 +71,11 @@
                 {{#each fourRecent}}
                     <div class="col-md-4 mb-3">
                         <div class="product_card card h-100" style="background-color: unset;">
-                            <a style="text-decoration: none" href="./product_detail.html" target="_blank">
+                            <a style="text-decoration: none" href="/products/detail?productid={{productid}}" target="_blank">
                                 <img src="..." alt="" class="card-img rounded-0">
                             </a>
                             <div class="card-body">
-                                <a style="text-decoration: none" href="./product_detail.html" target="_blank">
+                                <a style="text-decoration: none" href="/products/detail?productid={{productid}}" target="_blank">
                                     <h4 class="card-text" style="color:black;">Iphone X</h4>
                                 </a>
                                 <h4 class="card-text text-danger">1,500,000 VND</h4>
@@ -86,7 +86,6 @@
             </div>
         </div>
     </div>
-
     <a class="carousel-control-prev" href="#recentProducts" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>

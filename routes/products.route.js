@@ -87,19 +87,21 @@ router.get("/edit/api",async function(req,res){
     if(productid === 0) {
         res.redirect('/admin/products/edit');
         return;
-    }
-    const titleDir = '/public/images/' + productid + '/title';
-    const anotherDir = '/public/images/' + productid + '/another';
-    let title = fs.readdirSync('.'+ titleDir, {withFileTypes: true})
-        .filter(item=>!item.isDirectory()).map(item => titleDir + '/'+ item.name);
-    let another = fs.readdirSync('.' + anotherDir, {withFileTypes: true})
-        .filter(item=>!item.isDirectory()).map(item => anotherDir + '/'+ item.name);
+    }else{
+        const titleDir = '/public/images/' + productid + '/title';
+        const anotherDir = '/public/images/' + productid + '/another';
+        let title = fs.readdirSync(titleDir, {withFileTypes: true})
+            .filter(item=>!item.isDirectory()).map(item => titleDir + '/'+ item.name);
+        let another = fs.readdirSync( anotherDir, {withFileTypes: true})
+            .filter(item=>!item.isDirectory()).map(item => anotherDir + '/'+ item.name);
 
-    res.json({
-        // product,
-        title: title[0],
-        another})
+        res.json({
+            // product,
+            title: title[0],
+            another})
+    }
 })
+
 router.get('/edit', async function (req, res) {
     const productid = req.query.productid || 0;
     const product = await productsModel.findByID(productid);

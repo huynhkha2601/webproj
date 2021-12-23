@@ -19,10 +19,11 @@ router.post('/login',async function(req, res){
         res.redirect('/login');
         return;
     }
-    console.log(user);
-    req.session.role = user.role;
-    req.session.user = user;
 
+    req.session.login = true;
+    req.session.seller = (user.role === 2);
+    req.session.admin = (user.role === 0);
+    req.session.user =  user;
     let isTrue = bcrypt.compareSync(req.body.password,user.password);
     if(isTrue){
         let role = user.role;

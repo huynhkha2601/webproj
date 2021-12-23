@@ -26,15 +26,18 @@
     "handlebars": "^4.7.7",
     "knex": "^0.95.14",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "passport": "^0.5.2"
   },
   "devDependencies": {
     "bcrypt": "^5.0.1",
     "date-format": "^3.0.0",
+    "express-authenticators": "^0.1.2",
     "express-handlebars-sections": "^1.0.1",
     "express-session": "^1.17.2",
     "multer": "^1.4.4",
     "mysql-easy-query": "^2.0.0",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "passport-google-oauth20": "^2.0.0"
   }
 }

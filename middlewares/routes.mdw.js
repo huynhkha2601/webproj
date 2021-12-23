@@ -15,6 +15,7 @@ export default function(app) {
 
     app.get('/', async function (req, res) {
 
+
         const firstRecent = await productsModel.findRecentProducts(0); // ok
         const secondRecent = await productsModel.findRecentProducts(5); // ok
         const thirdRecent = await productsModel.findRecentProducts(10); // ok
@@ -29,21 +30,22 @@ export default function(app) {
         const secondBids = await productsModel.findMostBidProducts(5);
         const thirdBids = await productsModel.findMostBidProducts(10);
         const fourthBids = await productsModel.findMostBidProducts(15);
-
+        console.log(req.session.role , req.session.user)
         res.render('home', {
             firstRecent,secondRecent,thirdRecent,fourthRecent,
             firstValuest,secondValuest,thirdValuest,fourthValuest,
-            firstBids,secondBids,thirdBids,fourthBids
+            firstBids,secondBids,thirdBids,fourthBids,
+            login: req.session.login,
+            seller: req.session.seller,
+            user: req.session.user
         });
 
     });
 
     app.get('/admin', function (req, res) {
-        console.log(req.session.role);
         res.render('admin', {
             layout: 'admin.hbs'
         });
-
     });
 
     app.use('/accounts', accountsRoute);
