@@ -9,7 +9,7 @@ router.get('/byType', async function(req, res){
 
     const list = await productsModel.findByType(tid);
     res.render('vwProducts/byType',{
-        layout: 'Category.hbs',
+        layout: 'home.hbs',
         products: list
     });
 });
@@ -19,7 +19,7 @@ router.get('/byCat', async function(req, res){
 
     const list = await productsModel.findByCat(cid);
     res.render('vwProducts/byCat',{
-        layout: 'Category.hbs',
+        layout: 'home.hbs',
         products: list
     });
 });
@@ -32,7 +32,7 @@ router.get('/detail', async function(req, res){
         res.redirect('/');
 
     res.render('vwProducts/detail',{
-        layout: 'Category.hbs',
+        layout: 'home.hbs',
         product
     });
 });
