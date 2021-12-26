@@ -8,6 +8,7 @@
     box-shadow: 0 0 20px rgb(29, 26, 26);
     z-index: 1;
     margin: auto;
+
 }
 .product-header{
     padding-top:50px;
@@ -60,4 +61,33 @@ div a:hover {
 
 #myBtnBackTop:hover {
     background-color: darkseagreen;/* Add a dark-grey background on hover */
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+
+li.nav-item{
+    list-style-type: none;
+    margin-left: 5px ;
+}
+
+.card-img{
+    width: 350px;
+    height: 300px;
+    object-fit: contain;
 }
