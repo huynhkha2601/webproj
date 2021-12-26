@@ -1,3 +1,12 @@
+.admin-header{
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 0 20px rgb(29, 26, 26);
+    z-index: 1;
+    margin: auto;
+}
 .navbar{
     background-color: lightskyblue;
     font-family: 'Roboto', sans-serif;
@@ -14,8 +23,17 @@
     padding-top: .75rem;
     padding-bottom: .75rem;
     padding-left: .75rem;
-    color: #6c757d;
+    color: white;
 }
 .nav-item .nav-link:hover {
     color: red;
+}
+.card{
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+.card-header{
+    display: flex;
 }

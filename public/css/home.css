@@ -91,3 +91,6 @@ li.nav-item{
     height: 300px;
     object-fit: contain;
 }
+.search-input{
+    border-radius: 40px;
+}
