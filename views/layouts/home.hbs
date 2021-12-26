@@ -6,11 +6,13 @@
     <title>Online Auction</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="/public/css/home.css">
+    <link rel="stylesheet" href="/public/css/navbar.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -27,22 +29,37 @@
                 <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                     Category
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Điện Tử</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Điện Thoại Thông Minh</a></li>
-                            <li><a class="dropdown-item" href="#">Máy Tính Xách Tay</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Thời Trang</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Thời Trang Trẻ Em</a></li>
-                            <li><a class="dropdown-item" href="#">Thời Trang Người Lớn</a></li>
-                        </ul>
-                    </li>
+<!--                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Điện Tử</a>-->
+<!--                        <ul class="dropdown-menu">-->
+<!--                            <li><a class="dropdown-item" href="#">Điện Thoại Thông Minh</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Máy Tính Xách Tay</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Thời Trang</a>-->
+<!--                        <ul class="dropdown-menu">-->
+<!--                            <li><a class="dropdown-item" href="#">Thời Trang Trẻ Em</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Thời Trang Người Lớn</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+                    {{#each vwCategories}}
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">{{cname}}</a>
+                            <ul class="dropdown-menu">
+<!--                                {{#each list }}-->
+
+<!--                                    <li><a class="dropdown-item" href="#">{{this.vwCategories.list.typename}}</a></li>-->
+<!--                                {{/each}}-->
+                                <li><a class="dropdown-item" href="#">Điện Thoại Thông Minh</a></li>
+                                <li><a class="dropdown-item" href=" #">Máy Tính Xách Tay</a></li>
+                            </ul>
+                        </li>
+                    {{/each}}
                 </ul>
             </li>
         </ul>
@@ -62,7 +79,8 @@
                             <i class="fa fa-info m-auto" aria-hidden="true"></i>
                             Profile
                         </a>
-                        {{#if seller}}
+
+                        {{#if (equals this.user.role '!=' '3') }}
                             <a class="dropdown-item m-auto" href="/admin/products/add">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 Manage Products
@@ -72,7 +90,7 @@
                                 Add new Products
                             </a>
                         {{/if}}
-                        <a class="dropdown-item m-auto" href="javascrips:;">
+                        <a class="dropdown-item m-auto" href="/accounts/logout">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                             Sign out
                         </a>
@@ -114,6 +132,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
         integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
         crossorigin="anonymous"></script>
+
 {{{_sections.footer}}}
 <script>
     $(document).ready(function () {
@@ -131,7 +150,7 @@
         });
     });
 </script>
-<script src="../public/js/navbar.js">
+<script src="/public/js/navbar.js">
 </script>
 </body>
 </html>

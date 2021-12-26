@@ -30,13 +30,16 @@ export default function(app) {
         const secondBids = await productsModel.findMostBidProducts(5);
         const thirdBids = await productsModel.findMostBidProducts(10);
         const fourthBids = await productsModel.findMostBidProducts(15);
-        console.log(req.session.role , req.session.user)
+
+        console.log(req.session.user);
+        if(req.session.user !== null)
+            console.log(req.session.user.role, typeof (req.session.user.role),
+                req.session.user.role === '3');
         res.render('home', {
             firstRecent,secondRecent,thirdRecent,fourthRecent,
             firstValuest,secondValuest,thirdValuest,fourthValuest,
             firstBids,secondBids,thirdBids,fourthBids,
             login: req.session.login,
-            seller: req.session.seller,
             user: req.session.user
         });
 

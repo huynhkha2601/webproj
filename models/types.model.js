@@ -10,6 +10,10 @@ export default {
             return null;
         return list[0];
     },
+    findTypeByCat(cid){
+        return db('type').where('cid', cid);
+    }
+    ,
     add(entity){
         return db('type').insert(entity);
     },

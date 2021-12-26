@@ -92,7 +92,7 @@ router.get("/edit/api",async function(req,res){
         const anotherDir = '/public/images/' + productid + '/another';
         let title = fs.readdirSync(titleDir, {withFileTypes: true})
             .filter(item=>!item.isDirectory()).map(item => titleDir + '/'+ item.name);
-        let another = fs.readdirSync( anotherDir, {withFileTypes: true})
+        let another = fs.readdirSync(anotherDir, {withFileTypes: true})
             .filter(item=>!item.isDirectory()).map(item => anotherDir + '/'+ item.name);
 
         res.json({

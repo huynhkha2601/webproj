@@ -20,12 +20,10 @@ router.post('/login',async function(req, res){
         return;
     }
 
-    req.session.login = true;
-    req.session.seller = (user.role === 2);
-    req.session.admin = (user.role === 0);
-    req.session.user =  user;
     let isTrue = bcrypt.compareSync(req.body.password,user.password);
     if(isTrue){
+        req.session.login = true;
+        req.session.user =  user;
         let role = user.role;
         if(role == 0){
             res.redirect('/admin');
@@ -86,6 +84,19 @@ router.get('/register/profile', function(req, res){
     res.render('vwAccounts/profile', {
         layout: 'accounts.hbs'
     });
+})
+
+router.get('/logout', function(req, res){
+    // console.log(req.query.id);
+    req.session.login = false;
+    res.redirect("/");
+})
+
+router.get('/profile', function(req, res){
+
+    res.render('vwAccounts/accounts-profile',{
+        layout: 'accounts-profile.hbs'
+    })
 })
 
 export default router;
