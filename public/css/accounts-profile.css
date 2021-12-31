@@ -7,3 +7,7 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+.images{
+    background-image: url('../background/bg-02.jpg');
+    background-size: auto;
+}
