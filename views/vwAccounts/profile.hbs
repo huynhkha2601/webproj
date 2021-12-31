@@ -1,6 +1,5 @@
 <div class="row">
-    <div class="col-xs-12 col-md-4 col-sm-4">
-    </div>
+    <div class="col-xs-12 col-md-4 col-sm-4"></div>
     <div class="col-xs-12 col-md-4 col-sm-4">
         <form id="frmProfile" class="form form-container" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 10vh;
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -8,12 +7,12 @@
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
             <div class="row mb-3">
                 <div class="col-md-12 mb-xl-4">
-                    <label class="labels">Full Name</label>
+                    <label class="labels"><h5>Full Name</h5></label>
                     <input type="text" class="form-control" placeholder="Full name"
                            id="fullname" name="fullname">
                 </div>
                 <div class="row col-md-12">
-                    <label for="gender" class="col-md-4 form-label">Gender</label>
+                    <label for="gender" class="col-md-4 form-label"><h5>Gender</h5></label>
                     <select id="gender" name="gender" class="col-md-8 form-select">
                         <option selected value="1">Male</option>
                         <option value="0">Female</option>
@@ -21,25 +20,25 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-12 mb-3"><label class="labels">Birthday</label>
+                <div class="col-md-12 mb-3"><label class="labels"><h5>Birthday</h5></label>
                     <input type="date" class="form-control" placeholder="" id="dob" name="dob">
                 </div>
-                <div class="col-md-12 mb-3"><label class="labels">PhoneNumber</label>
+                <div class="col-md-12 mb-3"><label class="labels"><h5>PhoneNumber</h5></label>
                     <input type="text" class="form-control" placeholder="enter phone number"
                     id="telephone" name="telephone">
                 </div>
-                <div class="col-md-12 mb-3"><label class="labels">Address</label>
+                <div class="col-md-12 mb-3"><label class="labels"><h5>Address</h5></label>
                     <input type="text" class="form-control" placeholder="enter address"
                     id="address" name="address">
                 </div>
             </div>
             <div class="row">
                 <div class="mt-5 text-center col-md-6">
-                    <button id="btnSave" class="btn btn-lg btn-outline-primary profile-button" type="submit">Save Profile
+                    <button id="btnSave" class="btn btn-lg btn-primary profile-button" type="submit">Save Profile
                     </button>
                 </div>
                 <div class="mt-5 text-center col-md-6">
-                    <button class="btn btn-lg btn-outline-success profile-button" type="submit" href="/?id={{id}}">Skip
+                    <button class="btn btn-lg btn-success profile-button" type="submit" href="/?id={{id}}">Skip
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </button>
                 </div>
