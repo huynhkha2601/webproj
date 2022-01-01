@@ -16,6 +16,18 @@
     background-color: #343a40;
 }
 
+.offcanvas-start{
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #343a40;
+
+}
+
+.offcanvas{
+    height: 100%;
+    width : 270px;
+}
+
 .navbar .container-fluid {
     color: white;
 }
@@ -36,4 +48,19 @@
 }
 .card-header{
     display: flex;
+}
+.fa-users{
+    margin-right: 10px;
+}
+
+.fa-list-alt{
+    margin-right: 10px;
+}
+
+.fa-level-up{
+    margin-right: 10px;
+}
+
+.fa-balance-scale{
+    margin-right: 10px;
 }
