@@ -1,9 +1,11 @@
 import {engine} from "express-handlebars";
 import sections from "express-handlebars-sections";
+import morgan from "morgan";
 
 
 export default function (app) {
 
+    app.use(morgan('dev'));
     app.engine('hbs', engine({
         defaultLayout: 'home.hbs',
         helpers: {

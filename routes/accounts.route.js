@@ -24,6 +24,7 @@ router.post('/login',async function(req, res){
     if(isTrue){
         req.session.login = true;
         req.session.user =  user;
+
         let role = user.role;
         if(role == 0){
             res.redirect('/admin');
@@ -33,10 +34,9 @@ router.post('/login',async function(req, res){
         return;
     };
 
-
     res.render('vwAccounts/login', {
         layout: 'accounts.hbs',
-        err_message: "Username or password is wrong!"
+        err_message: "Username or password is wrong!", err: true
     });
 })
 
@@ -87,7 +87,6 @@ router.get('/register/profile', function(req, res){
 })
 
 router.get('/logout', function(req, res){
-    // console.log(req.query.id);
     req.session.login = false;
     res.redirect("/");
 })
