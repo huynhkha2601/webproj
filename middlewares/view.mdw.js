@@ -10,20 +10,31 @@ export default function (app) {
         defaultLayout: 'home.hbs',
         helpers: {
             section: sections(),
+            increase(val){
+                return parseInt(val)+1;
+            },
+            formatName(val){
+                let str = val.split(' ');
+                return "****" + str[str.length-1];
+            },
             formatMoney(val) {
                 return val.toLocaleString('vi', {
                     style: 'currency', currency: 'VND'
                 });
             },
+            formatPassword(val) {
+                let password = "";
+                for (let i = 0; i < 20; i++) {
+                    password += "*";
+                }
+                return password;
+            },
             formatDateTime(d) {
                 return d.toLocaleString('vi');
             },
-            equals(variable, statements, value) {
-                if (statements === '=') {
-                    return (variable === value);
-                }
-                if (statements === '!=')
-                    return (variable !== value);
+            equal(variable, value) {
+                console.log(variable, value, typeof variable, typeof value, parseInt(variable) === parseInt(value))
+                return parseInt(variable) === parseInt(value);
             }
         }
     }));

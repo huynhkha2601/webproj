@@ -20,5 +20,20 @@ export default {
         const id = entity.userid;
         delete entity.userid;
         return db('user').where('userid',id).update(entity);
-    }
+    },
+    getFavList(id){
+        return db('favorites').where('userid',id).
+            join('product',{'favorites.pid':'product.productid'});
+    },
+    favProduct(entity){
+        return db('favorites').insert(entity);
+    },
+    unfavProduct(fid){
+        return db('favorites').where('favid',fid).del();
+    },
+    getCurBidingList(id){
+        return db('history').where('idbidder',id)
+            .join('product',{'history.productid':'product.productid'})
+            .where('dateend', '>=', new Date().toISOString());
+    },
 }

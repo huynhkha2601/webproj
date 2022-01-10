@@ -29,6 +29,11 @@ export default {
             return null;
         return list[0];
     },
+    findHistoryProduct(pid){
+        return db('history').where('productid', pid)
+            .join('user', {'user.userid': 'history.idbidder'})
+            .orderBy('price', 'desc').limit(5);
+    },
     findByType(tid){
         return db('product').where('type', tid);
     },
@@ -47,5 +52,14 @@ export default {
         const id = entity.productid;
         delete entity.productid;
         return db('product').where('productid',id).update(entity);
+    },
+    checkTopID(productid){
+        return db('history').where('productid',productid).
+            orderBy('price','desc').limit(1).select('idbidder');
+    },
+    getMaxPrice(productid){
+        return db('history').where('productid',productid).
+        orderBy('price','desc').limit(1).select('max_price');
     }
+
 }

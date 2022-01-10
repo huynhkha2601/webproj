@@ -1,0 +1,38 @@
+<div class="card">
+    <h4 class="card-header d-flex justify-content-between">
+        Binding List
+        <div>
+            <a class="btn btn-outline-primary" href="/admin/categories/add" role="button">Add Categories
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </h4>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Current Price</th>
+            <th scope="col">My Max Price</th>
+            <th scope="col">Date Published</th>
+            <th scope="col">End Date</th>
+            <th scope="col">&nbsp</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each biding}}
+            <tr>
+                <th scope="row">{{productname}}</th>
+                <th scope="row">{{price}}</th>
+                <th scope="row">{{max_price}}</th>
+                <th scope="row">{{formatDateTime datepublished}}</th>
+                <th scope="row">{{formatDateTime dateend}}</th>
+                <td class="text-right">
+                    <a class="btn btn-sm btn-success" href="/products/detail?productid={{productid}}" role="button">
+                    View detail<i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

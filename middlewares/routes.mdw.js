@@ -7,6 +7,7 @@ import typesRoute from "../routes/types.route.js";
 import upgradesRoute from "../routes/upgrades.route.js";
 import productsUserRoute from "../routes/products-user.route.js"
 import accountsProfileRoute from "../routes/accounts-profile.js";
+import viewRoute from "../routes/view.route.js"
 
 
 import productsModel from "../models/products.model.js";
@@ -17,30 +18,15 @@ export default function(app) {
 
     app.get('/', async function (req, res) {
 
+        const Recent = await productsModel.findRecentProducts(0); // o
+        const Valuest = await productsModel.findValuestProducts(0); // ok
+        const Bids = await productsModel.findMostBidProducts(0);
 
-        const firstRecent = await productsModel.findRecentProducts(0); // ok
-        const secondRecent = await productsModel.findRecentProducts(5); // ok
-        const thirdRecent = await productsModel.findRecentProducts(10); // ok
-        const fourthRecent = await productsModel.findRecentProducts(15); // ok
-
-        const firstValuest = await productsModel.findValuestProducts(0); // ok
-        const secondValuest = await productsModel.findValuestProducts(5); // ok
-        const thirdValuest = await productsModel.findValuestProducts(10); // ok
-        const fourthValuest = await productsModel.findValuestProducts(15); // ok
-
-        const firstBids = await productsModel.findMostBidProducts(0);
-        const secondBids = await productsModel.findMostBidProducts(5);
-        const thirdBids = await productsModel.findMostBidProducts(10);
-        const fourthBids = await productsModel.findMostBidProducts(15);
-
-        console.log(req.session.user);
         if(req.session.user !== null)
             console.log(req.session.user.role, typeof (req.session.user.role),
                 req.session.user.role === '3');
         res.render('home', {
-            firstRecent,secondRecent,thirdRecent,fourthRecent,
-            firstValuest,secondValuest,thirdValuest,fourthValuest,
-            firstBids,secondBids,thirdBids,fourthBids,
+            Recent,Valuest,Bids,
             login: req.session.login,
             user: req.session.user
         });
@@ -52,7 +38,7 @@ export default function(app) {
             layout: 'admin.hbs'
         });
     });
-
+    app.use('/', viewRoute);
     app.use('/accounts', accountsRoute);
     app.use('/admin/products', productsRoute);
     app.use('/admin/manager-accounts', managerAccountsRoute);

@@ -1,5 +1,6 @@
 import express from "express";
 import accountsModel from "../models/manager-accounts.model.js";
+import bcrypt from "bcryptjs";
 
 const router = express.Router();
 
@@ -18,8 +19,12 @@ router.get('/add', function(req, res){
 });
 
 router.post('/add',async function(req, res){
-    req.body.role = 1;
-    const ret = await accountsModel.add(req.body);
+    let account =req.body;
+    account.role = 1;
+
+    let salt = bcrypt.genSaltSync(10);
+    account.password = bcrypt.hashSync(account.password, salt);
+    const ret = await accountsModel.add(account);
 
     res.render('vwManagerAccounts/add',{
         layout: 'admin.hbs',

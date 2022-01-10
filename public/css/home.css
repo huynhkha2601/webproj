@@ -1,7 +1,4 @@
-*{
-    margin:0;
-    padding:0;
-}
+
 .header {
     width: 100%;
     height: 50px;
@@ -18,13 +15,7 @@
 .nav-link{
     color:white;
 }
-.product-header{
-    padding-top:50px;
-}
-.product_card{
-    position: center;
-    justify-content: center;
-}
+
 .signup-btn a,.signin-btn a{
     color:white;
 }
@@ -38,19 +29,11 @@ div a, a:hover {
 div a:hover {
     opacity: 0.8;
 }
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 80%;
-}
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.container {
-    padding: 2px 16px;
-}
 #myBtnBackTop {
     width: 50px;
     height:50px;
