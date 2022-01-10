@@ -205,3 +205,9 @@ li.nav-item{
 .image {
     margin-top: 20px;
 }
+.carousel-control-prev i,.carousel-control-next i{
+    color:#23E3C9;
+}
+.carousel-indicators li{
+    background-color:#23E3C9;
+}

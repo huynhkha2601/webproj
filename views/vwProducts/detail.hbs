@@ -2,19 +2,37 @@
     <div class="container-fluid mb-3 mt-3">
         <div class="wrapper row">
             <div class="col-md-6">
-                <div>
-                    <img class="img-fluid" style="height: 30em; width: 100%"
-                         src="/public/images/{{this.product.productid}}/title/main.jpg" alt="main.jpg">
-                </div>
-                <div class="d-flex justify-content-md-center m-3">
-                    <i class="fa fa-backward d-flex align-items-md-center " aria-hidden="true"></i>
-                    <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 30%"
-                         src="/public/images/{{this.product.productid}}/another/another1.jpg" alt="main.jpg">
-                    <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 30%"
-                         src="/public/images/{{this.product.productid}}/another/another2.jpg" alt="main.jpg">
-                    <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 30%"
-                         src="/public/images/{{this.product.productid}}/another/another3.jpg" alt="main.jpg">
-                    <i class="fa fa-forward d-flex align-items-md-center" aria-hidden="true"></i>
+                <div id="carousel" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel" data-slide-to="1"></li>
+                        <li data-target="#carousel" data-slide-to="2"></li>
+                        <li data-target="#carousel" data-slide-to="3"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="img-fluid" style="height: 30em; width: 100%"
+                                      src="/public/images/{{this.product.productid}}/title/main.jpg" alt="main.jpg">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="img-fluid" style="height: 30em; width: 100%"
+                                       src="/public/images/{{this.product.productid}}/another/another1.jpg" alt="main.jpg">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="img-fluid" style="height: 30em; width: 100%"
+                                   src="/public/images/{{this.product.productid}}/another/another2.jpg" alt="main.jpg">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="img-fluid" style="height: 30em; width: 100%"
+                                   src="/public/images/{{this.product.productid}}/another/another3.jpg" alt="main.jpg">
+                            </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                      </a>
+                      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                      </a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -29,7 +47,7 @@
                     <span class="text-danger font-weight-bold">{{{formatDateTime this.product.dateend}}}</span>
                 </h5>
 
-                <h5 class="price ">current price:
+                <h5 class="price ">Current price:
                     <span class="text-danger font-weight-bold">{{formatMoney this.product.price}}</span>
                 </h5>
                 <h5 class="price ">Purchase price:
@@ -100,20 +118,6 @@
             </div>
         </div>
     </div>
-</div>
-<div class="d-flex justify-content-md-center m-3">
-    <i class="fa fa-backward d-flex align-items-md-center " aria-hidden="true"></i>
-        <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 20%"
-             src="/public/images/{{this.product.productid}}/another/another3.jpg" alt="product-same-type-1">
-        <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 20%"
-             src="/public/images/{{this.product.productid}}/another/another3.jpg" alt="product-same-type-2">
-        <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 20%"
-             src="/public/images/{{this.product.productid}}/another/another3.jpg" alt="product-same-type-3">
-        <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 20%"
-             src="/public/images/{{this.product.productid}}/another/another3.jpg" alt="product-same-type-4">
-        <img class="img-fluid ml-2 mr-2" style="height: 7em; width: 20%"
-             src="/public/images/{{this.product.productid}}/another/another3.jpg" alt="product-same-type-5">
-    <i class="fa fa-forward d-flex align-items-md-center" aria-hidden="true"></i>
 </div>
 
 {{#section 'footer'}}
