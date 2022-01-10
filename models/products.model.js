@@ -1,5 +1,4 @@
 import db from '../utils/database.js';
-import {now} from "date-format";
 
 export default {
     findAll(){
@@ -40,8 +39,7 @@ export default {
     findByCat(cid){
         return db('product').whereIn('type', db('category').join('type', {'category.cid': 'type.cid'})
             .select('tid').where('category.cid', cid));
-    }
-    ,
+    },
     add(entity){
         return db('product').insert(entity);
     },
@@ -53,13 +51,32 @@ export default {
         delete entity.productid;
         return db('product').where('productid',id).update(entity);
     },
-    checkTopID(productid){
-        return db('history').where('productid',productid).
-            orderBy('price','desc').limit(1).select('idbidder');
-    },
-    getMaxPrice(productid){
-        return db('history').where('productid',productid).
+    async checkTopID(productid){
+        let bidder = await db('history').where('productid',productid)
+            .orderBy('price','desc').limit(1).select('idbidder')
+        if(bidder.length === 0)
+            return -1;
+        else
+            return bidder[0].idbidder;
+
+        },
+    async getMaxPrice(productid){
+        let maxPrice = await db('history').where('productid',productid).
         orderBy('price','desc').limit(1).select('max_price');
+        if(maxPrice.length === 0)
+            return -1;
+        else
+            return maxPrice[0].max_price;
+    },
+    async getEndDate(productid){
+        let endDate = await db('product').where('productid', productid)
+            .select('dateend');
+        if(endDate.length === 0)
+            return -1;
+        else
+            return endDate[0].dateend;
+
     }
+
 
 }

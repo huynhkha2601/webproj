@@ -1,6 +1,11 @@
 import express from 'express';
 import morgan from 'morgan';
 
+// import dotenv from "dotenv";
+// import mongoose from "mongoose";
+// import joi from "joi";
+// import mailer from "nodemailer";
+
 import localMdw from "./middlewares/locals.mdw.js"
 import routeMdw from "./middlewares/routes.mdw.js";
 import viewMdw from "./middlewares/view.mdw.js";
@@ -11,7 +16,7 @@ const app = express();
 app.use('/public', express.static('public'));
 app.use(morgan('dev'));
 app.use(express.urlencoded({
-    extended:true
+    extended: true
 }));
 
 sessionMdv(app);
@@ -20,6 +25,6 @@ localMdw(app);
 routeMdw(app);
 
 const port = 3000;
-app.listen(port, function ()  {
+app.listen(port, function () {
     console.log(`Example app listening at http://localhost:${port}`)
 })

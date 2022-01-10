@@ -24,23 +24,8 @@
                     <a class="nav-link" href="#footer">About <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        Category
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        {{#each vwCategories}}
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">{{cname}}</a>
-                                <ul class="dropdown-menu">
-                                    {{#each types}}
-                                            <li><a class="dropdown-item" href="/products/byType?type={{tid}}">{{tid}} - {{typename}}</a></li>
-                                    {{/each}}
-                                </ul>
-                            </li>
-                        {{/each}}
-                    </ul>
+
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -90,25 +75,42 @@
         </div>
     </nav>
 </div>
-<div class="row col-md-12 d-flex justify-content-center">
-    <div class="col-md-1">
+<div class="w-100 row col-md-11 d-flex justify-content-center">
+    <div class="row col-md-2 border bg-dark">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            Category
+        </a>
+        <ul class="dropdown-menu">
+            {{#each vwCategories}}
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">{{cname}}</a>
+                    <ul class="dropdown-menu">
+                        {{#each types}}
+                            <li><a class="dropdown-item" href="/products/byType?type={{tid}}">{{tid}} - {{typename}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </li>
+            {{/each}}
+        </ul>
     </div>
-    <div class="container-fluid col-md-10 d-inline-block justify-content-center">
+    <div class="container-fluid col-md-10">
         {{{body}}}
     </div>
-    <div class="col-md-1"></div>
 </div>
 
 <footer class="footer" id="footer">
     <div class="footer__addr">
         <h5 class="footer__logo"><strong>CÔNG TY CỔ PHẦN AUCTION ONLINE</strong></h5>
-<!--        <a href="/"><img src="/public/images/home/logo.png" alt="" width="200px" /></a>-->
+        <!--        <a href="/"><img src="/public/images/home/logo.png" alt="" width="200px" /></a>-->
         <p>
             <strong>Điện thoại:</strong>
-            0968454380<br /><strong>Email: </strong><a
+            0968454380<br/><strong>Email: </strong><a
                 href="mailto:onlineaction@gmail.com"
-        >onlineaction@gmail.com</a><br /><strong>ĐKKD:</strong>
-            Trường Đại Học KHTN<br />
+        >onlineaction@gmail.com</a><br/><strong>ĐKKD:</strong>
+            Trường Đại Học KHTN<br/>
             <strong>Văn phòng:</strong>
             227 Đ. Nguyễn Văn Cừ, Phường 4, Quận 5, Thành phố Hồ Chí Minh
         </p>
@@ -182,8 +184,8 @@
         </li>
     </ul>
     <div id="myBtnBackTop">
-<i class="fa fa-chevron-up"></i>
-</div>
+        <i class="fa fa-chevron-up"></i>
+    </div>
 </footer><!--/Footer-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"

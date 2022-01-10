@@ -24,7 +24,7 @@ export default function(app){
         let categories = await categoriesModel.findAll();
         for (let category of categories) {
             let lst = await typesModel.findTypeByCat(category.cid);
-            category.list = lst;
+            category.types = lst;
         }
 
         res.locals.vwCategories = categories;

@@ -5,74 +5,85 @@ import express from "express";
 const router = express.Router();
 
 
-router.get('/byType', async function(req, res){
-    const tid = req.query.tid || 0;
+router.get('/byType', async function (req, res) {
+    const tid = req.query.type || 0;
 
     const list = await productsModel.findByType(tid);
-    res.render('vwProducts/byType',{
-        layout: 'home.hbs',
+    res.render('vwProducts/byType', {
+        layout: 'searchProducts.hbs',
         products: list
     });
 });
 
-router.get('/byCat', async function(req, res){
+router.get('/byCat', async function (req, res) {
     const cid = req.query.cid || 0;
 
     const list = await productsModel.findByCat(cid);
-    res.render('vwProducts/byCat',{
+    res.render('vwProducts/byCat', {
         layout: 'home.hbs',
         products: list
     });
 });
 
-router.get('/detail', async function(req, res){
+router.get('/detail', async function (req, res) {
     const productid = req.query.productid || 0;
     const product = await productsModel.findByID(productid);
     const history = await productsModel.findHistoryProduct(productid);
 
-    if (product=== null)
+    if (product === null)
         res.redirect('/');
 
-    res.render('vwProducts/detail',{
+    res.render('vwProducts/detail', {
         layout: 'home.hbs',
         product, empty: history.length === 0, history
     });
 });
 
 router.post('/auction', async function (req, res) {
-    let max = req.body.max_price;
+    let yourMax = parseInt(req.body.max_price);
     let entity = req.query;
-    entity.max_price = max;
+    let curPrice = parseInt(entity.price);
+    if (yourMax >= curPrice + 100000) {
+        let curDate = new Date().toISOString();
+        let curHolder = await productsModel.checkTopID(entity.productid);
+        let curMax = await productsModel.getMaxPrice(entity.productid);
+        let endDate = await productsModel.getEndDate(entity.productid);
+        if (curMax !== -1) {
 
-    if(parseInt(max) >= parseInt(entity.price) + 100000){
+            if (curHolder === parseInt(entity.idbidder)) {
 
-        let idbidder =await productsModel.checkTopID(entity.productid);
+                if (yourMax > curMax) {
+                    entity.max_price = yourMax;
+                    let rs = await auctionModel.patchWithID(entity);
+                }
+            } else {
+                if (yourMax >= curMax + 100000) {
+                    entity.price = curMax + 100000;
+                    entity.max_price = yourMax;
 
-        if(idbidder === null)
-            idbidder = -1;
-        else
-            idbidder = idbidder[0].idbidder;
-
-        let maxPrice = await productsModel.getMaxPrice(entity.productid);
-        if(maxPrice === null)
-            maxPrice = parseInt(entity.max_price) + 100000;
-        else
-            maxPrice = parseInt(entity.max_price)
-
-        if (parseInt(idbidder ) === parseInt(entity.idbidder)){
-            if(parseInt(maxPrice) <= parseInt(entity.max_price))
-                await auctionModel.add(entity);
-        }else {
-            if (parseInt(maxPrice) <= parseInt(entity.max_price)) {
-                // entity.price = parseInt(entity.price) +100000;
-                entity.price = maxPrice;
-                let ret = await auctionModel.add(entity);
-                let upret = await productsModel.patch({productid: entity.productid, price: maxPrice})
-
-
+                    let rs = await auctionModel.addRecord(entity);
+                } else {
+                    entity.price = parseInt(entity.price) + 100000;
+                    entity.max_price = yourMax;
+                    await auctionModel.addRecord(entity)
+                    let update = {
+                        idbidder: curHolder, price: yourMax + 100000,
+                        max_price: curMax, productid: entity.productid
+                    };
+                    await auctionModel.addRecord(update);
+                }
             }
 
+        } else {
+            entity.price = curPrice + 100000;
+            entity.max_price = yourMax;
+            let rs = await auctionModel.patchWithID(entity);
         }
+
+        // Cần set time
+
+    } else {
+
     }
 
     res.redirect('/products/detail?productid=' + req.query.productid);
