@@ -12,14 +12,13 @@
     font-weight: bold;
 }
 .offcanvas-collapse{
-    background-color: #343a40;
+    background-color: #287bff;
 }
 
 .offcanvas-start{
     color: #fff;
     text-transform: uppercase;
-    background-color: #343a40;
-
+    background-color: #287bff;
 }
 
 .offcanvas{
@@ -36,8 +35,15 @@
     padding-left: .75rem;
     color: white;
 }
+
+.navbar-collapse ul li:hover{
+    background-color: #fff;
+    border-radius: 20px;
+}
+
 .nav-item .nav-link:hover {
-    color: red;
+    color: #287bff;
+    font-weight: 700;
 }
 .card{
     border: 1px solid #ccc;
@@ -56,6 +62,10 @@
     margin-right: 10px;
 }
 
+.fa-list{
+    margin-right: 10px;
+}
+
 .fa-level-up{
     margin-right: 10px;
 }
@@ -65,6 +75,18 @@
 }
 
 .fa-arrow-left{
+    margin-right: 10px;
+}
+
+.fa-money{
+    margin-right: 10px;
+}
+
+.fa-heart{
+    margin-right: 10px;
+}
+
+.fa-trophy{
     margin-right: 10px;
 }
 
