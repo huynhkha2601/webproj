@@ -1,5 +1,8 @@
 import express from "express";
+import request from "request";
 import bcrypt from "bcryptjs";
+import bodyParser from "body-parser";
+
 import accountsModel from "../models/accounts.model.js";
 import format from "date-format";
 
@@ -85,6 +88,28 @@ router.get('/register/profile', function(req, res){
         layout: 'accounts.hbs'
     });
 })
+
+router.post('/captcha/api',function(req,res){
+
+    if(req.body['g-recaptcha-response'] === undefined ||
+        req.body['g-recaptcha-response'] === '' ||
+        req.body['g-recaptcha-response'] === null) {
+        return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
+    }
+    // Put your secret key here.
+    let secretKey = "6LczRgYeAAAAAFsi3pozmFXaQMRJzfYJ21f9A0LJ";
+    // req.connection.remoteAddress will provide IP address of connected user.
+    let verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+    // Hitting GET request to the URL, Google will respond with success or error scenario.
+    request(verificationUrl,function(error,response,body) {
+        body = JSON.parse(body);
+        // Success will be true or false depending upon captcha validation.
+        if(body.success !== undefined && !body.success) {
+            return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
+        }
+        res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
+    });
+});
 
 router.get('/logout', function(req, res){
     req.session.login = false;

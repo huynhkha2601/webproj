@@ -36,7 +36,7 @@
                 </div>
             </div>
             <form class="col-md-6" id="frmPrice" method="post"
-                  action="/products/auction?productid={{this.product.productid}}&price={{this.product.price}}&idbidder=4{{accountAuth.userid}}">
+                  action="/products/auction?productid={{this.product.productid}}&price={{this.product.price}}&idbidder={{User.userid}}">
             <div class="col-md-12">
                 <div>
                     <h1 class="product-title">{{this.product.productname}}</h1>
@@ -73,8 +73,8 @@
                             <tr>
                                 <th scope="row">{{increase @index}}</th>
                                 <td>{{formatName fullname}}</td>
-                                <td>{{price}}</td>
-                                <td>{{formatDateTime record}}</td>
+                                <td class="text-right">{{formatMoney price}}</td>
+                                <td class="text-right">{{formatDateTime record}}</td>
                             </tr>
                         {{/each}}
                         </tbody>

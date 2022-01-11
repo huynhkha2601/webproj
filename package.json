@@ -39,6 +39,7 @@
     "multer": "^1.4.4",
     "mysql-easy-query": "^2.0.0",
     "mysql2": "^2.3.3",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "request": "^2.88.2"
   }
 }

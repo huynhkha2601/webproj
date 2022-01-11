@@ -43,48 +43,78 @@ router.post('/auction', async function (req, res) {
     let yourMax = parseInt(req.body.max_price);
     let entity = req.query;
     let curPrice = parseInt(entity.price);
-    if (yourMax >= curPrice + 100000) {
-        let curDate = new Date().toISOString();
-        let curHolder = await productsModel.checkTopID(entity.productid);
-        let curMax = await productsModel.getMaxPrice(entity.productid);
-        let endDate = await productsModel.getEndDate(entity.productid);
-        if (curMax !== -1) {
+    let curDate = new Date();
+    let endDate = await productsModel.getEndDate(entity.productid);
 
-            if (curHolder === parseInt(entity.idbidder)) {
+    console.log(yourMax, entity, curPrice, curDate.toLocaleString(),new Date(endDate).toLocaleString() );
 
-                if (yourMax > curMax) {
-                    entity.max_price = yourMax;
-                    let rs = await auctionModel.patchWithID(entity);
-                }
-            } else {
-                if (yourMax >= curMax + 100000) {
-                    entity.price = curMax + 100000;
-                    entity.max_price = yourMax;
+    if (curDate.getTime() > new Date(endDate).getTime()){
+        // Redirect to view with err_mess
+        // CurDate > EndDate, can't biding
 
-                    let rs = await auctionModel.addRecord(entity);
+    }else{
+        if (yourMax >= curPrice + 100000) {
+            let curHolder = await productsModel.checkTopID(entity.productid);
+            let curMax = await productsModel.getMaxPrice(entity.productid);
+            if (curHolder !== -1) {
+
+                if (curHolder === parseInt(entity.idbidder)) {
+
+                    if (yourMax > curMax) {
+                        entity.price = curPrice;
+                        entity.max_price = yourMax;
+                        let rs = await auctionModel.patchWithID(entity);
+                        // console.log(true ,4, entity);
+                    }
+
                 } else {
-                    entity.price = parseInt(entity.price) + 100000;
-                    entity.max_price = yourMax;
-                    await auctionModel.addRecord(entity)
-                    let update = {
-                        idbidder: curHolder, price: yourMax + 100000,
-                        max_price: curMax, productid: entity.productid
-                    };
-                    await auctionModel.addRecord(update);
+
+                    if (yourMax >= curMax + 100000) {
+
+                        console.log(true ,4);
+                        entity.price = curMax + 100000;
+                        entity.max_price = yourMax;
+
+                        let rs = await auctionModel.addRecord(entity);
+                    } else {
+                        entity.price = parseInt(entity.price) + 100000;
+                        entity.max_price = yourMax;
+                        await auctionModel.addRecord(entity)
+                        let update = {
+                            idbidder: curHolder, price: yourMax + 100000,
+                            max_price: curMax, productid: entity.productid
+                        };
+                        await auctionModel.addRecord(update);
+                    }
+
+
+                    if (new Date(endDate).getTime() <= curDate.getTime() + 15*60000) {
+                        let updateDate = new Date(endDate).getTime()+ 15*60000;
+                        let ret = await productsModel.patch({productid: entity.productid, dateend: new Date(updateDate)});
+                    }
+
+                }
+
+            } else {
+                entity.price = curPrice + 100000;
+                entity.max_price = yourMax;
+                let rs = await auctionModel.addRecord(entity);
+                // console.log(rs);
+
+                if (new Date(endDate).getTime() <= curDate.getTime() + 15*60000) {
+                    let updateDate = new Date(endDate).getTime()+ 15*60000;
+                    let ret = await productsModel.patch({productid: entity.productid, dateend: new Date(updateDate)});
                 }
             }
 
+            // Set new time for endDate
+
+
         } else {
-            entity.price = curPrice + 100000;
-            entity.max_price = yourMax;
-            let rs = await auctionModel.patchWithID(entity);
+            // Redirect to view with err_mess
         }
-
-        // Cần set time
-
-    } else {
-
     }
+
 
     res.redirect('/products/detail?productid=' + req.query.productid);
 

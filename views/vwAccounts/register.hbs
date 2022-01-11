@@ -1,7 +1,8 @@
+
 <div class="row">
     <div class="col-md-4 col-sm4 col-xs-12"></div>
     <div class="col-md-4 col-sm4 col-xs-12">
-        <form class="form-input" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 10vh;background-color: white;
+        <form class="frmRegister" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 10vh;background-color: white;
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
             -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
@@ -12,7 +13,7 @@
                 <label for="username"><h4>Username</h4></label>
             </div>
             <div class="form-group mb-3">
-                <input type="email"  id="email" name="email" aria-describedby="email"required>
+                <input type="email"  id="email" name="email" aria-describedby="email" required>
                 <span></span>
                 <label for="email" ><h4>Email</h4></label>
             </div>
@@ -22,9 +23,12 @@
                 <label for="password"><h4>Password</h4></label>
             </div>
             <div class="form-group mb-3">
-                <input type="password"id="repeat"required>
+                <input type="password" id="repeat" required>
                 <span></span>
                 <label for="repeat" ><h4>Repeat Password</h4></label>
+            </div>
+            <div class="form-group mb-3">
+                <div class="g-recaptcha w-100" data-sitekey="6LczRgYeAAAAAHBwdsLr0nHDTD0akCCDTXh0M8X5"></div>
             </div>
             <input id="submit" class="btn-signup" type="submit" value="Sign Up">
             <div class="flex-col-c text-center mt-3">
@@ -40,5 +44,20 @@
 </div>
 
 {{#section 'footer'}}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="/public/js/register.js"></script>
+    <script>
+        $('#frmRegister').on('submit', async function(e){
+
+            e.preventDefault();
+
+            console.log("OK :D");
+            // JSON.setPrototypeOf()
+
+            $("#frmRegister").off('submit').submit();
+
+        });
+
+
+    </script>
 {{/section}}
