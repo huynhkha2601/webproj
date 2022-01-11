@@ -46,8 +46,6 @@ router.post('/auction', async function (req, res) {
     let curDate = new Date();
     let endDate = await productsModel.getEndDate(entity.productid);
 
-    console.log(yourMax, entity, curPrice, curDate.toLocaleString(),new Date(endDate).toLocaleString() );
-
     if (curDate.getTime() > new Date(endDate).getTime()){
         // Redirect to view with err_mess
         // CurDate > EndDate, can't biding

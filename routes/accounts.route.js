@@ -51,7 +51,8 @@ router.get('/register', function(req, res){
 
 router.post('/register', async function(req, res){
     let user= req.body;
-
+    console.log(user);
+    delete user["g-recaptcha-response"];
     user.role = 3;
     let salt = bcrypt.genSaltSync(10);
     user.password = bcrypt.hashSync(user.password, salt);
@@ -89,25 +90,33 @@ router.get('/register/profile', function(req, res){
     });
 })
 
-router.post('/captcha/api',function(req,res){
+router.post('/captcha/api',async function(req,res){
 
-    if(req.body['g-recaptcha-response'] === undefined ||
-        req.body['g-recaptcha-response'] === '' ||
-        req.body['g-recaptcha-response'] === null) {
-        return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
+    let captcha = req.query.captcha;
+    console.log(captcha);
+    if(captcha === undefined || captcha === '' || captcha === null) {
+        return res.json({
+            success : false,
+            msg: "Please select captcha"
+        });
     }
-    // Put your secret key here.
+
     let secretKey = "6LczRgYeAAAAAFsi3pozmFXaQMRJzfYJ21f9A0LJ";
-    // req.connection.remoteAddress will provide IP address of connected user.
-    let verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
-    // Hitting GET request to the URL, Google will respond with success or error scenario.
-    request(verificationUrl,function(error,response,body) {
+    let verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=
+        ${secretKey}&response=${captcha}&remoteip=${req.connection.remoteAddress}`;
+    await request(verificationUrl,function(error,response,body) {
         body = JSON.parse(body);
-        // Success will be true or false depending upon captcha validation.
+        // console.log(body);
         if(body.success !== undefined && !body.success) {
-            return res.json({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
+            return res.json({
+                success : false,
+                msg : "Failed captcha verification!"
+            });
         }
-        res.json({"responseCode" : 0,"responseDesc" : "Sucess"});
+        res.json({
+            success : true,
+            msg : "Successful captcha verification!"
+        });
     });
 });
 

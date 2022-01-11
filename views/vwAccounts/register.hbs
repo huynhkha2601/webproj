@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-4 col-sm4 col-xs-12"></div>
     <div class="col-md-4 col-sm4 col-xs-12">
-        <form class="frmRegister" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 10vh;background-color: white;
+        <form id="frmRegister" class="form-input" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 10vh;background-color: white;
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
             -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
@@ -46,18 +46,4 @@
 {{#section 'footer'}}
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="/public/js/register.js"></script>
-    <script>
-        $('#frmRegister').on('submit', async function(e){
-
-            e.preventDefault();
-
-            console.log("OK :D");
-            // JSON.setPrototypeOf()
-
-            $("#frmRegister").off('submit').submit();
-
-        });
-
-
-    </script>
 {{/section}}

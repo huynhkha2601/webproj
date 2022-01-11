@@ -22,11 +22,8 @@ export default function(app) {
         const Valuest = await productsModel.findValuestProducts(0); // ok
         const Bids = await productsModel.findMostBidProducts(0);
 
-        if(req.session.user !== null)
-            console.log(req.session.user.role, typeof (req.session.user.role),
-                req.session.user.role === '3');
         res.render('home', {
-            Recent,Valuest,Bids,
+            Recent,Valuest,Bids: Bids[0],
             login: req.session.login,
             user: req.session.user
         });

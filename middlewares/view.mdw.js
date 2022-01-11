@@ -33,7 +33,6 @@ export default function (app) {
                 return d.toLocaleString('vi');
             },
             equal(variable, value) {
-                console.log(variable, value, typeof variable, typeof value, parseInt(variable) === parseInt(value))
                 return parseInt(variable) === parseInt(value);
             }
         }
