@@ -26,6 +26,7 @@ export default function(app){
             let lst = await typesModel.findTypeByCat(category.cid);
             category.types = lst;
         }
+        // console.log(categories)
 
         res.locals.vwCategories = categories;
         res.locals.vwCategories[0].isActive = true;

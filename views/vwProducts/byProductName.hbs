@@ -1,10 +1,11 @@
-<div class="card mt-3 mb-3">
+<div class="card mt-2">
     <h4 class="card-header d-flex justify-content-between">
         Searching Products
     </h4>
+
     {{#if empty}}
         <div class="card-body">
-           <h4>The current listing has no products.</h4>
+            <h4>No products were found based on the keywords you searched for.</h4>
         </div>
         <div class="card-footer">
             <h5>Searching</h5>
@@ -34,7 +35,7 @@
                                 <p class="card-title text-danger">{{formatMoney price}}</p>
                             </div>
                             <div class="card-footer text-right pr-2">
-                                <a href="/products/detail?productid={{productid}}" class="btn btn-outline-primary">
+                                <a href="#" class="btn btn-outline-primary">
                                     <i class="fa fa-gavel" aria-hidden="true"></i>
                                     Auction</a>
                             </div>
@@ -54,8 +55,12 @@
                 </ul>
             </nav>
         </div>
-        <div class="card-footer">
-            <h5>Searching</h5>
-        </div>
     {{/if}}
+
+
+    <div class="card-footer">
+        <div>Searching</div>
+    </div>
 </div>
+
+

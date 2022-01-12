@@ -28,10 +28,6 @@
 
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 search-input" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
-            </form>
             {{#if login}}
                 <li class="nav-item dropdown ml-3">
                     <div class="dropdown">
@@ -75,29 +71,60 @@
         </div>
     </nav>
 </div>
-<div class="w-100 row col-md-11 d-flex justify-content-center">
-    <div class="row col-md-2 border bg-dark">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-            Category
-        </a>
-        <ul class="dropdown-menu">
-            {{#each vwCategories}}
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">{{cname}}</a>
-                    <ul class="dropdown-menu">
+<div class="w-100 row col-md-11 d-flex justify-content-center mt-5 mb-5">
+    <div class="accordion col-md-2" id="accordionExample">
+        {{#each vwCategories}}
+            <div class="card">
+                <div class="card-header" id="{{cname}}">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapse{{cid}}" aria-expanded="true" aria-controls="collapse{{cid}}">
+                            {{cname}}
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapse{{cid}}" class="collapse" data-parent="#accordionExample">
+                    <div class="card-body">
                         {{#each types}}
-                            <li><a class="dropdown-item" href="/products/byType?type={{tid}}">{{tid}} - {{typename}}</a>
-                            </li>
+                            <a class="dropdown-item" href="/products/byType/{{tid}}">{{tid}} - {{typename}}</a>
                         {{/each}}
-                    </ul>
-                </li>
-            {{/each}}
-        </ul>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
     </div>
-    <div class="container-fluid col-md-10">
-        {{{body}}}
+    <div class="container-fluid col-md-10 w-100">
+        <form class="col-md-12 form-inline" action="/products/bySearch" method="post">
+            <div class="dropdown mr-2">
+<!--                <select id="location" name="location" class="form-control form-select-md mr-2" style="width: 11em">-->
+<!--                    <option selected disabled>Location</option>-->
+<!--                    {{#each vwCategories}}-->
+<!--                        <option value="{{cid}}">{{cname}}</option>-->
+<!--                    {{/each}}-->
+<!--                </select>-->
+                <select id="sort" name="sort" class="form-control form-select-md mr-2 ml-2" style="width: 15em">
+                    <option selected disabled value="0">Sorting</option>
+                    <option value="1">Sorting by A-Z</option>
+                    <option value="2">Sorting by Z-A</option>
+                    <option value="3">Sorting by price ascending</option>
+                    <option value="4">Sorting by price descending</option>
+                </select>
+                <select id="price" name="price" class="form-control form-select-md mr-2" style="width: 18.5em">
+                    <option selected disabled value="0">Price</option>
+                    <option value="1">Under {{formatMoney 1000000}}</option>
+                    <option value="2">From {{formatMoney 1000000}} to {{formatMoney 5000000}}</option>
+                    <option value="3">From {{formatMoney 5000000}} to {{formatMoney 10000000}}</option>
+                    <option value="4">From {{formatMoney 10000000}} to {{formatMoney 20000000}}</option>
+                    <option value="5">After {{formatMoney 20000000}}</option>
+                </select>
+            </div>
+            <input class="form-control mr-sm-2 search-input" type="text" placeholder="Product Name"
+                   aria-label="Search" id="search" name="search" style="width: 26em">
+            <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
+        </form>
+        <div class="col-md-12">
+            {{{body}}}
+        </div>
     </div>
 </div>
 
@@ -131,26 +158,13 @@
             <h2 class="nav__title">Đơn vị vận chuyển</h2>
             <ul class="nav__ul">
                 <li>
-                    <img
-                            class="img-fluid"
-                            src="/public/background/ahamove.png"
-                            alt="#"
-                            width="100px"
-                    />
+                    <img class="img-fluid" src="/public/background/ahamove.png" alt="#" width="100px"/>
                 </li>
                 <li>
-                    <img
-                            class="img-fluid"
-                            src="/public/background/viettel.png"
-                            width="100px"
-                    />
+                    <img class="img-fluid" src="/public/background/viettel.png" width="100px"/>
                 </li>
                 <li>
-                    <img
-                            class="img-fluid"
-                            src="/public/background/grab-express.png"
-                            width="100px"
-                    />
+                    <img class="img-fluid" src="/public/background/grab-express.png" width="100px"/>
                 </li>
             </ul>
         </li>

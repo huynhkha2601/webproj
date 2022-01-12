@@ -95,3 +95,6 @@ create table user
     active      int          default 1,
     datefounded datetime     default CURRENT_TIMESTAMP
 );
+
+ALTER TABLE user ADD FULLTEXT (address, fullname, email);
+ALTER TABLE product ADD FULLTEXT (productname, title, description);

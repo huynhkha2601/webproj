@@ -30,24 +30,25 @@ $('#frmRegister').on('submit', async function (e) {
     // }
 
     // ajax check captcha api
-    // await fetch(`/accounts/captcha/api?captcha=${captcha}`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         email,
-    //         captcha
-    //     })
-    // })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         alert(data.msg);
-    //         if (data.success === true)
-    //             $("#frmRegister").off('submit').submit();
-    //
-    //     });
+    await fetch(`/accounts/captcha/api?captcha=${captcha}`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email,
+            captcha
+        })
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            // alert(data.msg);
+            if (data.success === true)
+                $("#frmRegister").off('submit').submit();
+            else alert(data.msg);
+
+        });
 
     // $.getJSON(`/accounts/is-available?username=${username}&email=${email}`,async function (data){
     //

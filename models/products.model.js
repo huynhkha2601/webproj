@@ -13,10 +13,10 @@ export default {
             .orderBy('price','desc').limit(5).offset(offset);
     },
     findMostBidProducts(offset) {
-        let sql = 'select * from `product` inner join' +
-            ' (select `productid`, count(*) as sl from history' +
-            ' group by `productid`) as t on t.productid = product.productid' +
-            ' limit 5 offset ' + offset;
+        let sql = 'select * from product inner join' +
+        ' (select productid, count(*) as sl from history' +
+        ' group by productid) as t on t.productid = product.productid' +
+        ' order by sl desc, datepublished desc limit 5 offset 0';
         return db.raw(sql);
 
         // return db('product').join(db('history').select('productid','count(*) as sl').groupBy('productid')
@@ -33,8 +33,33 @@ export default {
             .join('user', {'user.userid': 'history.idbidder'})
             .orderBy('price', 'desc').limit(5);
     },
-    findByType(tid){
-        return db('product').where('type', tid);
+    async findQuantityByKeySearch(key){
+        let sql = `select count(*) as sl from product where match(productname, title, description) 
+against (\'%${key}%\')`;
+        let products = await db.raw(sql);
+        if (products.length === 0)
+            return 0;
+        else
+            return products[0][0].sl;
+    },
+    async findProductsByKeySearch(key, offset){
+        let sql = `select * from product where match(productname, title, description)
+            against (\'%${key}%\') limit 15 offset ${offset}`;
+        let products = await db.raw(sql);
+        return products[0];
+    },
+    async findQuantityByType(tid){
+        let amount = await db('product').where('type', tid)
+            .where('dateend', '>=', new Date().toISOString()).count('* as sl');
+        if (amount.length === 0)
+            return 0;
+        else
+            return amount[0].sl;
+    },
+    findByType(tid, offset){
+        return db('product').where('type', tid)
+            .where('dateend', '>=', new Date().toISOString())
+            .offset(offset).limit(15);
     },
     findByCat(cid){
         return db('product').whereIn('type', db('category').join('type', {'category.cid': 'type.cid'})

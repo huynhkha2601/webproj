@@ -2,6 +2,7 @@ import express from "express";
 import request from "request";
 import bcrypt from "bcryptjs";
 import bodyParser from "body-parser";
+import nodemailer from "nodemailer";
 
 import accountsModel from "../models/accounts.model.js";
 import format from "date-format";
@@ -50,13 +51,14 @@ router.get('/register', function(req, res){
 })
 
 router.post('/register', async function(req, res){
+    
     let user= req.body;
-    console.log(user);
+    // console.log(user);
     delete user["g-recaptcha-response"];
     user.role = 3;
     let salt = bcrypt.genSaltSync(10);
     user.password = bcrypt.hashSync(user.password, salt);
-
+    
     const ret = await accountsModel.add(user);
     res.redirect('/accounts/register/profile?id=' + ret[0]);
 
@@ -90,10 +92,17 @@ router.get('/register/profile', function(req, res){
     });
 })
 
+router.post('/register/verify-email/api', function(req, res){
+    // console.log(req.query.id);
+    res.render('vwAccounts/profile', {
+        layout: 'accounts.hbs'
+    });
+})
+
 router.post('/captcha/api',async function(req,res){
 
     let captcha = req.query.captcha;
-    console.log(captcha);
+    // console.log(captcha);
     if(captcha === undefined || captcha === '' || captcha === null) {
         return res.json({
             success : false,
