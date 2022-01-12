@@ -1,6 +1,10 @@
 .images {
-    background: linear-gradient(120deg,#2908b9,#8e44ad);
-    background-size: auto;
+    background-image: url(/public/images/background.jpg);
+    background-size:100%;
+}
+.title{
+    font-size: 30px;
+    font-weight: bold;
 }
 .form-container{
     width: 40%;
@@ -97,13 +101,13 @@
 }
 /*Mobile*/
 @media only screen and (max-width: 47.9375em){
-    .form-container,#register{
+    .form-container{
         width: 80%;
     }
 }
 /*Tablet*/
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
-    .form-container,#register{
+    .form-container{
         width:60%;
     }
 }
