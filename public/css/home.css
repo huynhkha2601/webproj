@@ -12,6 +12,9 @@
 .navbar{
     background-color:black;
 }
+.navbar-toggler i{
+    color:white;
+}
 .nav-link{
     color:white;
 }

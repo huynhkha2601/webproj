@@ -1,51 +1,33 @@
-<div class="row">
-    <div class="col-xs-12 col-md-4 col-sm-4"></div>
-    <div class="col-xs-12 col-md-4 col-sm-4">
-        <form id="frmProfile" class="form form-container" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 5vh;background-color: white;
-            -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-            -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
-            <div class="row mb-3">
-                <div class="col-md-12 mb-xl-4">
-                    <label class="labels"><h5>Full Name</h5></label>
-                    <input type="text" class="form-control" placeholder="Full name"
-                           id="fullname" name="fullname">
-                </div>
-                <div class="col-md-12">
-                    <label for="gender" class="form-label"><h5 style="margin-right: 5px">Gender</h5></label>
-                    <select id="gender" name="gender" class="col-md-12 form-select" style="border-radius: 0.25rem;padding-top: 8px; padding-bottom: 8px;">
-                        <option selected value="1">Male</option>
-                        <option value="0">Female</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-12 mb-3"><label class="labels"><h5>Birthday</h5></label>
-                    <input type="date" class="form-control" placeholder="" id="dob" name="dob">
-                </div>
-                <div class="col-md-12 mb-3"><label class="labels"><h5>PhoneNumber</h5></label>
-                    <input type="text" class="form-control" placeholder="enter phone number"
-                    id="telephone" name="telephone">
-                </div>
-                <div class="col-md-12 mb-3"><label class="labels"><h5>Address</h5></label>
-                    <input type="text" class="form-control" placeholder="enter address"
-                    id="address" name="address">
-                </div>
-            </div>
-            <div class="row">
-                <div class="mt-5 text-center col-md-6">
-                    <button id="btnSave" class="btn btn-lg btn-primary profile-button" type="submit">Save Profile
-                    </button>
-                </div>
-                <div class="mt-5 text-center col-md-6">
-                    <button class="btn btn-lg btn-success profile-button" type="submit" href="/?id={{id}}">Skip
-                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+<form id="frmProfile" class="form-container" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 5vh;background-color: white;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
+    <div class="row mb-3">
+        <input type="text"  id="fullname" name="fullname" required>
+        <span></span>
+        <label class="labels"><h5>Full Name</h5></label>
     </div>
-    <div class="col-xs-12 col-md-4 col-sm-4"></div>
+    <div class="row mb-3 gender-input">
+        <label for="gender"><h5>Gender</h5></label>
+        <select id="gender" name="gender" class="col-md-12 form-select" style="border:none;outline:none;padding-top: 8px; padding-bottom: 8px;">
+            <option selected value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
     </div>
-</div>
+    <div class="row mb-3 birthday-input">
+            <label class="labels"><h5>Birthday</h5></label>
+            <input type="date"placeholder="" id="dob" name="dob" required>
+    </div>
+    <div class="row mb-3">
+        <input type="tel" id="telephone" name="telephone"pattern="[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}" required>
+        <span></span>
+        <label class="labels"><h5>PhoneNumber</h5></label>
+    </div>
+    <div class="row mb-3">
+        <input type="text"id="address" name="address" required>
+        <span></span>
+        <label class="labels"><h5>Address</h5></label>
+    </div>
+    <button id="btnSave" class="btn-save" type="submit">Save Profile</button>
+</form>
 

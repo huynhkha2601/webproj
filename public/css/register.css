@@ -2,9 +2,12 @@
     background: linear-gradient(120deg,#2908b9,#8e44ad);
     background-size: auto;
 }
-.form-input{
+.form-container{
+    width: 40%;
     border-radius: 15px;
     box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
 }
 .mb-3{
     position: relative;
@@ -47,7 +50,15 @@
 .mb-3 input:valid ~ span::before{
     width: 100%;
 }
-.btn-signin{
+.gender-input,.birthday-input{
+    margin: 40px 0px;
+}
+.gender-input label,.birthday-input label{
+    color: #2691d9;
+    position: unset;
+    margin-left:5px;
+}
+.btn-signin,.btn-signup{
     width: 100%;
     height:40px;
     border-radius: 25px;
@@ -59,23 +70,41 @@
     outline:none;
     border: none;
 }
-.btn-signin:hover{
-    color:green;
-}
-.btn-signup{
+.btn-save{
     width: 100%;
     height:40px;
     border-radius: 25px;
-    background: #2691d9;
+    background: green;
     color: #e9f4fb;
     font-weight: bold;
     font-size:18px;
     cursor:pointer;
     outline:none;
     border: none;
+    margin-top: 20px;
 }
-.btn-signup:hover{
+.btn-signin:hover,.btn-signup:hover{
     color:green;
 }
-
+.btn-save:hover{
+    color: red;
+}
+.hidden{
+    display: none;
+}
+.captcha{
+    border-bottom: none;
+}
+/*Mobile*/
+@media only screen and (max-width: 47.9375em){
+    .form-container,#register{
+        width: 80%;
+    }
+}
+/*Tablet*/
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em){
+    .form-container,#register{
+        width:60%;
+    }
+}
 
