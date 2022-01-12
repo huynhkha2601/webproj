@@ -96,18 +96,14 @@
     <div class="container-fluid col-md-10 w-100">
         <form class="col-md-12 form-inline" action="/products/bySearch" method="post">
             <div class="dropdown mr-2">
-<!--                <select id="location" name="location" class="form-control form-select-md mr-2" style="width: 11em">-->
-<!--                    <option selected disabled>Location</option>-->
-<!--                    {{#each vwCategories}}-->
-<!--                        <option value="{{cid}}">{{cname}}</option>-->
-<!--                    {{/each}}-->
-<!--                </select>-->
                 <select id="sort" name="sort" class="form-control form-select-md mr-2 ml-2" style="width: 15em">
                     <option selected disabled value="0">Sorting</option>
-                    <option value="1">Sorting by A-Z</option>
-                    <option value="2">Sorting by Z-A</option>
-                    <option value="3">Sorting by price ascending</option>
-                    <option value="4">Sorting by price descending</option>
+                    <option value="{{this.url}}&sort=1">Sorting by A-Z</option>
+                    <option value="{{this.url}}&sort=2">Sorting by Z-A</option>
+                    <option value="{{this.url}}&sort=3">Sorting by price ascending</option>
+                    <option value="{{this.url}}&sort=4">Sorting by price descending</option>
+                    <option value="{{this.url}}&sort=5">Sorting by nearest</option>
+                    <option value="{{this.url}}&sort=6">Sorting by newest </option>
                 </select>
                 <select id="price" name="price" class="form-control form-select-md mr-2" style="width: 18.5em">
                     <option selected disabled value="0">Price</option>

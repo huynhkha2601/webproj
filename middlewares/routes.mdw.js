@@ -13,39 +13,21 @@ import viewRoute from "../routes/view.route.js"
 import productsModel from "../models/products.model.js";
 import {dirname} from "path";
 import {fileURLToPath} from "url";
-import nodemailer from "nodemailer";
+import sendMail from "../utils/mailing.js";
+
 
 export default function (app) {
 
-    // app.get('/send-mail', async function (req, res) {
-    //     let testAccount = await nodemailer.createTestAccount();
-    //     // email transporter
-    //
-    //     let transporter = nodemailer.createTransport({
-    //         host: "smtp.gmail.com",
-    //         port: 587,
-    //         secure: false, // true for 465, false for other ports
-    //         auth: {
-    //             user: "smtp.gmail.com", // generated ethereal user
-    //             pass: 'bjnjucun', // generated ethereal password
-    //         },
-    //     });
-    //
-    //     // send mail with defined transport object
-    //     await transporter.sendMail({
-    //         from: 'huynhkha2601@gmail.com', // sender address
-    //         to: "htkha19@clc.fitus.edu.vn", // list of receivers
-    //         subject: "Hello ✔", // Subject line
-    //         text: "Hello world?", // plain text body
-    //         html: "<b>Hello world?</b>"
-    //     }).then(info => {
-    //         console.log({info});
-    //     }).catch(console.error);
-    //     ;
-    //
-    //     res.render('home');
-    // })
-    //
+    app.get('/verify-email',(req, res)=>{
+        console.log("OK");
+        res.render('home');
+    })
+
+    app.get('/send-mail', async (req, res)=>{
+        await sendMail('htkha19@clc.fitus.edu.vn');
+        res.render('home');
+    })
+
     app.get('/', async function (req, res) {
 
         const Recent = await productsModel.findRecentProducts(0); // o

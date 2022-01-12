@@ -36,4 +36,8 @@ export default {
             .join('product',{'history.productid':'product.productid'})
             .where('dateend', '>=', new Date().toISOString());
     },
+    getWonList(id){
+        return db('listbuy').join('product', {'listbuy.productid':'product.productid'})
+            .where('bidderid', id);
+    }
 }

@@ -11,19 +11,17 @@
         <thead>
         <tr>
             <th scope="col">Product Name</th>
-            <th scope="col">Current Price</th>
-            <th scope="col">My Max Price</th>
+            <th scope="col">Won price</th>
             <th scope="col">Date Published</th>
             <th scope="col">End Date</th>
             <th scope="col">&nbsp</th>
         </tr>
         </thead>
         <tbody>
-        {{#each biding}}
+        {{#each wons}}
             <tr>
                 <th scope="row">{{productname}}</th>
-                <th scope="row">{{price}}</th>
-                <th scope="row">{{max_price}}</th>
+                <th scope="row">{{formatMoney price}}</th>
                 <th scope="row">{{formatDateTime datepublished}}</th>
                 <th scope="row">{{formatDateTime dateend}}</th>
                 <td class="text-right">

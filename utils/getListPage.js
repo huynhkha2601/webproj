@@ -72,7 +72,7 @@ export default {
             while (i <= pageNum){
                 listPages.push({
                     value: i, isCur: false
-                    , url: `/products/byName/${i}?${key}`
+                    , url: `/products/bySearch/${i}?${key}`
                 });
                 i++;
             }
@@ -83,82 +83,38 @@ export default {
             endPage += 2;
         } else if (i >= 3) {
             listPages.push({
-                value: 1, isCur: false, url: `/products/byName/${i}?${key}`
+                value: 1, isCur: false, url: `/products/bySearch/${i}?${key}`
             });
             listPages.push({
-                value: "...", isCur: false, url: `/products/byName/${i}?${key}`
+                value: "...", isCur: false, url: `/products/bySearch/${i}?${key}`
             })
         } else if (i == 2) {
             listPages.push({
-                value: 1, isCur: false, url: `/products/byName/${i}?${key}`
+                value: 1, isCur: false, url: `/products/bySearch/${i}?${key}`
             });
         }
         for (i; i < endPage + 1; i++) {
             if (i > pageNum)
                 break;
             listPages.push({
-                value: i, isCur: i === curPage, url: `/products/byName/${i}?${key}`
+                value: i, isCur: i === curPage, url: `/products/bySearch/${i}?${key}`
             })
         }
         if (i === pageNum) {
             listPages.push({
-                value: i, isCur: false, url: `/products/byName/${i}?${key}`
+                value: i, isCur: false, url: `/products/bySearch/${i}?${key}`
             });
         }
         if (i <= pageNum - 1) {
             listPages.push({
-                value: "...", isCur: false, url: `/products/byName/${i}?${key}`
+                value: "...", isCur: false, url: `/products/bySearch/${i}?${key}`
             });
             listPages.push({
-                value: pageNum, isCur: false, url: `/products/byName/${i}?${key}`
+                value: pageNum, isCur: false, url: `/products/bySearch/${i}?${key}`
             });
         }
         return listPages;
     },
-
-    getListSearchByPricePage(curPage, pageNum, key)
-    {
-
-        let listPages = [];
-        let i = curPage - 2;
-        let endPage = curPage + 2;
-        if (i <= 0) {
-            i = 1;
-            endPage += 2;
-        } else if (i >= 3) {
-            listPages.push({
-                value: 1, isCur: false, url: '/tours/bySearch/byPrice/' + i +'?key='+ key
-            });
-            listPages.push({
-                value: "...", isCur: false, url:'/tours/bySearch/byPrice/' + i +'?key='+ key
-            })
-        } else if (i == 2) {
-            listPages.push({
-                value: 1, isCur: false, url:'/tours/bySearch/byPrice/' + i +'?key='+ key
-            });
-        }
-        for (i; i < endPage + 1; i++) {
-            if (i > pageNum)
-                break;
-            listPages.push({
-                value: i, isCur: i === curPage, url: '/tours/bySearch/byPrice/' + i +'?key='+ key
-            })
-        }
-        if (i === pageNum) {
-            listPages.push({
-                value: i, isCur: false, url: '/tours/bySearch/byPrice/' + i +'?key='+ key
-            });
-        }
-        if (i <= pageNum - 1) {
-            listPages.push({
-                value: "...", isCur: false, url: '/tours/bySearch/byPrice/' + i +'?key='+ key
-            });
-            listPages.push({
-                value: pageNum, isCur: false, url:'/tours/bySearch/byPrice/' + i +'?key='+ key
-            });
-        }
-        return listPages;
-    }
 
 
 }

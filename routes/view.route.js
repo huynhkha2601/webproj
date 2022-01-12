@@ -19,12 +19,21 @@ router.get('/unfav', async function(req, res){
 })
 
 router.get('/biding-list', async function(req, res){
-
-    let biding = await accountsModel.getCurBidingList(4);
-    console.log(biding);
+    let biding = await accountsModel.getCurBidingList(req.session.user.userid);
+    // console.log(biding);
     res.render('vwViews/biding', {
         layout: 'admin.hbs', biding
     });
 })
+
+router.get('/won-list', async function(req, res){
+
+    let wons = await accountsModel.getWonList(3);
+    console.log(wons);
+    res.render('vwViews/won', {
+        layout: 'admin.hbs', wons
+    });
+})
+
 
 export default router;

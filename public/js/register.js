@@ -29,7 +29,7 @@ $('#frmRegister').on('submit', async function (e) {
     //     return;
     // }
 
-    // ajax check captcha api
+    //////// ajax check captcha api
     await fetch(`/accounts/captcha/api?captcha=${captcha}`, {
         method: 'POST',
         headers: {

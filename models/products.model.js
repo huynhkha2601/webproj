@@ -1,4 +1,5 @@
 import db from '../utils/database.js';
+// import {RANDOM} from "mysql/lib/PoolSelector";
 
 export default {
     findAll(){
@@ -35,7 +36,7 @@ export default {
     },
     async findQuantityByKeySearch(key){
         let sql = `select count(*) as sl from product where match(productname, title, description) 
-against (\'%${key}%\')`;
+            against (\'%${key}%\') and current_timestamp < dateend`;
         let products = await db.raw(sql);
         if (products.length === 0)
             return 0;
@@ -44,7 +45,7 @@ against (\'%${key}%\')`;
     },
     async findProductsByKeySearch(key, offset){
         let sql = `select * from product where match(productname, title, description)
-            against (\'%${key}%\') limit 15 offset ${offset}`;
+            against (\'%${key}%\') and current_timestamp <= dateend limit 15 offset ${offset}`;
         let products = await db.raw(sql);
         return products[0];
     },
@@ -56,13 +57,21 @@ against (\'%${key}%\')`;
         else
             return amount[0].sl;
     },
+    findProductSameByType(tid, productid){
+        return db('product').where('type', tid)
+            .where('dateend', '>=', new Date().toISOString())
+            .andWhereRaw(`product.productid != ${productid}`)
+            .orderByRaw('RAND()')
+            .limit(5);
+    },
     findByType(tid, offset){
         return db('product').where('type', tid)
             .where('dateend', '>=', new Date().toISOString())
             .offset(offset).limit(15);
     },
     findByCat(cid){
-        return db('product').whereIn('type', db('category').join('type', {'category.cid': 'type.cid'})
+        return db('product').whereIn('type', db('category')
+            .join('type', {'category.cid': 'type.cid'})
             .select('tid').where('category.cid', cid));
     },
     add(entity){
