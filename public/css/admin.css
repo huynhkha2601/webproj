@@ -98,6 +98,10 @@
     margin-right: 10px;
 }
 
+.fa-eye{
+    margin-right: 10px;
+}
+
 body {
     background-color: #eee
 }
@@ -151,4 +155,37 @@ body {
 
 .text2 {
     color: #a5aec0
+}
+
+.sidebar-out{
+    background-color: #287bff;
+    height: 100%;
+    color: #fff;
+}
+
+.sidebar-item .nav-link:hover{
+    color: #287bff;
+    font-weight: 700;
+}
+.sidebar-item .nav-link{
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    padding-left: 0.75rem;
+    color: white;
+}
+
+.sidebar-out ul li:hover{
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.sidebar-out ul li{
+    list-style: none;
+    display: block;
+}
+.sidebar-out ul{
+    padding : 0;
+}
+.sidebar-out{
+    position: relative;
 }
