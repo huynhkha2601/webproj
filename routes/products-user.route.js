@@ -25,9 +25,9 @@ router.get('/', async function (req, res) {
         pageNum++;
 
     let url = req.url.split("?")[0];
-    console.log(url);
+    // console.log(url);
     let listPages = Pagnition.getListPageByType(curPage, pageNum,url);
-    console.log(listPages);
+    // console.log(listPages);
     const products = await productsModel.findByType(tid, (curPage - 1)*limit);
     for (const product of products) {
         product.login = req.session.login;
@@ -130,11 +130,13 @@ router.get('/detail', async function (req, res) {
 
     let isFav = await productsModel.getFav(req.session.user.userid,productid);
 
+    let ban = await productsModel.checkBan(productid, req.session.user.userid);
+    // console.log(ban);
     res.render('vwProducts/detail', {
         layout: 'home.hbs',
         product, empty: history.length === 0, history,
         end: product.dateend.getTime() < new Date().getTime(), sameType,
-        holder, point, seller, holderpoint, isFav
+        holder, point, seller, holderpoint, isFav, ban: ban.length !== 0
     });
 });
 

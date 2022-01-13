@@ -223,5 +223,30 @@ export default {
         }).catch(console.error);
 
     },
+    async sendMailKickAccount(email, productname, url) {
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: "webproj.auction@gmail.com", // generated ethereal user
+                pass: 'Llemint1', // generated ethereal password
+            },
+        });
+
+        let mailOpts = {
+            from: '<webproj.auction@gmail.com>', // sender address
+            to: `<${email}>`, // list of receivers
+            subject: "Kicked by seller!", // Subject line
+            html: `Hello,<br>You can't auction product ${productname} because seller have kicked you.
+                    <br>You can click this link to return to the product detail page. <a href="${url}">Click Here</a>`
+        };
+
+        // send mail with defined transport object
+        await transporter.sendMail(mailOpts).then(info => {
+            console.log({info});
+        }).catch(console.error);
+
+    },
 };
 

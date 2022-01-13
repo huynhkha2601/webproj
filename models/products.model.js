@@ -154,5 +154,18 @@ export default {
     getFav(userid,productid){
         return db('favorites').where('userid', productid).where('pid',productid);
     },
-
+    getProductCurBid(userid){
+        return db('product').where('sellerid', userid)
+            .where('dateend', '>=', new Date().toISOString());
+    },
+    getBidderProductCurBid(productid){
+        return db('history').where('productid', productid)
+            .distinct('idbidder');
+    },
+    ban(entity){
+        return db('ban').insert(entity);
+    },
+    checkBan(productid, userid){
+        return db('ban').where('productid', productid).where('userid', userid);
+    },
 }

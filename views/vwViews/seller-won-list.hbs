@@ -11,32 +11,19 @@
         <thead>
         <tr>
             <th scope="col">Product Name</th>
-            <th scope="col">Current Price</th>
-            <th scope="col">My Max Price</th>
+            <th scope="col">Won price</th>
             <th scope="col">Date Published</th>
             <th scope="col">End Date</th>
             <th scope="col">&nbsp</th>
         </tr>
         </thead>
         <tbody>
-        {{#each biding}}
+        {{#each wons}}
             <tr>
-                <th {{#if check}}
-                class="font-weight-bold text-info"
-                {{/if}}
-                         scope="row">{{productname}}</th>
-                <th {{#if check}}
-                class="font-weight-bold text-info"
-                {{/if}} scope="row">{{price}}</th>
-                <th {{#if check}}
-                class="font-weight-bold text-info"
-                {{/if}} scope="row">{{max_price}}</th>
-                <th {{#if check}}
-                class="font-weight-bold text-info"
-                {{/if}} scope="row">{{formatDateTime datepublished}}</th>
-                <th {{#if check}}
-                class="font-weight-bold text-info"
-                {{/if}} scope="row">{{formatDateTime dateend}}</th>
+                <th scope="row">{{productname}}</th>
+                <th scope="row">{{formatMoney price}}</th>
+                <th scope="row">{{formatDateTime datepublished}}</th>
+                <th scope="row">{{formatDateTime dateend}}</th>
                 <td class="text-right">
                     <a class="btn btn-sm btn-success" href="/products/detail?productid={{productid}}" role="button">
                     View detail<i class="fa fa-eye" aria-hidden="true"></i>

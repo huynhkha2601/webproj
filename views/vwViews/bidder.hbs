@@ -1,0 +1,39 @@
+<div class="card">
+    <h4 class="card-header d-flex justify-content-between">
+        Current Bid List
+        <div>
+            <a class="btn btn-outline-primary" href="/admin/categories/add" role="button">Add Categories
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+    </h4>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">&nbsp</th>
+            <th scope="col">ID Bidder</th>
+            <th scope="col">Name</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">&nbsp</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each bidders}}
+            <tr>
+                <th scope="row">{{increase @index}}</th>
+                <th scope="row">{{userid}}</th>
+                <th scope="row" style="width:40%">{{fullname}}</th>
+                <th scope="row">{{telephone}}</th>
+                <td class="text-right">
+                    <a class="btn btn-sm btn-success" href="/profile/review/{{idbidder}}" role="button">
+                    Review bidder<i class="fa fa-check" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" href="/cur-bid/del/{{productid}}?userid={{idbidder}}" role="button">
+                        Delete bidder<i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
