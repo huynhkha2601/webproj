@@ -1,10 +1,12 @@
 import productsModel from "../models/products.model.js";
 import auctionModel from "../models/auction.model.js";
+import accountsModel from "../models/accounts.model.js";
 
 import Pagnition from "../utils/getListPage.js";
 
 
 import express from "express";
+import mailing from "../utils/mailing.js";
 
 const router = express.Router();
 
@@ -112,7 +114,7 @@ router.post('/auction', async function (req, res) {
     let yourMax = parseInt(req.body.max_price);
     let step = req.query.step;
     let entity = req.query;
-
+    let url = `http://localhost:3000/products/detail?productid=${entity.productid}`;
     if (entity.idbidder <= 0 || entity.idbidder === null || entity.idbidder === undefined){
        res.redirect('/accounts/login/');
        return;
@@ -139,6 +141,8 @@ router.post('/auction', async function (req, res) {
                         entity.price = curPrice;
                         entity.max_price = yourMax;
                         let rs = await auctionModel.patchWithID(entity);
+                        let user = await accountsModel.findByID(entity.idbidder);
+                        await mailing.sendMailUpdateSuccessAuction(user.email, user.fullname, url);
                         // console.log(true ,4, entity);
                     }
 
@@ -151,15 +155,24 @@ router.post('/auction', async function (req, res) {
                         entity.max_price = yourMax;
 
                         let rs = await auctionModel.addRecord(entity);
+                        let user = await accountsModel.findByID(entity.idbidder);
+                        await mailing.sendMailSuccessAuction(user.email, user.fullname, url);
+
                     } else {
                         entity.price = parseInt(entity.price) + parseInt(step);
                         entity.max_price = yourMax;
                         await auctionModel.addRecord(entity)
+                        let user = await accountsModel.findByID(entity.idbidder);
+                        await mailing.sendMailSuccessAuction(user.email, user.fullname, url);
+
+
                         let update = {
                             idbidder: curHolder, price: yourMax + parseInt(step),
                             max_price: curMax, productid: entity.productid
                         };
                         await auctionModel.addRecord(update);
+                        let updateUser = await accountsModel.findByID(update.idbidder);
+                        await mailing.sendMailUpdateSuccessAuction(updateUser.email, updateUser.fullname, url);
                     }
 
 
@@ -179,6 +192,8 @@ router.post('/auction', async function (req, res) {
                 if (new Date(endDate).getTime() <= curDate.getTime() + 15*60000) {
                     let updateDate = new Date(endDate).getTime()+ 15*60000;
                     let ret = await productsModel.patch({productid: entity.productid, dateend: new Date(updateDate)});
+                    let user = await accountsModel.findByID(entity.idbidder);
+                    await mailing.sendMailSuccessAuction(user.email, user.fullname, url);
                 }
             }
 

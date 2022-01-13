@@ -1,11 +1,10 @@
 import express from "express";
 import request from "request";
 import bcrypt from "bcryptjs";
-import bodyParser from "body-parser";
-import nodemailer from "nodemailer";
+
 
 import accountsModel from "../models/accounts.model.js";
-import format from "date-format";
+import userAccountsModel from "../models/user-accounts.model.js";
 
 
 const router = express.Router();
@@ -73,6 +72,11 @@ router.get('/is-Available', async function(req, res){
     if (email === null)
         emailVal = false;
     res.json({userVal: userVal, emailVal: emailVal});
+})
+
+router.get('/isAuction', async function(req, res){
+   let isAuction = await userAccountsModel.isAuction(3);
+   res.json(isAuction);
 })
 
 router.post('/register/profile',async function(req, res){

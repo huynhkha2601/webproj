@@ -15,7 +15,7 @@
             <a class="btn btn-outline-success" href="/admin/categories" role="button">
                 <i class="fa fa-backward" aria-hidden="true"></i>
                 Back to Categories List</a>
-            <button type="submit" class="btn btn-danger" formaction="/admin/categories/del">Delete
+            <button type="submit" class="btn btn-danger" formaction="/admin/categories/del?cid={{this.category.cid}}">Delete
                 <i class="fa fa-trash-o"></i>
             </button>
             <button type="submit" class="btn btn-primary" formaction="/admin/categories/patch">Save Changes

@@ -5,8 +5,11 @@ export default {
     findAll(){
         return db('product');
     },
+    findEndProducts(date){
+        return db('product').where('dateend', date);
+    },
     findRecentProducts(offset){
-        return db('product').where('dateend', '>=', new Date().toISOString())
+        return db('product').where('dateend', '>=', new Date().toISOString().slice(0, 19).replace('T', ' '))
             .orderBy('dateend','asc').limit(5).offset(offset);
     },
     findValuestProducts(offset){
@@ -32,7 +35,7 @@ export default {
     findHistoryProduct(pid){
         return db('history').where('productid', pid)
             .join('user', {'user.userid': 'history.idbidder'})
-            .orderBy('price', 'desc').limit(5);
+            .orderBy('price', 'desc').orderBy('record','desc').limit(5);
     },
     async findQuantityByKeySearch(key){
         let sql = `select count(*) as sl from product where match(productname, title, description) 
@@ -85,6 +88,14 @@ export default {
         delete entity.productid;
         return db('product').where('productid',id).update(entity);
     },
+    async getTopBids(productid){
+        let bidder = await db('history').where('productid',productid)
+            .orderBy('price','desc').orderBy('record', 'desc').limit(1);
+        if(bidder.length === 0)
+            return -1;
+        else
+            return bidder[0];
+    },
     async checkTopID(productid){
         let bidder = await db('history').where('productid',productid)
             .orderBy('price','desc').limit(1).select('idbidder')
@@ -109,8 +120,22 @@ export default {
             return -1;
         else
             return endDate[0].dateend;
-
+    },
+    async getSeller(productid){
+        let endDate = await db('product').where('productid', productid)
+            .select('sellerid');
+        if(endDate.length === 0)
+            return -1;
+        else
+            return endDate[0].sellerid;
+    },
+    async getQuantityBid(productid){
+        let amount = await db('history').where('productid', productid)
+            .count('* as sl');
+        if(amount.length === 0)
+            return -1;
+        else
+            return amount[0].sl;
     }
-
 
 }

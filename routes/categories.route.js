@@ -1,4 +1,6 @@
 import categoriesModel from "../models/categories.model.js";
+import typesModel from "../models/types.model.js";
+
 import express from "express";
 
 const router = express.Router();
@@ -35,11 +37,23 @@ router.get('/edit', async function(req, res){
 })
 
 router.post('/del',async function(req, res){
-    const ret = await categoriesModel.del(req.body.productid);
+
+    const types = await categoriesModel.findType(req.body.cid);
+    let quantity = 0;
+    for (const type of types) {
+        const sl = await typesModel.findQuantity(type.tid);
+        // console.log(type)
+        quantity += sl[0].sl;
+    }
+
+    if (quantity === 0)
+        await categoriesModel.del(req.body.cid);
+
     res.render('vwCategories/add',{
         layout: 'admin.hbs',
     });
 });
+
 router.post('/patch', async function(req, res){
     const ret = await categoriesModel.patch(req.body);
     res.redirect('/admin/categories');

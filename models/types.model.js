@@ -1,6 +1,10 @@
 import db from '../utils/database.js';
 
 export default {
+    findQuantity(type){
+        return db('product').count('* as sl').join('type',{'product.type':'type.tid'})
+            .where('type', type);
+    },
     findAll(){
         return db('type')
     },

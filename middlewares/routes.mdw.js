@@ -8,6 +8,7 @@ import upgradesRoute from "../routes/upgrades.route.js";
 import productsUserRoute from "../routes/products-user.route.js"
 import accountsProfileRoute from "../routes/accounts-profile.js";
 import viewRoute from "../routes/view.route.js"
+import adminRoute from "../routes/admin.route.js"
 
 
 import productsModel from "../models/products.model.js";
@@ -42,13 +43,10 @@ export default function (app) {
 
     });
 
-    app.get('/admin', function (req, res) {
-        res.render('admin', {
-            layout: 'admin.hbs'
-        });
-    });
+
     app.use('/', viewRoute);
     app.use('/accounts', accountsRoute);
+    app.use('/admin', adminRoute);
     app.use('/admin/products', productsRoute);
     app.use('/admin/manager-accounts', managerAccountsRoute);
     app.use('/admin/user-accounts', userAccountsRoute);
@@ -56,7 +54,8 @@ export default function (app) {
     app.use('/admin/types', typesRoute);
     app.use('/admin/upgrades', upgradesRoute);
     app.use('/products', productsUserRoute);
-    app.use('/accounts/profile', accountsProfileRoute);
+    app.use('/profile', accountsProfileRoute);
+
 }
 //
 // const __dirname = dirname(fileURLToPath(import.meta.url));

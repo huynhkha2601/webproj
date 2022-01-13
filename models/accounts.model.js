@@ -29,5 +29,14 @@ export default {
         const id = entity.userid;
         delete entity.userid;
         return db('user').where('userid',id).update(entity);
-    }
+    },
+    findAllRequest(){
+        return db('resetpw');
+    },
+    addRequest(entity){
+        return db('resetpw').insert(entity);
+    },
+    delRequest(id){
+        return db('resetpw').where('rid',id).del();
+    },
 }

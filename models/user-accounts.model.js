@@ -39,5 +39,9 @@ export default {
     getWonList(id){
         return db('listbuy').join('product', {'listbuy.productid':'product.productid'})
             .where('bidderid', id);
+    },
+    async isAuction(id){
+        let rating = await db.raw(`select sum(rate) as diem, count(*) as tong from rating where userid = ${id}`);
+        return rating[0][0];
     }
 }

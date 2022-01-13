@@ -33,5 +33,24 @@ export default {
         await productsModels.patch({productid: entity.productid, price: entity.price, holder: entity.idbidder});
         return db('history').insert(entity);
     },
+    async listCurProductsBids(idbidder){
+        let lst = await db('history').where('idbidder', idbidder).select( 'productid')
+            .groupBy('idbidder', 'productid');
+        console.log(lst);
+        if (lst.length === 0)
+            return null;
+        else return lst;
+    },
+    async findQuantityBidProducts(productid){
+        let lst = await db('history').where('idbidder', idbidder).select( 'productid')
+            .groupBy('idbidder', 'productid');
+        console.log(lst);
+        if (lst.length === 0)
+            return null;
+        else return lst;
+    },
+    delColWithBidderID(bidder){
+        return db('history').where('idbidder',bidder).del();
+    },
 
 }
