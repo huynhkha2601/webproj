@@ -7,43 +7,45 @@ const router = express.Router();
 
 router.get('/',async function(req, res){
 
-    let ratings = await ratingsModel.findByUserID(9);
-    let total = await ratingsModel.findRating(9);
+    let ratings = await ratingsModel.findByUserID(req.session.user.userid);
+    let total = await ratingsModel.findRating(req.session.user.userid);
     if (total.diem === null)
         total.diem = 0;
     let point = ((total.diem / total.tong) * 100).toFixed(2);
 
-    let profile = await accountsModel.findByID(9);
-    let promise = await accountsModel.getUpdateSeller(9);
+    let profile = await accountsModel.findByID(req.session.user.userid);
+    let promise = await accountsModel.getUpdateSeller(req.session.user.userid);
     let update = (point >= 80 && total.tong >= 10);
-    console.log(total, update)
+    // console.log(total, update)
     res.render('vwAccountsProfile/profile',{
         layout: 'admin.hbs',ratings, point, profile, promise: promise.length !== 0, update
     })
 });
 
 router.get('/upgrade',async function(req, res){
-    let userid = 9;
-    let promise = await accountsModel.getUpdateSeller(9);
+    let userid = req.session.user.userid;
+    let promise = await accountsModel.getUpdateSeller(req.session.user.userid);
     if (promise.length === 0)
         await accountsModel.requestUpdateSeller({bidderid: userid});
     res.redirect('/profile');
 });
 
-// router.get('/',async function(req, res){
-//
-//     let ratings = await ratingsModel.findByUserID(req.session.user.userid);
-//     let total = await ratingsModel.findRating(req.session.user.userid);
-//     if (total.diem === null)
-//         total.diem = 0;
-//     let point = ((total.diem / total.tong) * 100).toFixed(2);
-//
-//     let profile = await accountsModel.findByID(req.session.user.userid);
-//
-//     res.render('vwAccountsProfile/profile',{
-//         layout: 'admin.hbs',ratings, point, profile
-//     })
-// });
+router.get('/review/:userid',async function(req, res){
+    let userid = req.params.userid;
+    // let assessor = req.session.user.userid;
+    let assessor = 3;
+
+    res.render('vwAccountsProfile/review',{
+        layout: 'admin.hbs', userid, assessor
+    })
+});
+
+router.post('/review/:userid',async function(req, res){
+    console.log(req.body);
+    res.render('vwAccountsProfile/review',{
+        layout: 'admin.hbs', userid: req.params.userid, info: true, info_message: "Review an user successfully. Thank you!"
+    })
+});
 
 router.get('/edit', async function(req, res){
     let profile = await accountsModel.findByID(req.session.user.userid);
@@ -96,6 +98,7 @@ router.post('/changepw', async function(req, res){
     res.render('vwAccountsProfile/changepw',{
         layout: 'admin.hbs', err_message: "Password does not match!", err: true
     })
+
 });
 
 export default router;

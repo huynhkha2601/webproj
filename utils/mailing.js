@@ -148,5 +148,80 @@ export default {
         }).catch(console.error);
 
     },
+    async sendMailSuccessBuy(email, productname, url) {
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: "webproj.auction@gmail.com", // generated ethereal user
+                pass: 'Llemint1', // generated ethereal password
+            },
+        });
+
+        let mailOpts = {
+            from: '<webproj.auction@gmail.com>', // sender address
+            to: `<${email}>`, // list of receivers
+            subject: "Buy successfully!", // Subject line
+            html: `Hello,<br>You buy <b>${productname}</b> succesfully!
+                    <br>You can click this link to return to the product detail page. <a href="${url}">Click Here</a>`
+        };
+
+        // send mail with defined transport object
+        await transporter.sendMail(mailOpts).then(info => {
+            console.log({info});
+        }).catch(console.error);
+
+    },
+    async sendMailSellerFailedAuc(email, productname, url) {
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: "webproj.auction@gmail.com", // generated ethereal user
+                pass: 'Llemint1', // generated ethereal password
+            },
+        });
+
+        let mailOpts = {
+            from: '<webproj.auction@gmail.com>', // sender address
+            to: `<${email}>`, // list of receivers
+            subject: "Failed Auction!", // Subject line
+            html: `Hello,<br>You have sold the product <b>${productname}</b> failed!
+                    <br>You can click this link to return to the product detail page. <a href="${url}">Click Here</a>`
+        };
+
+        // send mail with defined transport object
+        await transporter.sendMail(mailOpts).then(info => {
+            console.log({info});
+        }).catch(console.error);
+
+    },
+    async sendMailSellerSuccessAuc(email, productname, url) {
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: "webproj.auction@gmail.com", // generated ethereal user
+                pass: 'Llemint1', // generated ethereal password
+            },
+        });
+
+        let mailOpts = {
+            from: '<webproj.auction@gmail.com>', // sender address
+            to: `<${email}>`, // list of receivers
+            subject: "Auction successfully!", // Subject line
+            html: `Hello,<br>You have sold the product <b>${productname}</b> succesfully!
+                    <br>You can click this link to return to the product detail page. <a href="${url}">Click Here</a>`
+        };
+
+        // send mail with defined transport object
+        await transporter.sendMail(mailOpts).then(info => {
+            console.log({info});
+        }).catch(console.error);
+
+    },
 };
 

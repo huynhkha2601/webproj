@@ -6,7 +6,9 @@ export default {
         return db('product');
     },
     findEndProducts(date){
-        return db('product').where('dateend', date);
+        let sql = 'select * from product ' +
+            'where isFinish = 0 and timestampdiff(microsecond,current_timestamp, dateend) < 0'
+        return db.raw(sql);
     },
     findRecentProducts(offset){
         return db('product').where('dateend', '>=', new Date().toISOString().slice(0, 19).replace('T', ' '))
@@ -61,11 +63,7 @@ export default {
             return amount[0].sl;
     },
     findProductSameByType(tid, productid){
-        return db('product').where('type', tid)
-            .where('dateend', '>=', new Date().toISOString())
-            .andWhereRaw(`product.productid != ${productid}`)
-            .orderByRaw('RAND()')
-            .limit(5);
+        let sql = '';
     },
     findByType(tid, offset){
         return db('product').where('type', tid)
@@ -136,6 +134,9 @@ export default {
             return -1;
         else
             return amount[0].sl;
-    }
+    },
+    addBuy(entity){
+        return db('listbuy').insert(entity);
+    },
 
 }

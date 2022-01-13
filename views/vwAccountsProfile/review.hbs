@@ -1,0 +1,49 @@
+<div class="col-md-1"></div>
+<div class="col-md-10 bg-light d-flex justify-content-center ml-5 w-100">
+    <div class="col-md-1"></div>
+    <form method="post" class="p-5 py-5">
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <h1 class="text-center align-items-md-center">Review</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-3">
+                <label class="labels mb-2"><h5>Your ID</h5></label>
+                <input type="text" class="form-control" value="{{userid}}"
+                       id="userid" name="userid" readonly>
+            </div>
+            <div class="col-md-6 mb-2">
+                <label class="labels mb-2"><h5>Assessor</h5></label>
+                <input type="text" class="form-control"
+                       id="assessor" name="assessor" value="{{assessor}}" readonly>
+            </div>
+            <div class="col-md-12 mb-3">
+                <label class="labels mb-2"><h5>Feedback</h5></label>
+                <textarea type="text" class="form-control" placeholder="Enter feedback"
+                          id="feedback" name="feedback" style="height: 12.5em">{{rating.feedback}}</textarea>
+            </div>
+            <div class="col-md-12 mb-3 d-flex">
+                <label class="labels mb-2 col-md-2"><h5>Rating: </h5></label>
+                <div class="col-md-8">
+                    <div class="form-check form-check-inline" style="margin-right: 50px">
+                        <input class="form-check-input" type="radio" name="rate" id="inlineRadio1" value=1 checked="true">
+                        <label class="form-check-label" for="inlineRadio1">Like</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rate" id="inlineRadio2" value=0>
+                        <label class="form-check-label" for="inlineRadio2">Dislike</label>
+                    </div>
+                </div>
+            </div>
+            {{#if info}}
+                <div class="alert alert-primary" role="alert">
+                    {{info_message}}
+                </div>
+            {{/if}}
+        </div>
+        <div class="mt-4 text-center">
+            <button class="btn btn-primary profile-button" type="submit" style="width: 250px;">Save Profile</button>
+        </div>
+    </form>
+    <div class="col-md-1"></div>
+</div>
+

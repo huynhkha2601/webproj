@@ -19,22 +19,12 @@ import sendMail from "../utils/mailing.js";
 
 export default function (app) {
 
-    app.get('/verify-email',(req, res)=>{
-        console.log("OK");
-        res.render('home');
-    })
-
-    app.get('/send-mail', async (req, res)=>{
-        await sendMail('htkha19@clc.fitus.edu.vn');
-        res.render('home');
-    })
-
     app.get('/', async function (req, res) {
 
         const Recent = await productsModel.findRecentProducts(0); // o
         const Valuest = await productsModel.findValuestProducts(0); // ok
         const Bids = await productsModel.findMostBidProducts(0);
-
+        // console.log(Recent);
         res.render('home', {
             Recent, Valuest, Bids: Bids[0],
             login: req.session.login,
@@ -57,8 +47,3 @@ export default function (app) {
     app.use('/profile', accountsProfileRoute);
 
 }
-//
-// const __dirname = dirname(fileURLToPath(import.meta.url));
-// export function getDirname(){
-//     return __dirname;
-// }

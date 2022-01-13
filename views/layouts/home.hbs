@@ -42,11 +42,6 @@
                     </ul>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" action="/products/bySearch" method="post">
-                <input class="form-control mr-sm-2 search-input" type="text" placeholder="Search"
-                       aria-label="Search" id="search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
-            </form>
             {{#if login}}
                 <li class="nav-item dropdown ml-3">
                     <div class="dropdown">
@@ -90,13 +85,19 @@
         </div>
     </nav>
 </div>
-<div class="row col-md-12 d-flex justify-content-center mb-5">
-    <div class="col-md-1">
+<div class="row justify-content-center mt-5" style="margin-right: 0px;">
+    <div class="w-75">
+        <form class="form-control-lg form-inline justify-content-center my-2 my-lg-0" action="/products/bySearch" method="post">
+            <input class="form-control mr-sm-2 search-input w-50" type="text" placeholder="Search"
+                   aria-label="Search" id="search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0 search-btn" style="width: 150px;" type="submit">Search</button>
+        </form>
     </div>
-    <div class="container-fluid col-md-10">
+</div>
+<div class="row col-md-12 d-flex justify-content-center mb-5" style="margin-right: 0; margin-left: 0;">
+    <div class="container-fluid col-md-12">
         {{{body}}}
     </div>
-    <div class="col-md-1"></div>
 </div>
 
 <!--<footer class="footer" id="footer">-->
