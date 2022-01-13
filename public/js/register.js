@@ -50,7 +50,7 @@ $('#frmRegister').on('submit', async function (e) {
 
         });
 
-    // $.getJSON(`/accounts/is-available?username=${username}&email=${email}`,async function (data){
+    // $.getJSON(`/accounts/is-available?username=${username}&email=${email}`, async function (data){
     //
     //     if(data.userVal === true && data.emailVal === true){
     //         alert("Username and Email are existed!");
@@ -75,7 +75,6 @@ $('#frmRegister').on('submit', async function (e) {
     //     }
     //
     // });
-
 
 });
 

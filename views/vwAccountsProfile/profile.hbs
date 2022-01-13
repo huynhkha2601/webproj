@@ -12,7 +12,14 @@
             </tr>
             </thead>
             <tbody>
-
+                {{#each ratings}}
+                    <tr>
+                        <th scope="row">{{assessor}}</th>
+                        <td>{{feedback}}</td>
+                        <td>{{rate}}
+                        </td>
+                    </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
@@ -24,36 +31,48 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label class="labels mb-2"><h5>Name</h5></label>
-                    <input type="text" class="form-control" placeholder="first name" value="" disabled>
+                    <input type="text" class="form-control" placeholder="first name" value="{{profile.fullname}}" disabled>
                 </div>
                 <div class="row mb-3 col-md-12">
                     <div class="col-md-6 pl-3 mb-2">
                         <label class="labels"><h5>Date of Birth</h5></label>
-                        <input type="date" class="form-control" placeholder="date of birth" value="" disabled>
+                        <input type="text" class="form-control" placeholder="date of birth" value="{{formatDate profile.dob}}" disabled>
                     </div>
                     <div class="col-md-6 ml-3">
                         <label class="labels"><h5>Gender</h5></label>
-                        <input type="text" class="form-control" placeholder="date of birth" value="" disabled>
+                        <input type="text" class="form-control " value="{{#if profile.gender}}Male{{else}}Female{{/if}}
+                        " disabled>
                     </div>
                 </div>
                 <div class="row mb-3 col-md-12">
                     <div class="col-md-6 pl-3 mb-2">
                         <label class="labels mb-2"><h5>PhoneNumber</h5></label>
-                        <input type="text" class="form-control" placeholder="enter phone number" value="" disabled>
+                        <input type="text" class="form-control" placeholder="enter phone number" value="{{profile.telephone}}" disabled>
                     </div>
                     <div class="col-md-6 ml-3">
                         <label class="labels mb-2"><h5>Rating</h5></label>
-                        <input type="number" class="form-control" placeholder="enter address" value="" disabled>
+                        <input type="text" class="form-control" value="{{formatPoint point}}" disabled>
                     </div>
                 </div>
                 <div class="col-md-12 mb-2">
                     <label class="labels mb-2"><h5>Address</h5></label>
-                    <input type="text" class="form-control" placeholder="enter address" value="" disabled>
+                    <input type="text" class="form-control" placeholder="enter address" value="{{profile.address}}" disabled>
                 </div>
             </div>
-            <div class="mt-4 text-center">
-                <button class="btn btn-primary profile-button" type="button">Request update seller</button>
-            </div>
+            {{#if update}}
+                {{#if (equal profile.role 3) }}
+                    {{#if promise}}
+                        <div class="mt-4 text-center">
+                            <a  class="btn btn-primary profile-button disabled" href="/profile/upgrade">Please wait for approval of the upgrade</a>
+                        </div>
+
+                    {{else}}
+                        <div class="mt-4 text-center">
+                            <a  class="btn btn-primary profile-button" href="/profile/upgrade">Request update seller</a>
+                        </div>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
         </div>
     </div>
 </div>

@@ -39,4 +39,10 @@ export default {
     delRequest(id){
         return db('resetpw').where('rid',id).del();
     },
+    requestUpdateSeller(entity){
+        return db('upgrade').insert(entity);
+    },
+    getUpdateSeller(bidderid){
+        return db('upgrade').where('bidderid',bidderid);
+    },
 }

@@ -29,11 +29,23 @@ export default function (app) {
                 }
                 return password;
             },
+            formatDate(d) {
+                return new Date(d).toDateString();
+            },
             formatDateTime(d) {
                 return d.toLocaleString('vi');
             },
             equal(variable, value) {
                 return parseInt(variable) === parseInt(value);
+            },
+            formatPoint(val) {
+                return val + '%';
+            },
+            isPos(val){
+                if (parseInt(val) > 0)
+                    return true;
+                else if (parseInt(val) < 0)
+                    return false;
             }
         }
     }));

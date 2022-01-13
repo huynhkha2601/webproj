@@ -1,38 +1,46 @@
 <div class="col-md-10 bg-light d-flex justify-content-center">
-    <div class="p-5 py-5">
+    <form method="post" class="p-5 py-5">
         <div class="d-flex justify-content-center align-items-center mb-3">
             <h1 class="text-center align-items-md-center">Edit Profile</h1>
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
                 <label class="labels mb-2"><h5>Name</h5></label>
-                <input type="text" class="form-control" placeholder="first name" value="">
+                <input type="text" class="form-control" placeholder="first name" value="{{profile.fullname}}"
+                    id="fullname" name="fullname">
             </div>
             <div class="row mb-3 col-md-12">
                 <div class="col-md-6 pl-3 mb-2">
                     <label class="labels"><h5>Date of Birth</h5></label>
-                    <input type="date" class="form-control" placeholder="date of birth" value="">
+                    <input type="date" class="form-control" placeholder="date of birth" id="dob" name="dob">
                 </div>
                 <div class="col-md-6 ml-3">
                 <label class="labels"><h5>Gender</h5></label>
                 <select id="gender" name="gender" class="col-md-12 h-50 form-select" style="border-radius: 0.25rem" >
-                    <option selected value="1">Male</option>
-                    <option value="0">Female</option>
+                    {{#if profile.gender}}
+                        <option selected value="1">Male</option>
+                        <option value="0">Female</option>
+                    {{else}}
+                        <option value="1">Male</option>
+                        <option selected value="0">Female</option>
+                    {{/if}}
                 </select>
             </div>
             </div>
             <div class="col-md-12 mb-2">
                 <label class="labels mb-2"><h5>PhoneNumber</h5></label>
-                <input type="text" class="form-control" placeholder="enter phone number" value="">
+                <input type="text" class="form-control" placeholder="enter phone number"
+                       id="telephone" name="telephone" value="{{profile.telephone}}">
             </div>
             <div class="col-md-12 mb-2">
                 <label class="labels mb-2"><h5>Address</h5></label>
-                <input type="text" class="form-control" placeholder="enter address" value="">
+                <input type="text" class="form-control" placeholder="enter address" value="{{profile.address}}"
+                        id="address" name="address">
             </div>
         </div>
-        <div class="mt-4 text-center">
-            <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+        <div class="mt-4 text-center" >
+            <button class="btn btn-primary profile-button" type="submit" style="width: 250px;">Save Profile</button>
         </div>
-    </div>
+    </form>
 </div>
 
