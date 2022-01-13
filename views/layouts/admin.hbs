@@ -32,8 +32,11 @@
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user" aria-hidden="true"> Hi,{{{id}}}</i>
                     </a>
+<!--                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">-->
+<!--                        <li><a class="fa fa-sign-out dropdown-item" href="/logout">Log out</a></li>-->
+<!--                    </ul>-->
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                        <li><a class="fa fa-sign-out dropdown-item" href="#">Log out</a></li>
+                        <li><a class="fa fa-sign-out dropdown-item" href="/accounts/logout">Log out</a></li>
                     </ul>
                 </ul>
             </div>
@@ -78,10 +81,13 @@
                 <a class="nav-link" href="/fav-list"><i class="fa fa-heart" aria-hidden="true"></i>Favorites</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/biding"><i class="fa fa-money" aria-hidden="true"></i></i>Biding List</a>
+                <a class="nav-link" href="/biding-list"><i class="fa fa-money" aria-hidden="true"></i></i>Biding List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/won"><i class="fa fa-trophy" aria-hidden="true"></i>Won Products</a>
+                <a class="nav-link" href="/won-list"><i class="fa fa-trophy" aria-hidden="true"></i>Won Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cur-bid"><i class="fa fa-trophy" aria-hidden="true"></i>Cur-bid Products</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Home</a>
@@ -90,7 +96,7 @@
         </div>
     </div>
 </div>
-<div class=" h-100 mr-3">
+<div class=" h-100 mr-3" style="border-radius: 20px;">
     <div class="row d-flex h-100" style="margin-right: 0px;">
         <div class="col-sm-3">
             <div class="col-md-10 sidebar-out p-4">
@@ -126,10 +132,13 @@
                         <a class="nav-link" href="/fav-list"><i class="fa fa-heart" aria-hidden="true"></i>Favorites</a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="nav-link" href="/biding"><i class="fa fa-money" aria-hidden="true"></i></i>Biding List</a>
+                        <a class="nav-link" href="/biding-list"><i class="fa fa-money" aria-hidden="true"></i></i>Biding List</a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="nav-link" href="/won"><i class="fa fa-trophy" aria-hidden="true"></i>Won Products</a>
+                        <a class="nav-link" href="/won-list"><i class="fa fa-trophy" aria-hidden="true"></i>Won Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cur-bid"><i class="fa fa-gavel" aria-hidden="true"></i>Cur-bid Products</a>
                     </li>
                     <li class="sidebar-item">
                         <a class="nav-link" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Home</a>

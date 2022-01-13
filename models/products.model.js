@@ -62,9 +62,6 @@ export default {
         else
             return amount[0].sl;
     },
-    findProductSameByType(tid, productid){
-        let sql = '';
-    },
     findByType(tid, offset){
         return db('product').where('type', tid)
             .where('dateend', '>=', new Date().toISOString())
@@ -137,6 +134,25 @@ export default {
     },
     addBuy(entity){
         return db('listbuy').insert(entity);
+    },
+    async findQuantityBids(productid){
+        let amount = await db('history').where('productid',productid).count('* as sl');
+        return amount;
+    },
+    findProductSameByType(tid, productid){
+        return db('product').where('type', tid)
+            .where('dateend', '>=', new Date().toISOString())
+            .andWhereRaw(`product.productid != ${productid}`)
+            .orderByRaw('RAND()')
+            .limit(5);
+        let sql = '';
+    },
+    findHistory(productid){
+        return db('history').where('productid', productid).orderBy('price', "desc")
+            .orderBy('record', "desc");
+    },
+    getFav(userid,productid){
+        return db('favorites').where('userid', productid).where('pid',productid);
     },
 
 }

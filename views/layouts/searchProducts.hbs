@@ -20,13 +20,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/"><i class="fa fa-home fa-lg"></i> Online Auction <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#footer">About <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
 
-
-                </li>
             </ul>
             {{#if login}}
                 <li class="nav-item dropdown ml-3">
@@ -93,8 +87,8 @@
             </div>
         {{/each}}
     </div>
-    <div class="container-fluid col-md-10 w-100">
-        <form class="col-md-12 form-inline" action="/products/bySearch" method="post">
+    <div class="container-fluid col-md-10 w-100 ">
+        <form class="col-md-12 form-inline mb-4" action="/products/bySearch" method="post">
             <div class="dropdown mr-2">
                 <select id="sort" name="sort" class="form-control form-select-md mr-2 ml-2" style="width: 15em">
                     <option selected disabled value="0">Sorting</option>

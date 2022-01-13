@@ -26,15 +26,28 @@
                 {{#each products}}
                     <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
                         <div class="card h-100">
-                            <img class="card-img-top car" style="height: 20em; width: 100%" src="/public/images/{{productid}}/title/main.jpg"
-                                 alt="Card image cap">
+                            <a {{#if login}}
+                            href="/products/detail?productid={{productid}}"{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}}><img class="card-img-top car" style="height: 20em; width: 100%"
+                                     src="/public/images/{{productid}}/title/main.jpg"
+                                     alt="Card image cap"></a>
                             <div class="card-body h-25">
-                                <h5 class="card-title">{{productname}}</h5>
+                            <a {{#if login}}
+                            href="/products/detail?productid={{productid}}"{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}}> <h5 class="card-title">{{productname}}</h5></a>
                                 <p class="card-title">{{title}}</p>
-                                <p class="card-title text-danger">{{formatMoney price}}</p>
+                                <p class="card-text">Price: <span class="text-danger">{{formatMoney price}}</span></p>
+                                <p class="card-text" style="color:black;">End: {{formatDateTime dateend}}</p>
+                                <p class="card-text" style="color:black;">Published: {{formatDateTime
+                                        datepublished}}</p>
                             </div>
                             <div class="card-footer text-right pr-2">
-                                <a href="/products/detail?productid={{productid}}" class="btn btn-outline-primary">
+                            <a {{#if login}}
+                            href="/products/detail?productid={{productid}}"{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}} class="btn btn-outline-primary">
                                 <i class="fa fa-gavel" aria-hidden="true"></i>
                                 Auction</a>
                             </div>

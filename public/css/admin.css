@@ -3,14 +3,16 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1;
+    /*z-index: 1;*/
     margin: auto;
 }
 .navbar{
-    background-color: black;
+    /*background-color: black;*/
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    background-color: #287bff
 }
+
 .admin-management{
     color:white;
     padding-top: 0.3125rem;
@@ -34,12 +36,18 @@
 }
 
 .offcanvas{
+    padding: 1.25em;
     height: 100%;
-    width : 270px;
+    width : 310px;
+}
+
+.offcanvas-header{
+    padding: 0.5em 0.5em;
 }
 
 .navbar .container-fluid {
     color: white;
+
 }
 .nav-item .nav-link {
     padding-top: .75rem;
@@ -200,11 +208,16 @@ body {
 }
 .sidebar-out{
     position: relative;
-    border-radius: 20px;
+    /*border-radius: 20px;*/
 }
 
 @media screen and (max-width: 600px) {
     .sidebar-out{
         display: none;
+    }
+
+    .row{
+        margin-right: 5px;
+        margin-left: 5px;
     }
 }

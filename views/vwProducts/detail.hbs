@@ -43,10 +43,10 @@
                     <h1 class="product-title">{{this.product.productname}}</h1>
                     <h3 class="product-title">{{this.product.title}}</h3>
                     <p class="product-title">{{{this.product.description}}}</p>
-                    <p class="product-title">Date Published:
+                    <h5 class="product-title">Date Published:
                         <span class="text-primary font-weight-bold"> {{{formatDateTime
                                 this.product.datepublished}}}</span>
-                    </p>
+                    </h5>
                     <h5 class="">Date End:
                         <span class="text-danger font-weight-bold">{{{formatDateTime this.product.dateend}}}</span>
                     </h5>
@@ -60,69 +60,94 @@
                                     Seller:<span class="text-danger font-weight-bold"> {{this.product.sellerid}}</span>
                                 </div>
                                 <div class="">
-                                    <span class="">Seller Name: </span>
+                                    Seller Name: <span class="">{{formatName seller.fullname}}</span>
                                 </div>
                             </h5>
                         </div>
                         <div>
                             <h5 class="d-inline-flex justify-content-around">
-                                <div class="" style="margin-right: 10em;">Rating:</div>
+                                <div class="" style="margin-right: 10em;">Rating: <span>{{formatPoint point}}</span>
+                                </div>
                                 <div class="text-right">
-                                    <a href="#" class="text-primary float-end border-3 border-bottom border-dark">Seller review link</a>
+                                    <a href="/profile/review/{{seller.userid}}"
+                                       class="text-primary float-end border-3 border-bottom border-dark">Seller review
+                                        link</a>
                                 </div>
                             </h5>
                         </div>
                     </div>
-
-                    <table class="table table-striped table-bordered table">
-                        <thead>
-                        <th colspan="4" class="text-center">Table of Bidders</th>
-                        <tr>
-                            <th scope="col">&nbsp</th>
-                            <th scope="col">Bidder</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Time</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{#each history}}
-                            <tr>
-                                <th scope="row">{{increase @index}}</th>
-                                <td>{{formatName fullname}}</td>
-                                <td class="text-right">{{formatMoney price}}</td>
-                                <td class="text-right">{{formatDateTime record}}</td>
-                            </tr>
-                        {{/each}}
-                        </tbody>
-                    </table>
+                    {{#if holder}}
+                        <div>
+                            <h5 class="d-inline-flex justify-content-around">
+                                <div class="mr-lg-5">
+                                    Holder:<span class="text-danger font-weight-bold"> {{this.product.holder}}</span>
+                                </div>
+                                <div class="">
+                                    Seller Name: <span class="">{{formatName holder.fullname}}</span>
+                                </div>
+                            </h5>
+                        </div>
+                        <div>
+                            <h5 class="d-inline-flex justify-content-around">
+                                <div class="" style="margin-right: 10em;">Rating: <span>{{formatPoint holderpoint}}</span></div>
+                                <div class="text-right">
+                                    <a href="/profile/review/{{holder.userid}}"
+                                       class="text-primary float-end border-3 border-bottom border-dark">Seller review
+                                        link</a>
+                                </div>
+                            </h5>
+                        </div>
+                    {{/if}}
                 </div>
-                {{#if end}}
-                {{else}}
-                    <div class="col-md-12 w-100 d-inline-block mb-3">
-                        <label for="price">Max Price:</label>
-                        <input id="max_price" name="max_price" class="col-md-8" type="number"
-                               step="{{this.product.step}}" required>
-                    </div>
-                    <div class="col-md-12 text-md-center justify-content-center">
-                        <button class="btn btn-success col-md-4" type="submit">Set Price</button>
-                        <button class="btn btn-primary" type="button">
-                            <span class="fa fa-heart {{#if fav}}text-danger{{else}} text-light{{/if}} "></span>
-                        </button>
-                    </div>
-                {{/if}}
-
+                <table class="table table-striped table-bordered table">
+                    <thead>
+                    <th colspan="4" class="text-center">Table of Bidders</th>
+                    <tr>
+                        <th scope="col">&nbsp</th>
+                        <th scope="col">Bidder</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each history}}
+                        <tr>
+                            <th scope="row">{{increase @index}}</th>
+                            <td>{{formatName fullname}}</td>
+                            <td class="text-right">{{formatMoney price}}</td>
+                            <td class="text-right">{{formatDateTime record}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
             </div>
+            {{#if end}}
+            {{else}}
+                <div class="col-md-12 w-100 d-inline-block mb-3">
+                    <label for="price">Max Price:</label>
+                    <input id="max_price" name="max_price" class="col-md-8" type="number"
+                           step="{{this.product.step}}" required>
+                </div>
+                <div class="col-md-12 text-md-center justify-content-center">
+                    <button class="btn btn-success col-md-4" type="submit">Set Price</button>
+                    <a href="/fav/{{User.userid}}?pid={{product.productid}}"  formmethod="post" class="btn btn-primary" type="button">
+                        <span class="fa fa-heart {{#if isFav}}text-danger{{else}} text-light{{/if}} "></span>
+                    </a>
+                </div>
+            {{/if}}
 
-            </form>
         </div>
+
+        </form>
     </div>
 </div>
-<div class="mt-5 mb-5">
+</div>
+<div class="col-md-12 mt-5 mb-5">
     <h4>The products with same type</h4>
 </div>
 <input style="display: none;" value="{{User.userid}}" id="userid" type="number">
 
-<div class="d-flex justify-content-md-center mt-5 mb-5">
+<div class="col-md-12 d-flex justify-content-md-center mt-5 mb-5">
     <div class="row col-md-12 justify-content-center">
         <!--    <i class="fa fa-backward d-flex align-items-md-center " aria-hidden="true"></i>-->
         {{#each sameType}}
@@ -146,21 +171,21 @@
             let result = confirm("Do you want to continue to auction this product?");
             //
             if (result) {
-            //     let userid = $('#userid').val();
-            //     $.gtetJSON(`/accounts/isAuction?userid=${userid}`, async function (data) {
-            //
-            //         let isAuc = (parseFloat(data.diem) / parseFloat(data.tong));
-            //
-            //         if (isAuc >= 0.8) {
-            //             $("#frmRegister").off('submit').submit();
-            //         } else {
-            //             alert('Your review score is less than 80% so you cannot participate in the auction');
-            //             // return;
-            //         }
-            //     });
-            //     // return;
-            //     //
-                $("#frmPrice").off('submit').submit();
+                let userid = $('#userid').val();
+                $.getJSON(`/accounts/isAuction?userid=${userid}`, async function (data) {
+
+                    let isAuc = (parseFloat(data.diem) / parseFloat(data.tong));
+
+                    if (isAuc >= 0.8) {
+                        $("#frmRegister").off('submit').submit();
+                    } else {
+                        alert('Your review score is less than 80% so you cannot participate in the auction');
+                        // return;
+                    }
+                });
+                // return;
+                //
+                // $("#frmPrice").off('submit').submit();
             }
         });
     </script>

@@ -19,7 +19,7 @@ router.post('/login',async function(req, res){
     const user = await accountsModel.findByUsername(req.body.username);
 
     if(user === null){
-        res.redirect('/login');
+        res.redirect('/accounts/login');
         return;
     }
 

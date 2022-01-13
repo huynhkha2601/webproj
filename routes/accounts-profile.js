@@ -2,6 +2,7 @@ import express from "express";
 import ratingsModel from "../models/ratings.model.js";
 import accountsModel from "../models/accounts.model.js";
 import bcrypt from "bcryptjs";
+import asyncErrors from "express-async-errors";
 
 const router = express.Router();
 
@@ -32,16 +33,16 @@ router.get('/upgrade',async function(req, res){
 
 router.get('/review/:userid',async function(req, res){
     let userid = req.params.userid;
-    // let assessor = req.session.user.userid;
-    let assessor = 3;
-
+    let assessor = req.session.user.userid;
+    if (assessor === null)
+        res.status(404);
     res.render('vwAccountsProfile/review',{
         layout: 'admin.hbs', userid, assessor
     })
 });
 
 router.post('/review/:userid',async function(req, res){
-    console.log(req.body);
+    // console.log(req.body);
     res.render('vwAccountsProfile/review',{
         layout: 'admin.hbs', userid: req.params.userid, info: true, info_message: "Review an user successfully. Thank you!"
     })

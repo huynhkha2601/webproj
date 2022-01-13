@@ -14,6 +14,8 @@ export default function (app) {
                 return parseInt(val)+1;
             },
             formatName(val){
+                if (val === '' || val ===' ' || val === null)
+                    return val;
                 let str = val.split(' ');
                 return "****" + str[str.length-1];
             },
@@ -33,12 +35,14 @@ export default function (app) {
                 return new Date(d).toDateString();
             },
             formatDateTime(d) {
-                return d.toLocaleString('vi');
+                return d.toLocaleString();
             },
             equal(variable, value) {
                 return parseInt(variable) === parseInt(value);
             },
             formatPoint(val) {
+                if (val === null || isNaN(val))
+                    return 0;
                 return val + '%';
             },
             isPos(val){

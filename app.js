@@ -30,7 +30,8 @@ viewMdw(app);
 localMdw(app);
 routeMdw(app);
 
-cron.schedule('* * * * * *', async ()=>{
+cron.schedule('*/15 * * * * *', async ()=>{
+
     let products = await productsModel.findEndProducts();
     for (const product of products[0]) {
         let url = `http://localhost:3000/products/detail?productid=${product.productid}`;
@@ -47,10 +48,10 @@ cron.schedule('* * * * * *', async ()=>{
         }
         let update = {productid: product.productid, isFinish: 1};
         await productsModel.patch(update);
-        let ret = await productsModel.addBuy({bidderid: holder, productid: product.productid});
-    }
-    // console.log("--------------------------------------------");
 
+        let ret = await productsModel.addBuy({bidderid: product.holder, productid: product.productid});
+
+    }
 },{
     schuduled: true
 });

@@ -1,28 +1,46 @@
-<div class="row col-md-12 col-xl-12 col-sm-12 mt-5 pt-3 pb-3 justify-content-center">
+<div class="row col-md-12 col-xl-12 col-sm-12 mt-5 pt-3 pb-3 justify-content-center"
+        style="line-height: 1em">
 
     <h2 class="product-header text-center mb-5">
         Các sản phẩm gần kết thúc
     </h2>
     <div class="row col-sm-12 justify-content-center">
-        <div class="row d-inline-flex" style="justify-content: center;">
+        <div class="row d-inline-flex" style="   justify-content: center;">
             {{#each Recent}}
                 <div class="col-md-2 mb-3 mt-3 w-100 h-100" style="flex: 0 0 19%; max-width: 19%">
                     <div class="product_card card h-100" style="background-color: unset;">
-                        <a style="text-decoration: none" href="/products/detail?productid={{productid}}">
+                    <a style="text-decoration: none"  {{#if login}}
+                       href="/products/detail?productid={{productid}}"{{sellerid}}
+                    {{else }} href="/accounts/login"
+                    {{/if}}>
                         <img src="/public/images/{{productid}}/title/main.jpg" alt=""
                              class="img-fluid card-img rounded-0">
                         </a>
                         <div class="card-body h-100">
-                            <a style="text-decoration: none" href="/products/detail?productid={{productid}}"
+                        <a style="text-decoration: none" {{#if login}}
+                           href="/products/detail?productid={{productid}}"{{sellerid}}
+                        {{else }}href="/accounts/login"
+                        {{/if}}
                             target="_blank">
-                            <p class="card-text font-weight-bold h-50" style="color:black;">{{productname}}</p>
+                            <p class="card-text font-weight-bold h-25" style="color:black;">{{productname}}</p>
                             </a>
-                            <p class="card-text " style="color:black;">End: {{formatDateTime dateend}}</p>
+                            <p class="card-text h-25" style="color:black;">End: {{formatDateTime dateend}}</p>
                             </a>
-                            <p class="card-text pb-2">Price: <span class="text-danger">{{formatMoney price}}</span></p>
+                            <p class="card-text">Price: <span class="text-danger">{{formatMoney price}}</span></p>
+                            <p class="card-text">Number Bids: {{sl}}</p>
+                            <p class="card-text"><a {{#if login}}
+                            href="/profile/review/{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}}
+                                ">Seller ID: {{sellerid}}</p>
                         </div>
-                        <div class="card-footer">
-                            <p>{{sellerid}}</p>
+                        <div class="card-footer text-right">
+                        <a {{#if login}}
+                        href="/products/detail?productid={{productid}}"{{sellerid}}
+                        {{else }}href="/accounts/login"
+                        {{/if}} class="btn btn-outline-primary">
+                            <i class="fa fa-gavel" aria-hidden="true"></i>
+                            Auction</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +49,7 @@
     </div>
 </div>
 
-<div class="row col-md-12 col-xl-12 col-sm-12  pt-3 pb-3 justify-content-center">
+<div class="row col-md-12 col-xl-12 col-sm-12  pt-3 pb-3 justify-content-center" style="line-height: 1em">
     <h2 class="product-header text-center mb-5 mt-5">
         Các sản phẩm có nhiều lượt ra giá nhất
     </h2>
@@ -41,21 +59,38 @@
             {{#each Bids}}
                 <div class="col-md-2 mb-3 mt-3 w-100 h-100" style="flex: 0 0 19%; max-width: 19%">
                     <div class="product_card card h-100" style="background-color: unset;">
-                        <a style="text-decoration: none" href="/products/detail?productid={{productid}}">
+                    <a style="text-decoration: none"  {{#if login}}
+                       href="/products/detail?productid={{productid}}"{{sellerid}}
+                    {{else }}href="/accounts/login"
+                    {{/if}}>
                         <img src="/public/images/{{productid}}/title/main.jpg" alt=""
                              class="img-fluid card-img rounded-0">
                         </a>
                         <div class="card-body h-100">
-                            <a style="text-decoration: none" href="/products/detail?productid={{productid}}"
+                        <a style="text-decoration: none" {{#if login}}
+                           href="/products/detail?productid={{productid}}"{{sellerid}}
+                        {{else }}href="/accounts/login"
+                        {{/if}}
                             target="_blank">
-                            <p class="card-text font-weight-bold h-50" style="color:black;">{{productname}}</p>
+                            <p class="card-text font-weight-bold h-25" style="color:black;">{{productname}}</p>
                             </a>
-                            <p class="card-text font-weight-bold" style="color:black;">End: {{formatDateTime dateend}}</p>
+                            <p class="card-text h-25" style="color:black;">End: {{formatDateTime dateend}}</p>
                             </a>
-                            <p class="card-text pb-2">Price: <span class="text-danger">{{formatMoney price}}</span></p>
+                            <p class="card-text">Price: <span class="text-danger">{{formatMoney price}}</span></p>
+                            <p class="card-text">Number Bids: {{sl}}</p>
+                            <p class="card-text"><a {{#if login}}
+                            href="/profile/review/{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}}
+                                ">Seller ID: {{sellerid}}</p>
                         </div>
-                        <div class="card-footer mt-3">
-                            <p>{{sellerid}}</p>
+                        <div class="card-footer text-right">
+                        <a {{#if login}}
+                        href="/products/detail?productid={{productid}}"{{sellerid}}
+                        {{else }}href="/accounts/login"
+                        {{/if}} class="btn btn-outline-primary">
+                            <i class="fa fa-gavel" aria-hidden="true"></i>
+                            Auction</a>
                         </div>
                     </div>
                 </div>
@@ -64,30 +99,47 @@
     </div>
 </div>
 
-<div class="row col-md-12 col-xl-12 col-sm-12 pt-3 pb-3 justify-content-center">
+<div class="row col-md-12 col-xl-12 col-sm-12 pt-3 pb-3 justify-content-center" style="line-height: 1em">
     <h2 class="product-header text-center mb-5 mt-5">
         Các sản phẩm có giá cao nhất
     </h2>
     <div class="row col-sm-12 justify-content-center">
         <div class="row d-inline-flex" style="justify-content: center;">
-            {{#each Recent}}
+            {{#each Valuest}}
                 <div class="col-md-2 mb-3 mt-3 w-100 h-100" style="flex: 0 0 19%; max-width: 19%">
                     <div class="product_card card h-100" style="background-color: unset;">
-                        <a style="text-decoration: none" href="/products/detail?productid={{productid}}">
+                        <a style="text-decoration: none"  {{#if login}}
+                           href="/products/detail?productid={{productid}}"{{sellerid}}
+                        {{else }}href="/accounts/login"
+                        {{/if}}>
                         <img src="/public/images/{{productid}}/title/main.jpg" alt=""
                              class="img-fluid card-img rounded-0">
                         </a>
                         <div class="card-body h-100">
-                            <a style="text-decoration: none" href="/products/detail?productid={{productid}}"
+                            <a style="text-decoration: none" {{#if login}}
+                               href="/products/detail?productid={{productid}}"{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}}
                             target="_blank">
-                            <p class="card-text font-weight-bold h-50" style="color:black;">{{productname}}</p>
+                            <p class="card-text font-weight-bold h-25" style="color:black;">{{productname}}</p>
                             </a>
-                            <p class="card-text font-weight-bold" style="color:black;">End: {{formatDateTime dateend}}</p>
+                            <p class="card-text h-25" style="color:black;">End: {{formatDateTime dateend}}</p>
                             </a>
-                            <p class="card-text pb-2">Price: <span class="text-danger">{{formatMoney price}}</span></p>
+                            <p class="card-text">Price: <span class="text-danger">{{formatMoney price}}</span></p>
+                            <p class="card-text">Number Bids: {{sl}}</p>
+                            <p class="card-text"><a {{#if login}}
+                                href="/profile/review/{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}}
+                                    ">Seller ID: {{sellerid}}</p>
                         </div>
-                        <div class="card-footer mt-3">
-                            <p>{{sellerid}}</p>
+                        <div class="card-footer text-right">
+                            <a {{#if login}}
+                            href="/products/detail?productid={{productid}}"{{sellerid}}
+                            {{else }}href="/accounts/login"
+                            {{/if}} class="btn btn-outline-primary">
+                            <i class="fa fa-gavel" aria-hidden="true"></i>
+                            Auction</a>
                         </div>
                     </div>
                 </div>

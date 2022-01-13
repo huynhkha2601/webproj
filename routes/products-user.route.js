@@ -1,6 +1,7 @@
 import productsModel from "../models/products.model.js";
 import auctionModel from "../models/auction.model.js";
 import accountsModel from "../models/accounts.model.js";
+import ratingsModel from "../models/ratings.model.js";
 
 import Pagnition from "../utils/getListPage.js";
 
@@ -28,7 +29,9 @@ router.get('/', async function (req, res) {
     let listPages = Pagnition.getListPageByType(curPage, pageNum,url);
     console.log(listPages);
     const products = await productsModel.findByType(tid, (curPage - 1)*limit);
-
+    for (const product of products) {
+        product.login = req.session.login;
+    }
     res.render('vwProducts/byType', {
         layout: 'searchProducts.hbs',
         products, empty: products.length===0, listPages
@@ -54,7 +57,9 @@ router.get('/byType/:type', async function (req, res) {
     let listPages = Pagnition.getListPageByType(curPage, pageNum,url);
     console.log(listPages);
     const products = await productsModel.findByType(tid, (curPage - 1)*limit);
-
+    for (const product of products) {
+        product.login = req.session.login;
+    }
     res.render('vwProducts/byType', {
         layout: 'searchProducts.hbs',
         products, empty: products.length===0, listPages
@@ -79,7 +84,9 @@ router.get('/bySearch/:page', async function (req, res) {
     // console.log(quantity);
     let listPages = Pagnition.getListSearchByNamePage(curPage, pageNum, req.url.split('?')[1]);
     let products = await productsModel.findProductsByKeySearch(key,(curPage - 1) * limit)
-
+    for (const product of products) {
+        product.login = req.session.login;
+    }
     console.log(quantity === 0)
     res.render('vwProducts/bySearch', {
         layout: 'searchProducts.hbs',
@@ -98,15 +105,36 @@ router.get('/detail', async function (req, res) {
     const product = await productsModel.findByID(productid);
     const history = await productsModel.findHistoryProduct(productid);
     const sameType = await productsModel.findProductSameByType(product.type, productid);
-    // const fav
 
+    let seller = await accountsModel.findByID(product.sellerid);
+    // console.log(product.sellerid ,seller);
+    let holder = await accountsModel.findByID(product.holder);
+    // console.log(holder);
+    let total;
 
-    if (product === null)
-        res.redirect('/');
-    // console.log(product)
+    let holderpoint =0;
+    if (holder === null){
+        holderpoint = 0;
+    }else {
+        let holdertotal = await ratingsModel.findRating(product.holder);
+        if (holdertotal.diem === null)
+            holdertotal.diem = 0;
+
+        holderpoint  = ((holdertotal.diem / holdertotal.tong) * 100).toFixed(2);
+    }
+
+    total = await ratingsModel.findRating(seller.userid);
+    if (total.diem === null)
+        total.diem = 0;
+    let point = ((total.diem / total.tong) * 100).toFixed(2);
+
+    let isFav = await productsModel.getFav(req.session.user.userid,productid);
+
     res.render('vwProducts/detail', {
         layout: 'home.hbs',
-        product, empty: history.length === 0, history, end: product.dateend.getTime() < new Date().getTime(), sameType
+        product, empty: history.length === 0, history,
+        end: product.dateend.getTime() < new Date().getTime(), sameType,
+        holder, point, seller, holderpoint, isFav
     });
 });
 
@@ -150,7 +178,7 @@ router.post('/auction', async function (req, res) {
 
                     if (yourMax >= curMax + parseInt(step)) {
 
-                        console.log(true ,4);
+                        // console.log(true ,4);
                         entity.price = curMax + parseInt(step);
                         entity.max_price = yourMax;
 
@@ -203,7 +231,6 @@ router.post('/auction', async function (req, res) {
             // Redirect to view with err_mess
         }
     }
-
 
     res.redirect('/products/detail?productid=' + req.query.productid);
 

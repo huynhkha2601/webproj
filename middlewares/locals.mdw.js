@@ -14,7 +14,7 @@ export default function(app){
             req.session.user = null;
         }
 
-        res.locals.login = req.session.login;
+        res.locals.Login = req.session.login;
         res.locals.User = req.session.user;
 
         next();
