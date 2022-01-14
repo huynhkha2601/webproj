@@ -1,33 +1,33 @@
-    <form class="form-container" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 20vh;background-color: white;
+<form class="form-container" method="post" style="border: 1px solid #fff;padding: 50px 60px;margin-top: 20vh;background-color: white;
         -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);">
-        <h5 class="text-center title"> Sign in</h5>
-        <div class="mb-3">
-            <input type="text" id="username" name="username" aria-describedby="emailHelp"
-                   required>
-            <span></span>
-            <label for="username"class="form-label">
-                   <h4>Username</h4>
-            </label>
-        </div>
-        <div class="mb-3">
-            <input type="password" id="password" name="password"required>
-            <span></span>
-            <label for="password"class="form-label">
-                <h4>Password</h4>
-            </label>
-        </div>
-        <h6 class="text-warning text-danger text-right">Tài khoản hoặc mật khẩu không chính xác</h6>
-        <button type="submit" class="btn-signin" href="/?id={{this.id}}">Sign In</button>
-        <div class="flex-col-c text-center mt-3">
+    <h5 class="text-center title"> Sign in</h5>
+    <div class="mb-3">
+        <input type="text" id="username" name="username" aria-describedby="emailHelp"
+               required>
+        <span></span>
+        <label for="username" class="form-label">
+            <h4>Username</h4>
+        </label>
+    </div>
+    <div class="mb-3">
+        <input type="password" id="password" name="password" required>
+        <span></span>
+        <label for="password" class="form-label">
+            <h4>Password</h4>
+        </label>
+    </div>
+    <!--        <h6 class="text-warning text-danger text-right">Tài khoản hoặc mật khẩu không chính xác</h6>-->
+    <button type="submit" class="btn-signin" href="/?id={{this.id}}">Sign In</button>
+    <div class="flex-col-c text-center mt-3">
                     <span class="txt1 ">If you don't have account
                     </span>
-            <a href="/accounts/register" class="txt2">
-                Sign Up
-            </a>
-        </div>
-    </form>
+        <a href="/accounts/register" class="txt2">
+            Sign Up
+        </a>
+    </div>
+</form>
 
 {{#section 'footer'}}
     <script src="/public/js/login.js"></script>

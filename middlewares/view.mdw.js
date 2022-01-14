@@ -50,7 +50,12 @@ export default function (app) {
                     return true;
                 else if (parseInt(val) < 0)
                     return false;
+            },
+            lessThan(cur, val){
+                // console.log(cur, val, parseInt(cur) <= parseInt(val));
+                return parseInt(cur) <= parseInt(val);
             }
+
         }
     }));
 

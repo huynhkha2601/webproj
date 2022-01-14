@@ -50,9 +50,8 @@
                                 <i class="fa fa-info m-auto" aria-hidden="true"></i>
                                 Profile
                             </a>
-
-                            {{#if (equal User.role 3) }}
-                                <a class="dropdown-item m-auto" href="/admin/products/add">
+                            {{#if (lessThan User.role 2) }}
+                                <a class="dropdown-item m-auto" href="/admin">
                                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                     Manage Products
                                 </a>

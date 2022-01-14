@@ -43,5 +43,9 @@ export default {
     async isAuction(id){
         let rating = await db.raw(`select sum(rate) as diem, count(*) as tong from rating where userid = ${id}`);
         return rating[0][0];
-    }
+    },
+    getBidderWonList(id){
+        return db('product').where('sellerid',id)
+            .where('isFinish', 1);
+    },
 }

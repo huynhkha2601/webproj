@@ -40,7 +40,7 @@ router.get('/biding-list', async function(req, res){
 })
 
 router.get('/won-list', async function(req, res){
-    let wons = await accountsModel.getWonList(3);
+    let wons = await accountsModel.getWonList(req.session.user.userid);
     res.render('vwViews/won', {
         layout: 'admin.hbs', wons
     });
@@ -108,4 +108,19 @@ router.get('/cur-bid/del/:productid', async function(req, res){
 })
 
 
+router.get('/seller-won', async function(req, res){
+
+    let wons = await accountsModel.getBidderWonList(req.session.user.userid);
+    for (const won of wons) {
+        if(won.holder === null)
+            won.win = false;
+        else
+            won.win = true;
+    }
+    // console.log(wons);
+
+    res.render('vwViews/seller-won-list.hbs', {
+        layout: 'admin.hbs', wons,
+    });
+})
 export default router;

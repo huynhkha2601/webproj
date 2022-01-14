@@ -86,7 +86,7 @@ router.post('/register/profile',async function(req, res){
     profile.userid = id;
     const ret = await accountsModel.patch(profile);
     console.log(ret)
-    res.redirect('/?id=' + id);
+    res.redirect('/accounts/login');
 })
 
 router.get('/register/profile', function(req, res){
@@ -135,6 +135,7 @@ router.post('/captcha/api',async function(req,res){
 
 router.get('/logout', function(req, res){
     req.session.login = false;
+    req.session.user = null;
     res.redirect("/");
 })
 

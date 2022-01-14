@@ -1,11 +1,6 @@
 <div class="card">
     <h4 class="card-header d-flex justify-content-between">
-        Binding List
-        <div>
-            <a class="btn btn-outline-primary" href="/admin/categories/add" role="button">Add Categories
-                <i class="fa fa-plus"></i>
-            </a>
-        </div>
+        Seller won List
     </h4>
     <table class="table table-hover">
         <thead>
@@ -14,16 +9,22 @@
             <th scope="col">Won price</th>
             <th scope="col">Date Published</th>
             <th scope="col">End Date</th>
+            <th scope="col">Winner</th>
             <th scope="col">&nbsp</th>
         </tr>
         </thead>
         <tbody>
         {{#each wons}}
             <tr>
-                <th scope="row">{{productname}}</th>
+                <th scope="row" style="width: 200px">{{productname}}</th>
                 <th scope="row">{{formatMoney price}}</th>
                 <th scope="row">{{formatDateTime datepublished}}</th>
                 <th scope="row">{{formatDateTime dateend}}</th>
+                <th scope="row">{{#if win}}
+                    <a href="/profile/review/{{holder}}">Click to Review{{holder}}</a>{{else}}
+                    No winner
+                {{/if}}
+                </th>
                 <td class="text-right">
                     <a class="btn btn-sm btn-success" href="/products/detail?productid={{productid}}" role="button">
                     View detail<i class="fa fa-eye" aria-hidden="true"></i>

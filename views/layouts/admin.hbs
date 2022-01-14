@@ -59,24 +59,36 @@
             <li class="nav-item">
                 <a class="nav-link" href="/profile/changepw"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a>
             </li>
-           <li class="nav-item">
-                <a class="nav-link" href="/admin/manager-accounts"><i class="fa fa-users"></i>Manager Accounts</a>
-           </li>
-           <li class="nav-item">
-               <a class="nav-link" href="/admin/user-accounts"><i class="fa fa-users"></i>User Accounts</a>
-           </li>
-           <li class="nav-item">
-              <a class="nav-link" href="/admin/products"><i class="fa fa-balance-scale"></i>Products </a>
-           </li>
-           <li class="nav-item">
-              <a class="nav-link" href="/admin/categories"><i class="fa fa-list-alt" aria-hidden="true"></i>Category</a>
-           </li>
+            {{#if (lessThan User.role 1)}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/manager-accounts"><i class="fa fa-users"></i>Manager Accounts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/user-accounts"><i class="fa fa-users"></i>User Accounts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/products"><i class="fa fa-balance-scale"></i>Products </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/categories"><i class="fa fa-list-alt" aria-hidden="true"></i>Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/types"><i class="fa fa-list" aria-hidden="true"></i>Type</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/upgrades"><i class="fa fa-level-up"></i>Uprate</a>
+                </li>
+            {{/if}}
+            {{#if (lessThan User.role 2)}}
             <li class="nav-item">
-                <a class="nav-link" href="/admin/types"><i class="fa fa-list" aria-hidden="true"></i>Type</a>
+                <a class="nav-link" href="/cur-bid"><i class="fa fa-trophy" aria-hidden="true"></i>Cur-bid Products</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/upgrades"><i class="fa fa-level-up"></i>Uprate</a>
-            </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/seller-won"><i class="fa fa-arrow-left" aria-hidden="true"></i>List Bidder Win</a>
+                </li>
+            {{/if}}
+
             <li class="nav-item">
                 <a class="nav-link" href="/fav-list"><i class="fa fa-heart" aria-hidden="true"></i>Favorites</a>
             </li>
@@ -87,11 +99,9 @@
                 <a class="nav-link" href="/won-list"><i class="fa fa-trophy" aria-hidden="true"></i>Won Products</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cur-bid"><i class="fa fa-trophy" aria-hidden="true"></i>Cur-bid Products</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Home</a>
             </li>
+
         </ul>
         </div>
     </div>
@@ -110,6 +120,7 @@
                     <li class="sidebar-item">
                         <a class="nav-link" href="/profile/changepw"><i class="fa fa-key" aria-hidden="true"></i>Change Password</a>
                     </li>
+                    {{#if (lessThan User.role 1)}}
                     <li class="sidebar-item">
                         <a class="nav-link" href="/admin/manager-accounts"><i class="fa fa-users"></i>Manager Accounts</a>
                     </li>
@@ -128,17 +139,29 @@
                     <li class="sidebar-item">
                         <a class="nav-link" href="/admin/upgrades"><i class="fa fa-level-up"></i>Uprate</a>
                     </li>
+                        <li class="sidebar-item">
+                            <a class="nav-link" href="/admin/products"><i class="fa fa-list" aria-hidden="true"></i>Products</a>
+                        </li>
+                    {{/if}}
+                    {{#if (lessThan User.role 2)}}
+                        <li class="sidebar-item">
+                            <a class="nav-link" href="/cur-bid"><i class="fa fa-gavel" aria-hidden="true"></i>Cur-bid Products</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="nav-link" href="/seller-won"><i class="fa fa-list" aria-hidden="true"></i>List Bidder Win</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="nav-link" href="/admin/products/add"><i class="fa fa-plus" aria-hidden="true"></i>Add Products</a>
+                        </li>
+                    {{/if}}
+                    <li class="sidebar-item">
+                        <a class="nav-link" href="/won-list"><i class="fa fa-trophy" aria-hidden="true"></i>Won Products</a>
+                    </li>
                     <li class="sidebar-item">
                         <a class="nav-link" href="/fav-list"><i class="fa fa-heart" aria-hidden="true"></i>Favorites</a>
                     </li>
                     <li class="sidebar-item">
                         <a class="nav-link" href="/biding-list"><i class="fa fa-money" aria-hidden="true"></i></i>Biding List</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="nav-link" href="/won-list"><i class="fa fa-trophy" aria-hidden="true"></i>Won Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cur-bid"><i class="fa fa-gavel" aria-hidden="true"></i>Cur-bid Products</a>
                     </li>
                     <li class="sidebar-item">
                         <a class="nav-link" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i> Home</a>
