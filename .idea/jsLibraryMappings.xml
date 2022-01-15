@@ -3,5 +3,6 @@
   <component name="JavaScriptLibraryMappings">
     <file url="PROJECT" libraries="{@popperjs/core, @types/jquery, LANG, api, bootstrap, bootstrap-icons, fileinput, font-awesome, jquery-3.6.0, piexif, popper.js, tinymce}" />
     <includedPredefinedLibrary name="HTTP Response Handler" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

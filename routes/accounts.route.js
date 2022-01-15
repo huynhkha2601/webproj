@@ -81,11 +81,11 @@ router.get('/isAuction', async function(req, res){
 
 router.post('/register/profile',async function(req, res){
     const profile = req.body;
-    console.log(profile);
+    // console.log(profile);
     const id = req.query.id;
     profile.userid = id;
     const ret = await accountsModel.patch(profile);
-    console.log(ret)
+    // console.log(ret)
     res.redirect('/accounts/login');
 })
 

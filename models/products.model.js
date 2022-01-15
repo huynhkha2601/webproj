@@ -168,4 +168,10 @@ export default {
     checkBan(productid, userid){
         return db('ban').where('productid', productid).where('userid', userid);
     },
+    async findNextIndex(){
+        let product = await db('product').orderBy('productid', 'desc').limit(1).select('productid');
+        if (product.length === 0)
+            return 1;
+        return product[0].productid + 1;
+    }
 }
